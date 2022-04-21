@@ -3024,10 +3024,9 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
-"@pancakeswap/sdk@^2.4.5":
-  version "2.4.5"
-  resolved "https://registry.yarnpkg.com/@pancakeswap/sdk/-/sdk-2.4.5.tgz#783c02efc7ca89d2297b0b07040639d90c3e610d"
-  integrity sha512-qfHOPGXitDQ5y1dmYloe6UQe/0Ki0enow4MLtr5W49Jl7ZXr8oB6XV7usYtT63R7vqLSKY83rd8Wyw18vxP7dA==
+"@pancakeswap/sdk@https://github.com/sywyn219/pancake-swap-sdk.git#v0.4":
+  version "2.4.3"
+  resolved "https://github.com/sywyn219/pancake-swap-sdk.git#9dcc6ae5415aaa54aa4853b7e60e352f90a8f1ff"
   dependencies:
     big.js "^5.2.2"
     decimal.js-light "^2.5.0"
@@ -18716,8 +18715,10 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
+    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"

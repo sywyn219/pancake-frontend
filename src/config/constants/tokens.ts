@@ -14,10 +14,10 @@ const defineTokens = <T extends TokenList>(t: T) => t
 export const mainnetTokens = defineTokens({
   wbnb: new Token(
     MAINNET,
-    '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+    '0x2a117B6DD140E5C43dAFEB2283Da98b02deF1711',
     18,
-    'WBNB',
-    'Wrapped BNB',
+    'WHSO',
+    'Wrapped HSO',
     'https://www.binance.com/',
   ),
   // bnb here points to the wbnb contract. Wherever the currency BNB is required, conditional checks for the symbol 'BNB' can be used
@@ -85,7 +85,7 @@ export const mainnetTokens = defineTokens({
   ),
   usdt: new Token(
     MAINNET,
-    '0x55d398326f99059fF775485246999027B3197955',
+    '0x2F367FA47d6dd5D4684b56e547c83cF058cB4F62',
     18,
     'USDT',
     'Tether USD',

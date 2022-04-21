@@ -7,6 +7,7 @@ import useHttpLocations from '../../hooks/useHttpLocations'
 import getTokenLogoURL from '../../utils/getTokenLogoURL'
 import Logo from './Logo'
 
+
 const StyledLogo = styled(Logo)<{ size: string }>`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
@@ -30,6 +31,9 @@ export default function CurrencyLogo({
     if (currency instanceof Token) {
       if (currency instanceof WrappedTokenInfo) {
         return [...uriLocations, getTokenLogoURL(currency.address)]
+      }
+      if (currency.symbol.toLowerCase() === "usdt") {
+        return [getTokenLogoURL("0x55d398326f99059fF775485246999027B3197955")]
       }
       return [getTokenLogoURL(currency.address)]
     }
