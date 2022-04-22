@@ -1,0 +1,366 @@
+{
+  "data": {
+    "pairHourDatas": [
+      {
+        "hourStartUnix": 1650510000,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458475",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15594152.956685135579501851",
+        "reserve1": "350470.810503591024414306",
+        "reserveUSD": "295557073.4351319714617054362716"
+      },
+      {
+        "hourStartUnix": 1650506400,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458474",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15555286.3047913562886572",
+        "reserve1": "351343.78316275343441754",
+        "reserveUSD": "296503338.1304425729302331915312"
+      },
+      {
+        "hourStartUnix": 1650502800,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458473",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15619576.012393299573998086",
+        "reserve1": "350262.678291491541249174",
+        "reserveUSD": "295372387.6697853079023894935765"
+      },
+      {
+        "hourStartUnix": 1650499200,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458472",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15746610.300000011222914172",
+        "reserve1": "348657.338597538064132427",
+        "reserveUSD": "293329486.897454352655520901301"
+      },
+      {
+        "hourStartUnix": 1650495600,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458471",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15882379.639132382416548665",
+        "reserve1": "347061.580660563997711166",
+        "reserveUSD": "290406248.966310850436160438984"
+      },
+      {
+        "hourStartUnix": 1650492000,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458470",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15970853.170318819748067162",
+        "reserve1": "347817.664129478847448717",
+        "reserveUSD": "292275209.3841257434175497429895"
+      },
+      {
+        "hourStartUnix": 1650488400,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458469",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15994247.418991025954913615",
+        "reserve1": "347195.617254908629686054",
+        "reserveUSD": "291090554.021081975140143754089"
+      },
+      {
+        "hourStartUnix": 1650484800,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458468",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "16060011.727009830245994368",
+        "reserve1": "346007.927832477955767542",
+        "reserveUSD": "289779067.8658433618666555763027"
+      },
+      {
+        "hourStartUnix": 1650481200,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458467",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "16074894.810474930547434141",
+        "reserve1": "345893.518063332642604969",
+        "reserveUSD": "288540463.175150090825557146786"
+      },
+      {
+        "hourStartUnix": 1650477600,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458466",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "16086783.877805595028497761",
+        "reserve1": "345905.488729802568908103",
+        "reserveUSD": "287462634.3993538238087785405253"
+      },
+      {
+        "hourStartUnix": 1650474000,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458465",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "16064208.284906110882973602",
+        "reserve1": "345594.394123420231095119",
+        "reserveUSD": "290414957.3762808376836123157086"
+      },
+      {
+        "hourStartUnix": 1650470400,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458464",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "16112922.87429353968387",
+        "reserve1": "344871.013214920451333926",
+        "reserveUSD": "290503854.5701861885125450801284"
+      },
+      {
+        "hourStartUnix": 1650466800,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458463",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "16078747.024474883588116251",
+        "reserve1": "345317.183159592189622045",
+        "reserveUSD": "290727014.415857970999752240104"
+      },
+      {
+        "hourStartUnix": 1650463200,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458462",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "16199803.883712402917804029",
+        "reserve1": "344815.660948082147734595",
+        "reserveUSD": "292270850.776645512662983462739"
+      },
+      {
+        "hourStartUnix": 1650459600,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458461",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "16256148.652669306967967444",
+        "reserve1": "344781.802984191899009481",
+        "reserveUSD": "291240864.9858251627991682149676"
+      },
+      {
+        "hourStartUnix": 1650456000,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458460",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "16093795.511382237039853218",
+        "reserve1": "338692.039010116620074978",
+        "reserveUSD": "289604701.445829094730736298506"
+      },
+      {
+        "hourStartUnix": 1650452400,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458459",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15774308.329897245716031309",
+        "reserve1": "327768.787604642005938273",
+        "reserveUSD": "280467330.7380669241074413212436"
+      },
+      {
+        "hourStartUnix": 1650448800,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458458",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15392359.08952897676804042",
+        "reserve1": "318100.064084331834906184",
+        "reserveUSD": "273620567.6117494094938327270506"
+      },
+      {
+        "hourStartUnix": 1650445200,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458457",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15338041.88106883185895585",
+        "reserve1": "312460.67754109295004319",
+        "reserveUSD": "266446686.2503003228701828049538"
+      },
+      {
+        "hourStartUnix": 1650441600,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458456",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15337808.583777789153113148",
+        "reserve1": "312686.922505703296119707",
+        "reserveUSD": "263980866.4330959233254906607305"
+      },
+      {
+        "hourStartUnix": 1650438000,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458455",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15331097.201788552773239647",
+        "reserve1": "312815.220616737705468099",
+        "reserveUSD": "263459404.5667674934708821531672"
+      },
+      {
+        "hourStartUnix": 1650434400,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458454",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15328020.577622835976478308",
+        "reserve1": "312864.185055009180325737",
+        "reserveUSD": "264409508.9424474625474616595048"
+      },
+      {
+        "hourStartUnix": 1650430800,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458453",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15330497.895109934758133308",
+        "reserve1": "312804.866395922877277238",
+        "reserveUSD": "263525219.3431587236194842535606"
+      },
+      {
+        "hourStartUnix": 1650427200,
+        "id": "0x0ed7e52944161450477ee417de9cd3a859b14fd0-458452",
+        "pair": {
+          "token0": {
+            "id": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          },
+          "token1": {
+            "id": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+          }
+        },
+        "reserve0": "15331833.767279565217617024",
+        "reserve1": "312679.336285599853904938",
+        "reserveUSD": "263047258.2461561990300401492048"
+      }
+    ]
+  }
+}
