@@ -39,7 +39,7 @@ const config: (t: ContextApi['t'], languageCode?: string) => ConfigMenuItemsType
       },
       {
         label: t('Perpetual'),
-        href: `https://perp.pancakeswap.finance/${perpLangMap(languageCode)}/futures/BTCUSDT`,
+        href: `https://perp.goswap.top/${perpLangMap(languageCode)}/futures/BTCUSDT`,
         type: DropdownMenuItemType.EXTERNAL_LINK,
       },
     ],
@@ -135,7 +135,7 @@ const config: (t: ContextApi['t'], languageCode?: string) => ConfigMenuItemsType
       },
       {
         label: t('Docs'),
-        href: 'https://docs.pancakeswap.finance',
+        href: 'https://docs.goswap.top',
         type: DropdownMenuItemType.EXTERNAL_LINK,
       },
     ],

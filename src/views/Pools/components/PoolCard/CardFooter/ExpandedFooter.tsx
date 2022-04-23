@@ -129,7 +129,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
                 tokenAddress,
                 earningToken.symbol,
                 earningToken.decimals,
-                `https://tokens.pancakeswap.finance/images/${tokenAddress}.png`,
+                `https://tokens.goswap.top/images/${tokenAddress}.png`,
               )
             }
           >

@@ -28,7 +28,7 @@ export const mainnetTokens = defineTokens({
     18,
     'CAKE',
     'PancakeSwap Token',
-    'https://pancakeswap.finance/',
+    'https://goswap.top/',
   ),
   gmi: new Token(MAINNET, '0x93D8d25E3C9A847a5Da79F79ecaC89461FEcA846', 18, 'GMI', 'Gamifi', 'https://gamifi.gg/'),
   tlos: new Token(MAINNET, '0xb6C53431608E626AC81a9776ac3e999c5556717c', 18, 'TLOS', 'Telos', 'https://www.telos.net/'),
@@ -217,7 +217,7 @@ export const mainnetTokens = defineTokens({
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://pancakeswap.finance/',
+    'https://goswap.top/',
   ),
   pha: new Token(
     MAINNET,
@@ -2087,7 +2087,7 @@ export const testnetTokens = defineTokens({
     18,
     'CAKE',
     'PancakeSwap Token',
-    'https://pancakeswap.finance/',
+    'https://goswap.top/',
   ),
   busd: new Token(
     TESTNET,
@@ -2103,7 +2103,7 @@ export const testnetTokens = defineTokens({
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://pancakeswap.finance/',
+    'https://goswap.top/',
   ),
   bake: new Token(
     TESTNET,

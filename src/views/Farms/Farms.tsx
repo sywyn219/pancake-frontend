@@ -428,7 +428,7 @@ const Farms: React.FC = ({ children }) => {
             </Text>
             <FinishedTextLink
               external
-              href="https://v1-farms.pancakeswap.finance/farms/history"
+              href="https://v1-farms.goswap.top/farms/history"
               fontSize="20px"
               color="failure"
             >
