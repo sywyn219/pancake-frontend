@@ -55,12 +55,12 @@ const Footer: React.FC<{ variant?: FooterVariant; helpUrl?: string }> = ({
         </ButtonMenu>
         <LinkExternal
           id="ercBridge"
-          href="https://docs.binance.org/smart-chain/guides/cross-chain.html"
+          href="https://explorer.hsocoin.net"
           ml={[0, 0, '40px']}
           mt={['20px', '20px', isSide ? '20px' : 0]}
           mb={['8px', '8px', 0]}
         >
-          {t('Convert ERC-20 to BEP-20')}
+          {t('Convert ERC-20 to HEP-20')}
         </LinkExternal>
       </Flex>
       {isSide && <Flex flexGrow={1} />}

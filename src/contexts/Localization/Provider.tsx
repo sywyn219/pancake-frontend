@@ -87,26 +87,26 @@ export const LanguageProvider: React.FC = ({ children }) => {
   }, [])
 
   const translate: TranslateFunction = useCallback(
-    (key, data) => {
-      const translationSet = languageMap.get(currentLanguage.locale) ?? languageMap.get(EN.locale)
-      const translatedText = translationSet[key] || key
+      (key, data) => {
+        const translationSet = languageMap.get(currentLanguage.locale) ?? languageMap.get(EN.locale)
+        const translatedText = translationSet[key] || key
 
-      // Check the existence of at least one combination of %%, separated by 1 or more non space characters
-      const includesVariable = translatedTextIncludesVariable(translatedText)
+        // Check the existence of at least one combination of %%, separated by 1 or more non space characters
+        const includesVariable = translatedTextIncludesVariable(translatedText)
 
-      if (includesVariable && data) {
-        let interpolatedText = translatedText
-        Object.keys(data).forEach((dataKey) => {
-          const templateKey = new RegExp(`%${dataKey}%`, 'g')
-          interpolatedText = interpolatedText.replace(templateKey, data[dataKey].toString())
-        })
+        if (includesVariable && data) {
+          let interpolatedText = translatedText
+          Object.keys(data).forEach((dataKey) => {
+            const templateKey = new RegExp(`%${dataKey}%`, 'g')
+            interpolatedText = interpolatedText.replace(templateKey, data[dataKey].toString())
+          })
 
-        return interpolatedText
-      }
+          return interpolatedText
+        }
 
-      return translatedText
-    },
-    [currentLanguage],
+        return translatedText
+      },
+      [currentLanguage],
   )
 
   return <LanguageContext.Provider value={{ ...state, setLanguage, t: translate }}>{children}</LanguageContext.Provider>
