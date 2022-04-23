@@ -1,7 +1,7 @@
 {
-  "short_name": "PancakeSwap",
-  "name": "PancakeSwap",
-  "description": "Farm CAKE with Pancake LP Tokens",
+  "short_name": "GoSwap",
+  "name": "GoSwap",
+  "description": "Farm CAKE with Swap LP Tokens",
   "homepage_url": "https://goswap.top",
   "start_url": ".",
   "display": "standalone",
