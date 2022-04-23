@@ -1,7 +1,7 @@
 import { createContext, useCallback, useEffect, useState } from 'react'
 import { Language } from '@pancakeswap/uikit'
 import memoize from 'lodash/memoize'
-import { EN, languages } from 'config/localization/languages'
+import {EN, languages, ZHCN} from 'config/localization/languages'
 import translations from 'config/localization/translations.json'
 import { ContextApi, ProviderState, TranslateFunction } from './types'
 import { LS_KEY, fetchLocale, getLanguageCodeFromLS } from './helpers'
@@ -35,25 +35,27 @@ export const LanguageProvider: React.FC = ({ children }) => {
   const { currentLanguage } = state
 
   useEffect(() => {
-    const fetchInitialLocales = async () => {
-      const codeFromStorage = getLanguageCodeFromLS()
-
-      if (codeFromStorage !== EN.locale) {
-        const enLocale = languageMap.get(EN.locale)
-        const currentLocale = await fetchLocale(codeFromStorage)
-        if (currentLocale) {
-          languageMap.set(codeFromStorage, { ...enLocale, ...currentLocale })
-        }
-      }
-
-      setState((prevState) => ({
-        ...prevState,
-        isFetching: false,
-      }))
-    }
-
-    fetchInitialLocales()
-  }, [setState])
+    setLanguage(ZHCN)
+    console.log("------------setLanguage--------------------")
+    // const fetchInitialLocales = async () => {
+    //   const codeFromStorage = getLanguageCodeFromLS()
+    //
+    //   if (codeFromStorage !== EN.locale) {
+    //     const enLocale = languageMap.get(EN.locale)
+    //     const currentLocale = await fetchLocale(codeFromStorage)
+    //     if (currentLocale) {
+    //       languageMap.set(codeFromStorage, { ...enLocale, ...currentLocale })
+    //     }
+    //   }
+    //
+    //   setState((prevState) => ({
+    //     ...prevState,
+    //     isFetching: false,
+    //   }))
+    // }
+    //
+    // fetchInitialLocales()
+  }, [])
 
   const setLanguage = useCallback(async (language: Language) => {
     if (!languageMap.has(language.locale)) {
@@ -64,12 +66,12 @@ export const LanguageProvider: React.FC = ({ children }) => {
 
       const locale = await fetchLocale(language.locale)
       if (locale) {
-        const enLocale = languageMap.get(EN.locale)
+      //   const enLocale = languageMap.get(EN.locale)
         // Merge the EN locale to ensure that any locale fetched has all the keys
-        languageMap.set(language.locale, { ...enLocale, ...locale })
+        languageMap.set(language.locale, {...locale })
       }
 
-      localStorage?.setItem(LS_KEY, language.locale)
+      // localStorage?.setItem(LS_KEY, language.locale)
 
       setState((prevState) => ({
         ...prevState,
@@ -77,7 +79,7 @@ export const LanguageProvider: React.FC = ({ children }) => {
         currentLanguage: language,
       }))
     } else {
-      localStorage?.setItem(LS_KEY, language.locale)
+      // localStorage?.setItem(LS_KEY, language.locale)
       setState((prevState) => ({
         ...prevState,
         isFetching: false,
