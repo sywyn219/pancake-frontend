@@ -66,7 +66,7 @@ const getFarmQuoteTokenPrice = (
     return BIG_ONE
   }
 
-  if (farm.quoteToken.symbol === 'WBNB') {
+  if (farm.quoteToken.symbol === 'WHSO') {
     return bnbPriceBusd
   }
 
@@ -74,7 +74,7 @@ const getFarmQuoteTokenPrice = (
     return BIG_ZERO
   }
 
-  if (quoteTokenFarm.quoteToken.symbol === 'WBNB') {
+  if (quoteTokenFarm.quoteToken.symbol === 'WHSO') {
     return quoteTokenFarm.tokenPriceVsQuote ? bnbPriceBusd.times(quoteTokenFarm.tokenPriceVsQuote) : BIG_ZERO
   }
 

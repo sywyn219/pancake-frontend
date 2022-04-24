@@ -146,7 +146,7 @@ const SetPositionCard: React.FC<SetPositionCardProps> = ({ position, togglePosit
       setErrorMessage(t('Insufficient BNB balance'))
     } else if (inputAmount.gt(0) && inputAmount.lt(minBetAmount)) {
       setErrorMessage(
-        t('A minimum amount of %num% %token% is required', { num: formatBigNumber(minBetAmount), token: 'BNB' }),
+        t('A minimum amount of %num% %token% is required', { num: formatBigNumber(minBetAmount), token: 'HSO' }),
       )
     } else {
       setErrorMessage(null)

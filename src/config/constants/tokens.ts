@@ -18,10 +18,10 @@ export const mainnetTokens = defineTokens({
     18,
     'WHSO',
     'Wrapped HSO',
-    'https://www.binance.com/',
+    'https://goswap.top/',
   ),
-  // bnb here points to the wbnb contract. Wherever the currency BNB is required, conditional checks for the symbol 'BNB' can be used
-  bnb: new Token(MAINNET, '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c', 18, 'BNB', 'BNB', 'https://www.binance.com/'),
+  // hso here points to the whso contract. Wherever the currency HSO is required, conditional checks for the symbol 'HSO' can be used
+  bnb: new Token(MAINNET, '0x2a117B6DD140E5C43dAFEB2283Da98b02deF1711', 18, 'HSO', 'HSO', 'https://goswap.top/'),
   cake: new Token(
     MAINNET,
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
