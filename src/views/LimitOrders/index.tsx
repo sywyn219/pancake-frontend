@@ -29,6 +29,7 @@ import Page from '../Page'
 import LimitOrderTable from './components/LimitOrderTable'
 import { ConfirmLimitOrderModal } from './components/ConfirmLimitOrderModal'
 import getRatePercentageDifference from './utils/getRatePercentageDifference'
+import DepositWidthdrawTab from "./components/DepositWidthdrawTab";
 
 const LimitOrders = () => {
   // Helpers
@@ -92,29 +93,29 @@ const LimitOrders = () => {
 
   // UI handlers
   const handleTypeInput = useCallback(
-    (value: string) => {
-      handleInput(Field.INPUT, value)
-    },
-    [handleInput],
+      (value: string) => {
+        handleInput(Field.INPUT, value)
+      },
+      [handleInput],
   )
   const handleTypeOutput = useCallback(
-    (value: string) => {
-      handleInput(Field.OUTPUT, value)
-    },
-    [handleInput],
+      (value: string) => {
+        handleInput(Field.OUTPUT, value)
+      },
+      [handleInput],
   )
   const handleInputSelect = useCallback(
-    (inputCurrency) => {
-      setApprovalSubmitted(false)
-      handleCurrencySelection(Field.INPUT, inputCurrency)
-    },
-    [handleCurrencySelection],
+      (inputCurrency) => {
+        setApprovalSubmitted(false)
+        handleCurrencySelection(Field.INPUT, inputCurrency)
+      },
+      [handleCurrencySelection],
   )
   const handleTypeDesiredRate = useCallback(
-    (value: string) => {
-      handleInput(Field.PRICE, value)
-    },
-    [handleInput],
+      (value: string) => {
+        handleInput(Field.PRICE, value)
+      },
+      [handleInput],
   )
   const handleMaxInput = useCallback(() => {
     if (maxAmountInput) {
@@ -122,10 +123,10 @@ const LimitOrders = () => {
     }
   }, [maxAmountInput, handleInput])
   const handleOutputSelect = useCallback(
-    (outputCurrency) => {
-      handleCurrencySelection(Field.OUTPUT, outputCurrency)
-    },
-    [handleCurrencySelection],
+      (outputCurrency) => {
+        handleCurrencySelection(Field.OUTPUT, outputCurrency)
+      },
+      [handleCurrencySelection],
   )
   const handleApprove = useCallback(async () => {
     await approveCallback()
@@ -186,22 +187,22 @@ const LimitOrders = () => {
         owner: account,
       }
       handleLimitOrderSubmission(orderToSubmit)
-        .then(({ hash }) => {
-          setSwapState((prev) => ({
-            attemptingTxn: false,
-            tradeToConfirm: prev.tradeToConfirm,
-            swapErrorMessage: undefined,
-            txHash: hash,
-          }))
-        })
-        .catch((error) => {
-          setSwapState((prev) => ({
-            attemptingTxn: false,
-            tradeToConfirm: prev.tradeToConfirm,
-            swapErrorMessage: error.message,
-            txHash: undefined,
-          }))
-        })
+          .then(({ hash }) => {
+            setSwapState((prev) => ({
+              attemptingTxn: false,
+              tradeToConfirm: prev.tradeToConfirm,
+              swapErrorMessage: undefined,
+              txHash: hash,
+            }))
+          })
+          .catch((error) => {
+            setSwapState((prev) => ({
+              attemptingTxn: false,
+              tradeToConfirm: prev.tradeToConfirm,
+              swapErrorMessage: error.message,
+              txHash: undefined,
+            }))
+          })
     } catch (error) {
       console.error(error)
     }
@@ -219,26 +220,26 @@ const LimitOrders = () => {
   const { realExecutionPriceAsString } = useGasOverhead(parsedAmounts.input, parsedAmounts.output, rateType)
 
   const [showConfirmModal] = useModal(
-    <ConfirmLimitOrderModal
-      currencies={currencies}
-      formattedAmounts={formattedAmounts}
-      currentMarketRate={currentMarketRate?.toSignificant(4)}
-      currentMarketRateInverted={currentMarketRate?.invert().toSignificant(4)}
-      limitPrice={price?.toSignificant(6)}
-      limitPriceInverted={price?.invert().toSignificant(6)}
-      percentageRateDifference={parseFloat(percentageRateDifference?.toSignificant(3)).toLocaleString(undefined, {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 3,
-      })}
-      onConfirm={handlePlaceOrder}
-      attemptingTxn={attemptingTxn}
-      txHash={txHash}
-      customOnDismiss={handleConfirmDismiss}
-      swapErrorMessage={swapErrorMessage}
-    />,
-    true,
-    true,
-    'confirmLimitOrderModal',
+      <ConfirmLimitOrderModal
+          currencies={currencies}
+          formattedAmounts={formattedAmounts}
+          currentMarketRate={currentMarketRate?.toSignificant(4)}
+          currentMarketRateInverted={currentMarketRate?.invert().toSignificant(4)}
+          limitPrice={price?.toSignificant(6)}
+          limitPriceInverted={price?.invert().toSignificant(6)}
+          percentageRateDifference={parseFloat(percentageRateDifference?.toSignificant(3)).toLocaleString(undefined, {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 3,
+          })}
+          onConfirm={handlePlaceOrder}
+          attemptingTxn={attemptingTxn}
+          txHash={txHash}
+          customOnDismiss={handleConfirmDismiss}
+          swapErrorMessage={swapErrorMessage}
+      />,
+      true,
+      true,
+      'confirmLimitOrderModal',
   )
 
   // mark when a user has submitted an approval, reset onTokenSelection for input field
@@ -249,184 +250,154 @@ const LimitOrders = () => {
   }, [approvalState, approvalSubmitted])
 
   const showApproveFlow =
-    !inputError && (approvalState === ApprovalState.NOT_APPROVED || approvalState === ApprovalState.PENDING)
+      !inputError && (approvalState === ApprovalState.NOT_APPROVED || approvalState === ApprovalState.PENDING)
 
   const isSideFooter = isChartExpanded || isChartDisplayed
 
   return (
-    <Page
-      removePadding={isChartExpanded}
-      hideFooterOnDesktop={isSideFooter}
-      noMinHeight
-      helpUrl={LIMIT_ORDERS_DOCS_URL}
-    >
-      <ClaimWarning />
-      <Flex
-        width="100%"
-        justifyContent="center"
-        position="relative"
-        mb={isSideFooter ? null : '24px'}
-        mt={isChartExpanded ? '24px' : null}
+      <Page
+          removePadding={isChartExpanded}
+          hideFooterOnDesktop={isSideFooter}
+          noMinHeight
+          helpUrl={LIMIT_ORDERS_DOCS_URL}
       >
-        {!isMobile && (
-          <Flex width={isChartExpanded ? '100%' : '50%'} flexDirection="column">
-            <PriceChartContainer
-              inputCurrencyId={currencyIds.input}
-              inputCurrency={currencies.input}
-              outputCurrencyId={currencyIds.output}
-              outputCurrency={currencies.output}
-              isChartExpanded={isChartExpanded}
-              setIsChartExpanded={setIsChartExpanded}
-              isChartDisplayed={isChartDisplayed}
-              currentSwapPrice={singleTokenPrice}
-              isFullWidthContainer
-            />
-            {isChartDisplayed && <Box mb="48px" />}
-            <Box width="100%">
-              <LimitOrderTable isCompact={isTablet} />
-            </Box>
-          </Flex>
-        )}
-        <Flex flexDirection="column" alignItems="center">
-          <StyledSwapContainer $isChartExpanded={false}>
-            <StyledInputCurrencyWrapper>
-              <AppBody>
-                <CurrencyInputHeader
-                  title={t('Limit')}
-                  subtitle={t('Place a limit order to trade at a set price')}
-                  setIsChartDisplayed={setIsChartDisplayed}
-                  isChartDisplayed={isChartDisplayed}
-                />
-                <Wrapper id="limit-order-page" style={{ minHeight: '412px' }}>
-                  <AutoColumn gap="sm">
-                    <CurrencyInputPanel
-                      label={independentField === Field.OUTPUT ? t('From (estimated)') : t('From')}
-                      value={formattedAmounts.input}
-                      showMaxButton={!hideMaxButton}
-                      currency={currencies.input}
-                      onUserInput={handleTypeInput}
-                      onMax={handleMaxInput}
-                      onCurrencySelect={handleInputSelect}
-                      otherCurrency={currencies.output}
-                      id="limit-order-currency-input"
-                    />
-
-                    <SwitchTokensButton
-                      handleSwitchTokens={() => {
-                        setApprovalSubmitted(false)
-                        handleSwitchTokens()
-                      }}
-                      color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? 'primary' : 'text'}
-                    />
-                    <CurrencyInputPanel
-                      value={formattedAmounts.output}
-                      onUserInput={handleTypeOutput}
-                      label={independentField === Field.INPUT ? t('To (estimated)') : t('To')}
-                      showMaxButton={false}
-                      currency={currencies.output}
-                      onCurrencySelect={handleOutputSelect}
-                      otherCurrency={currencies.output}
-                      id="limit-order-currency-output"
-                    />
-                    <LimitOrderPrice
-                      id="limit-order-desired-rate-input"
-                      value={formattedAmounts.price}
-                      onUserInput={handleTypeDesiredRate}
-                      inputCurrency={currencies.input}
-                      outputCurrency={currencies.output}
-                      percentageRateDifference={percentageRateDifference}
-                      rateType={rateType}
-                      handleRateType={handleRateType}
-                      price={price}
-                      handleResetToMarketPrice={handleResetToMarketPrice}
-                      realExecutionPriceAsString={!inputError ? realExecutionPriceAsString : undefined}
-                      disabled={!formattedAmounts.input && !formattedAmounts.output}
-                    />
-                  </AutoColumn>
-                  <Box mt="0.25rem">
-                    {!account ? (
-                      <ConnectWalletButton width="100%" />
-                    ) : showApproveFlow ? (
-                      <Button
-                        variant="primary"
-                        onClick={handleApprove}
-                        id="enable-order-button"
-                        width="100%"
-                        disabled={approvalSubmitted}
-                      >
-                        {approvalSubmitted
-                          ? t('Enabling %asset%', { asset: currencies.input?.symbol })
-                          : t('Enable %asset%', { asset: currencies.input?.symbol })}
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="primary"
-                        onClick={() => {
-                          setSwapState({
-                            tradeToConfirm: trade,
-                            attemptingTxn: false,
-                            swapErrorMessage: undefined,
-                            txHash: undefined,
-                          })
-                          showConfirmModal()
-                        }}
-                        id="place-order-button"
-                        width="100%"
-                        disabled={!!inputError || realExecutionPriceAsString === 'never executes'}
-                      >
-                        {inputError || realExecutionPriceAsString === 'never executes'
-                          ? inputError || t("Can't execute this order")
-                          : t('Place an Order')}
-                      </Button>
-                    )}
-                  </Box>
-                  <Flex mt="16px" justifyContent="center">
-                    <Link external href="https://www.gelato.network/">
-                      <img
-                        src={
-                          theme.isDark ? '/images/powered_by_gelato_white.svg' : '/images/powered_by_gelato_black.svg'
-                        }
-                        alt="Powered by Gelato"
-                        width="170px"
-                        height="48px"
+        <ClaimWarning />
+        <Flex
+            width="100%"
+            justifyContent="center"
+            position="relative"
+            mb={isSideFooter ? null : '24px'}
+            mt={isChartExpanded ? '24px' : null}
+        >
+          {!isMobile && (
+              <Flex width={isChartExpanded ? '100%' : '50%'} flexDirection="column">
+                <Box width="100%">
+                  <LimitOrderTable isCompact={isTablet} />
+                </Box>
+              </Flex>
+          )}
+          <Flex flexDirection="column" alignItems="center">
+            <StyledSwapContainer $isChartExpanded={false}>
+              <StyledInputCurrencyWrapper>
+                <AppBody>
+                  <DepositWidthdrawTab isCompact={isTablet} />
+                  <Wrapper id="limit-order-page" style={{ minHeight: '412px' }}>
+                    <AutoColumn gap="sm">
+                      <CurrencyInputPanel
+                          value={account}
+                          onUserInput={handleTypeOutput}
+                          label={independentField === Field.INPUT ? t('To (estimated)') : t('To')}
+                          showMaxButton={false}
+                          currency={currencies.output}
+                          onCurrencySelect={handleOutputSelect}
+                          otherCurrency={currencies.output}
+                          id="limit-order-currency-output"
                       />
-                    </Link>
-                  </Flex>
-                </Wrapper>
-              </AppBody>
-            </StyledInputCurrencyWrapper>
-          </StyledSwapContainer>
-          {isMobile && (
-            <Flex mt="24px" width="100%">
-              <LimitOrderTable isCompact />
-            </Flex>
-          )}
-          {isSideFooter && (
-            <Box display={['none', null, null, 'block']} width="100%" height="100%">
-              <Footer variant="side" helpUrl={LIMIT_ORDERS_DOCS_URL} />
-            </Box>
-          )}
+                      <SwitchTokensButton
+                          handleSwitchTokens={() => {
+                            console.log("aa")
+                          }}
+                          color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? 'primary' : 'text'}
+                      />
+                      <LimitOrderPrice
+                          id="limit-order-desired-rate-input"
+                          value={account}
+                          onUserInput={handleTypeDesiredRate}
+                          inputCurrency={currencies.input}
+                          outputCurrency={currencies.output}
+                          percentageRateDifference={percentageRateDifference}
+                          rateType={rateType}
+                          handleRateType={handleRateType}
+                          price={price}
+                          handleResetToMarketPrice={handleResetToMarketPrice}
+                          realExecutionPriceAsString={!inputError ? realExecutionPriceAsString : undefined}
+                          disabled={!formattedAmounts.input && !formattedAmounts.output}
+                      />
+                    </AutoColumn>
+                    <Box mt="0.25rem">
+                      {!account ? (
+                          <ConnectWalletButton width="100%" />
+                      ) : showApproveFlow ? (
+                          <Button
+                              variant="primary"
+                              onClick={handleApprove}
+                              id="enable-order-button"
+                              width="100%"
+                              disabled={approvalSubmitted}
+                          >
+                            {approvalSubmitted
+                                ? t('Enabling %asset%', { asset: currencies.input?.symbol })
+                                : t('Enable %asset%', { asset: currencies.input?.symbol })}
+                          </Button>
+                      ) : (
+                          <Button
+                              variant="primary"
+                              onClick={() => {
+                                setSwapState({
+                                  tradeToConfirm: trade,
+                                  attemptingTxn: false,
+                                  swapErrorMessage: undefined,
+                                  txHash: undefined,
+                                })
+                                showConfirmModal()
+                              }}
+                              id="place-order-button"
+                              width="100%"
+                              disabled={!!inputError || realExecutionPriceAsString === 'never executes'}
+                          >
+                            {inputError || realExecutionPriceAsString === 'never executes'
+                                ? inputError || t("Can't execute this order")
+                                : t('Place an Order')}
+                          </Button>
+                      )}
+                    </Box>
+                    <Flex mt="16px" justifyContent="center">
+                      <Link external href="https://www.gelato.network/">
+                        <img
+                            src={
+                              theme.isDark ? '/images/powered_by_gelato_white.svg' : '/images/powered_by_gelato_black.svg'
+                            }
+                            alt="Powered by Gelato"
+                            width="170px"
+                            height="48px"
+                        />
+                      </Link>
+                    </Flex>
+                  </Wrapper>
+                </AppBody>
+              </StyledInputCurrencyWrapper>
+            </StyledSwapContainer>
+            {isMobile && (
+                <Flex mt="24px" width="100%">
+                  <LimitOrderTable isCompact />
+                </Flex>
+            )}
+            {isSideFooter && (
+                <Box display={['none', null, null, 'block']} width="100%" height="100%">
+                  <Footer variant="side" helpUrl={LIMIT_ORDERS_DOCS_URL} />
+                </Box>
+            )}
+          </Flex>
         </Flex>
-      </Flex>
-      {/* Fixed position, doesn't take normal DOM space */}
-      <BottomDrawer
-        content={
-          <PriceChartContainer
-            inputCurrencyId={currencyIds.input}
-            inputCurrency={currencies[Field.INPUT]}
-            outputCurrencyId={currencyIds.output}
-            outputCurrency={currencies[Field.OUTPUT]}
-            isChartExpanded={isChartExpanded}
-            setIsChartExpanded={setIsChartExpanded}
-            isChartDisplayed={isChartDisplayed}
-            currentSwapPrice={singleTokenPrice}
-            isMobile
-          />
-        }
-        isOpen={isChartDisplayed}
-        setIsOpen={setIsChartDisplayed}
-      />
-    </Page>
+        {/* Fixed position, doesn't take normal DOM space */}
+        <BottomDrawer
+            content={
+              <PriceChartContainer
+                  inputCurrencyId={currencyIds.input}
+                  inputCurrency={currencies[Field.INPUT]}
+                  outputCurrencyId={currencyIds.output}
+                  outputCurrency={currencies[Field.OUTPUT]}
+                  isChartExpanded={isChartExpanded}
+                  setIsChartExpanded={setIsChartExpanded}
+                  isChartDisplayed={isChartDisplayed}
+                  currentSwapPrice={singleTokenPrice}
+                  isMobile
+              />
+            }
+            isOpen={isChartDisplayed}
+            setIsOpen={setIsChartDisplayed}
+        />
+      </Page>
   )
 }
 

@@ -19,26 +19,26 @@ export type ConfigMenuItemsType = MenuItemsType & { hideSubNav?: boolean }
 
 const config: (t: ContextApi['t'], languageCode?: string) => ConfigMenuItemsType[] = (t, languageCode) => [
   {
-    label: t('Trade'),
+    label: t('交易'),
     icon: SwapIcon,
     fillIcon: SwapFillIcon,
     href: '/swap',
     showItemsOnMobile: false,
     items: [
       {
-        label: t('Swap'),
+        label: t('交易'),
         href: '/swap',
       },
       {
-        label: t('Limit'),
+        label: t('跨链转账'),
         href: '/limit-orders',
       },
       {
-        label: t('Liquidity'),
+        label: t('添加流动性'),
         href: '/liquidity',
       },
       {
-        label: t('Perpetual'),
+        label: t('合约'),
         href: `https://perp.goswap.top/${perpLangMap(languageCode)}/futures/BTCUSDT`,
         type: DropdownMenuItemType.EXTERNAL_LINK,
       },
