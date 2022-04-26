@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useEffect } from "react";
 import get from "lodash/get";
 import { Context } from "./ModalContext";
 import { Handler } from "./types";
+import DepositWidthCurrency from "../../../../../src/views/LimitOrders/components/DepositWidthCurrency";
 
 const useModal = (
   modal: React.ReactNode,

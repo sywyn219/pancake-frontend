@@ -1,4 +1,4 @@
-import { useState, useCallback, memo } from 'react'
+import {useState, useCallback, memo, PropsWithChildren} from 'react'
 import styled from 'styled-components'
 import {ButtonMenu, ButtonMenuItem, Card, Flex} from "@pancakeswap/uikit";
 import {ORDER_CATEGORY} from "../types";
@@ -17,11 +17,14 @@ const Wrapper = styled.div`
   }
 `
 
-const DepositWidthdrawTab: React.FC<{ isCompact: boolean }> = (isCompact) => {
+const DepositWidthdrawTab: React.FC<any> = (props) => {
     const { theme } = useTheme()
     const { t } = useTranslation()
     const [activeTab, setIndex] = useState<ORDER_CATEGORY>(ORDER_CATEGORY.Open)
-    const handleClick = useCallback((tabType: ORDER_CATEGORY) => setIndex(tabType), [])
+    const handleClick = useCallback((tabType: ORDER_CATEGORY) => {
+        setIndex(tabType)
+        props.setActive(tabType)
+    }, [])
 
     return (
         <Flex flex="1" justifyContent="center" mb="24px">

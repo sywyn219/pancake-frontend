@@ -25,7 +25,7 @@ const Address = styled.div`
     color: ${({ theme }) => theme.colors.text};
     display: block;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     padding: 0;
     width: 100%;
 

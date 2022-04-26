@@ -28,7 +28,7 @@ const OrderTab: React.FC<OrderTabProps> = ({ activeIndex, onItemClick }) => {
   return (
     <Wrapper>
       <ButtonMenu activeIndex={activeIndex} onItemClick={onItemClick}>
-        {[t('Open Orders'), t('Order History')].map((content, idx) => (
+        {[t('充币记录'), t('提币记录')].map((content, idx) => (
           <ButtonMenuItem
             key={content}
             style={{
