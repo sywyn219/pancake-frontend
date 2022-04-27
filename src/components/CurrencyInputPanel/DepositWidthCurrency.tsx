@@ -1,5 +1,17 @@
+import {useCallback, useState} from "react";
 import { Currency, Pair, Token } from '@pancakeswap/sdk'
-import { Button, ChevronDownIcon, Text, useModal, Flex, Box, MetamaskIcon } from '@pancakeswap/uikit'
+import {
+    Button,
+    ChevronDownIcon,
+    Text,
+    useModal,
+    Flex,
+    Box,
+    MetamaskIcon,
+    Input,
+    ButtonMenu,
+    ButtonMenuItem
+} from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import { registerToken } from 'utils/wallet'
 import { isAddress } from 'utils'
@@ -14,6 +26,8 @@ import { Input as NumericalInput } from './NumericalInput'
 import { CopyButton } from '../CopyButton'
 import CopyAddress from "../Menu/UserMenu/CopyAddress";
 import {ORDER_CATEGORY} from "../../views/LimitOrders/types";
+
+import useTheme from "../../hooks/useTheme";
 
 const InputRow = styled.div<{ selected: boolean }>`
   display: flex;
@@ -54,6 +68,43 @@ const Wrapper = styled(Flex)`
   border-radius: 16px;
   position: relative;
 `
+
+const Address = styled.div`
+  flex: 1;
+  position: relative;
+  padding-left: 16px;
+
+  & > input {
+    background: transparent;
+    border: 0;
+    color: ${({ theme }) => theme.colors.text};
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0;
+    width: 100%;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &:after {
+    background: linear-gradient(
+      to right,
+      ${({ theme }) => theme.colors.background}00,
+      ${({ theme }) => theme.colors.background}E6
+    );
+    content: '';
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+  }
+`
+
 interface CurrencyInputPanelProps {
     active: number
     value: string
@@ -71,8 +122,8 @@ interface CurrencyInputPanelProps {
 }
 
 const  USDTIN = (account) => {
-    return <Flex  position="relative" flexWrap="wrap" justifyContent="space-between">
-        <Box top="2" >
+    return <Flex  position="relative" flexWrap="wrap" justifyContent="space-between" style={{ marginTop: "20px" }}>
+        <Box style={{ marginTop: "40px" }}>
             <Text>
                 USDT-OKC
             </Text>
@@ -82,7 +133,7 @@ const  USDTIN = (account) => {
             <CopyButton width="24px" text={account} tooltipMessage='Copied' tooltipTop={-40} />
         </Box>
 
-        <Box>
+        <Box style={{ marginTop: "40px" }}>
             <Text>
                 USDT-TRC20
             </Text>
@@ -115,7 +166,7 @@ export default function DepositWidthCurrency({
         t,
         currentLanguage: { locale },
     } = useTranslation()
-
+    const { theme } = useTheme()
     const token = pair ? pair.liquidityToken : currency instanceof Token ? currency : null
     const tokenAddress = token ? isAddress(token.address) : null
 
@@ -127,6 +178,11 @@ export default function DepositWidthCurrency({
             showCommonBases={showCommonBases}
         />,
     )
+    const [outAddr,setOutAddr] = useState('0x')
+    const [activeTab,setActiveTab] = useState(0)
+    const handleClick = useCallback((tabType: ORDER_CATEGORY) => {
+        setActiveTab(tabType)
+    }, [])
     return (
         <Box position="relative" id={id}>
             <Flex mb="6px" alignItems="center" justifyContent="space-between">
@@ -200,7 +256,7 @@ export default function DepositWidthCurrency({
                 )}
             </Flex>
             { active !== ORDER_CATEGORY.Open ?
-                <Box position="relative">
+                <div style={{marginTop: "20px"}}>
                 <InputPanel>
                     <Container as="label">
                         <LabelRow>
@@ -221,27 +277,30 @@ export default function DepositWidthCurrency({
                         </InputRow>
                     </Container>
                 </InputPanel>
-                <InputPanel>
+                    <Wrapper style={{marginTop: "20px"}}>
+                        <ButtonMenu activeIndex={activeTab} onItemClick={handleClick}>
+                            {[t('USDT-OKC'), t('USDT-TRC20')].map((content, idx) => (
+                                <ButtonMenuItem
+                                    key={content}
+                                    style={{
+                                        color: idx === activeTab ? theme.colors.primary : theme.colors.textSubtle,
+                                        backgroundColor: idx === activeTab ? theme.card.background : theme.colors.input,
+                                    }}
+                                >
+                                    {content}
+                                </ButtonMenuItem>
+                            ))}
+                        </ButtonMenu>
+                    </Wrapper>
+                <InputPanel style={{ marginTop: "30px" }}>
                     <Container as="label">
-                        <LabelRow>
-                            <NumericalInput
-                                className="token-amount-input"
-                                value={value}
-                                onUserInput={(val) => {
-                                    onUserInput(val)
-                                }}
-                            />
-                        </LabelRow>
-                        <InputRow selected={disableCurrencySelect}>
-                            {account && currency && label !== 'To' && (
-                                <Button onClick={onMax} scale="xs" variant="secondary">
-                                    {t('Max').toLocaleUpperCase(locale)}
-                                </Button>
-                            )}
-                        </InputRow>
+                        <Input width='100%' type="text" value={outAddr} onChange={ (e)=> setOutAddr(e.target.value)} />
+                        <Text color="red" fontSize="13px" style={{ display: 'inline', cursor: 'pointer' }}>
+                            {outAddr}
+                        </Text>
                     </Container>
                 </InputPanel>
-                </Box>
+                </div>
                 :(USDTIN(account))}
         </Box>
     )

@@ -39,6 +39,7 @@ import {useCurrency} from "../../hooks/Tokens";
 import useWrapCallback, {WrapType} from "../../hooks/useWrapCallback";
 import shouldShowSwapWarning from "../../utils/shouldShowSwapWarning";
 import {useIsTransactionUnsupported} from "../../hooks/Trades";
+import Trans from "../../components/Trans";
 
 
 const LimitOrders = () => {
@@ -145,7 +146,6 @@ const LimitOrders = () => {
         : parsedAmounts[dependentField]?.toSignificant(6) ?? '',
   }
 
-  console.log("acitve---------",active)
   const swapIsUnsupported = useIsTransactionUnsupported(currencies?.INPUT, currencies?.OUTPUT)
 
   return (
@@ -188,22 +188,25 @@ const LimitOrders = () => {
                           id="limit-order-currency-input"
                        />
                     </AutoColumn>
+                    <Box mt="0.25rem">
+                      {swapIsUnsupported ? (
+                          <Button width="100%" disabled>
+                            {t('Unsupported Asset')}
+                          </Button>
+                      ) : !account ? (
+                          <ConnectWalletButton width="100%" />
+                      ) : showWrap ? (
+                          <Button width="100%" disabled={Boolean(wrapInputError)} onClick={onWrap}>
+                            {wrapInputError ??
+                            (wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
+                          </Button>
+                      ) : active === ORDER_CATEGORY.Open ? <></> :
+                          <Button width="100%">
+                            <Trans>确认</Trans>
+                          </Button>
+                      }
+                    </Box>
                   </Wrapper>
-                  <Box mt="0.25rem">
-                    {swapIsUnsupported ? (
-                        <Button width="100%" disabled>
-                          {t('Unsupported Asset')}
-                        </Button>
-                    ) : !account ? (
-                        <ConnectWalletButton width="100%" />
-                    ) : showWrap ? (
-                        <Button width="100%" disabled={Boolean(wrapInputError)} onClick={onWrap}>
-                          {wrapInputError ??
-                          (wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
-                        </Button>
-                    ) : (<Button>AAA</Button>)
-                    }
-                  </Box>
                 </AppBody>
               </StyledInputCurrencyWrapper>
             </StyledSwapContainer>
