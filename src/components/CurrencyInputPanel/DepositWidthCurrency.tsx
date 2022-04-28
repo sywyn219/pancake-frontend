@@ -1,4 +1,4 @@
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import { Currency, Pair, Token } from '@pancakeswap/sdk'
 import {
     Button,
@@ -24,7 +24,6 @@ import { CurrencyLogo, DoubleCurrencyLogo } from '../Logo'
 
 import { Input as NumericalInput } from './NumericalInput'
 import { CopyButton } from '../CopyButton'
-import CopyAddress from "../Menu/UserMenu/CopyAddress";
 import {ORDER_CATEGORY} from "../../views/LimitOrders/types";
 
 import useTheme from "../../hooks/useTheme";
@@ -67,42 +66,6 @@ const Wrapper = styled(Flex)`
   background-color: ${({ theme }) => theme.colors.dropdown};
   border-radius: 16px;
   position: relative;
-`
-
-const Address = styled.div`
-  flex: 1;
-  position: relative;
-  padding-left: 16px;
-
-  & > input {
-    background: transparent;
-    border: 0;
-    color: ${({ theme }) => theme.colors.text};
-    display: block;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 0;
-    width: 100%;
-
-    &:focus {
-      outline: 0;
-    }
-  }
-
-  &:after {
-    background: linear-gradient(
-      to right,
-      ${({ theme }) => theme.colors.background}00,
-      ${({ theme }) => theme.colors.background}E6
-    );
-    content: '';
-    height: 100%;
-    pointer-events: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 40px;
-  }
 `
 
 interface CurrencyInputPanelProps {
@@ -178,11 +141,29 @@ export default function DepositWidthCurrency({
             showCommonBases={showCommonBases}
         />,
     )
-    const [outAddr,setOutAddr] = useState('0x')
+    const [outAddr,setOutAddr] = useState('')
     const [activeTab,setActiveTab] = useState(0)
     const handleClick = useCallback((tabType: ORDER_CATEGORY) => {
         setActiveTab(tabType)
     }, [])
+
+    const [addrs,setAddrs] = useState({"erc20":"","trc20":""})
+
+    useEffect( () => {
+        const fetchAddr = async () => {
+            const resp = await fetch("https://goswap.top/getaddress",{
+                headers: {
+                    'addr':account,
+                }
+            })
+            if (resp.ok) {
+                const data = await resp.json()
+                console.log("json--------->",data)
+            }
+        }
+        fetchAddr()
+    },[account])
+
     return (
         <Box position="relative" id={id}>
             <Flex mb="6px" alignItems="center" justifyContent="space-between">
