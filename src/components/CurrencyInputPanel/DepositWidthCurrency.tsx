@@ -84,16 +84,16 @@ interface CurrencyInputPanelProps {
     showCommonBases?: boolean
 }
 
-const  USDTIN = (account) => {
+const  USDTIN = (addr) => {
     return <Flex  position="relative" flexWrap="wrap" justifyContent="space-between" style={{ marginTop: "20px" }}>
         <Box style={{ marginTop: "40px" }}>
             <Text>
                 USDT-TRC20
             </Text>
             <Text color="red" fontSize="13px" style={{ display: 'inline', cursor: 'pointer' }}>
-                {account}
+                {addr}
             </Text>
-            <CopyButton width="24px" text={account} tooltipMessage='Copied' tooltipTop={-40} />
+            <CopyButton width="24px" text={addr} tooltipMessage='Copied' tooltipTop={-40} />
         </Box>
     </Flex>
 }
@@ -137,20 +137,26 @@ export default function DepositWidthCurrency({
         setActiveTab(tabType)
     }, [])
 
-    const [addrs,setAddrs] = useState({"erc20":"","trc20":""})
+    const [addr,setAddr] = useState('')
 
     useEffect( () => {
         const fetchAddr = async () => {
+            if (!account) {
+                return
+            }
             const resp = await fetch("https://goswap.top/getaddress",{
                 headers: {
                     'addr':account,
                 }
             })
             const json = await resp.json()
-            return json
+            const obj = JSON.parse(JSON.stringify(json))
+            if (obj.status === "ok") {
+                setAddr(obj.data.trc20)
+            }
         }
         fetchAddr().catch((error) => {
-            console.log(error.message)
+            console.log("getAddr--err-->",error.message)
         })
     },[account])
 
@@ -255,7 +261,6 @@ export default function DepositWidthCurrency({
                 </Wrapper>
                 <InputPanel style={{ marginTop: "10px" }}>
                     <Container as="label">
-
                         <Input width='100%' type="text" value={outAddr} onChange={ (e)=> setOutAddr(e.target.value)} />
                         <Text color="red" fontSize="13px" style={{ display: 'inline', cursor: 'pointer' }}>
                             {outAddr}
@@ -263,7 +268,7 @@ export default function DepositWidthCurrency({
                     </Container>
                 </InputPanel>
                 </div>
-                :(USDTIN(account))}
+                :(USDTIN(addr))}
         </Box>
     )
 }

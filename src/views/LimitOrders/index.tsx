@@ -61,7 +61,6 @@ const LimitOrders = () => {
   } = useSwapState()
 
   const inputCurrency = useCurrency(mainnetTokens.usdt.address)
-  console.log("--------inputCurrency-----",inputCurrency)
 
   const outputCurrency = useCurrency(outputCurrencyId)
 
