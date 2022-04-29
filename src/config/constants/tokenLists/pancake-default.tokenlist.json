@@ -21,10 +21,10 @@
     {
       "name": "Tether USD",
       "symbol": "USDT",
-      "address": "0x2F367FA47d6dd5D4684b56e547c83cF058cB4F62",
+      "address": "0xE262D1122aFcd9be4411dC3162FE44fd3987d259",
       "chainId": 2398,
-      "decimals": 18,
-      "logoURI": "https://goswap.top/images/tokens/0x2F367FA47d6dd5D4684b56e547c83cF058cB4F62.png"
+      "decimals": 6,
+      "logoURI": "https://goswap.top/images/tokens/0xE262D1122aFcd9be4411dC3162FE44fd3987d259.png"
     },
     {
       "name": "BUSD Token",

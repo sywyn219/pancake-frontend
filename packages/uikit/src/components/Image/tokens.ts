@@ -5,10 +5,10 @@ const tokens = {
   usdt: {
     symbol: "USDT",
     address: {
-      2398: "0x2F367FA47d6dd5D4684b56e547c83cF058cB4F62",
+      2398: "0xE262D1122aFcd9be4411dC3162FE44fd3987d259",
       97: "0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5",
     },
-    decimals: 18,
+    decimals: 6,
     projectLink: "https://tether.to/",
   },
   cake: {

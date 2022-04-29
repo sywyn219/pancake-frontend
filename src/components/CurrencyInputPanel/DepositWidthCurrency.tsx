@@ -88,16 +88,6 @@ const  USDTIN = (account) => {
     return <Flex  position="relative" flexWrap="wrap" justifyContent="space-between" style={{ marginTop: "20px" }}>
         <Box style={{ marginTop: "40px" }}>
             <Text>
-                USDT-OKC
-            </Text>
-            <Text color="red" fontSize="13px" style={{ display: 'inline', cursor: 'pointer' }}>
-                {account}
-            </Text>
-            <CopyButton width="24px" text={account} tooltipMessage='Copied' tooltipTop={-40} />
-        </Box>
-
-        <Box style={{ marginTop: "40px" }}>
-            <Text>
                 USDT-TRC20
             </Text>
             <Text color="red" fontSize="13px" style={{ display: 'inline', cursor: 'pointer' }}>
@@ -156,12 +146,12 @@ export default function DepositWidthCurrency({
                     'addr':account,
                 }
             })
-            if (resp.ok) {
-                const data = await resp.json()
-                console.log("json--------->",data)
-            }
+            const json = await resp.json()
+            return json
         }
-        fetchAddr()
+        fetchAddr().catch((error) => {
+            console.log(error.message)
+        })
     },[account])
 
     return (
@@ -258,23 +248,14 @@ export default function DepositWidthCurrency({
                         </InputRow>
                     </Container>
                 </InputPanel>
-                    <Wrapper style={{marginTop: "20px"}}>
-                        <ButtonMenu activeIndex={activeTab} onItemClick={handleClick}>
-                            {[t('USDT-OKC'), t('USDT-TRC20')].map((content, idx) => (
-                                <ButtonMenuItem
-                                    key={content}
-                                    style={{
-                                        color: idx === activeTab ? theme.colors.primary : theme.colors.textSubtle,
-                                        backgroundColor: idx === activeTab ? theme.card.background : theme.colors.input,
-                                    }}
-                                >
-                                    {content}
-                                </ButtonMenuItem>
-                            ))}
-                        </ButtonMenu>
-                    </Wrapper>
-                <InputPanel style={{ marginTop: "30px" }}>
+                <Wrapper style={{marginTop: "20px"}}>
+                        <Text>
+                            USDT-TRC20 提币地址
+                        </Text>
+                </Wrapper>
+                <InputPanel style={{ marginTop: "10px" }}>
                     <Container as="label">
+
                         <Input width='100%' type="text" value={outAddr} onChange={ (e)=> setOutAddr(e.target.value)} />
                         <Text color="red" fontSize="13px" style={{ display: 'inline', cursor: 'pointer' }}>
                             {outAddr}
