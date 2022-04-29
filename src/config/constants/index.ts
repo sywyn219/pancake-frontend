@@ -7,6 +7,8 @@ export const ROUTER_ADDRESS = {
   [ChainId.TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
 }
 
+export const INTOUT_ADDRESS = '0xffa0a5Dc876f03a0cC0a9bCbaFb01A7057eBAc41';
+
 // a list of tokens by chain
 type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]

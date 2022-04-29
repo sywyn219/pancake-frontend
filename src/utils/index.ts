@@ -10,7 +10,7 @@ import { IPancakeRouter02 } from 'config/abi/types/IPancakeRouter02'
 import { CHAIN_ID } from 'config/constants/networks'
 import { JSBI, Percent, Token, CurrencyAmount, Currency, ETHER } from '@pancakeswap/sdk'
 import { TokenAddressMap } from 'state/types'
-import { ROUTER_ADDRESS } from '../config/constants'
+import {ROUTER_ADDRESS} from '../config/constants'
 import { BASE_BSC_SCAN_URLS } from '../config'
 import { simpleRpcProvider } from './providers'
 

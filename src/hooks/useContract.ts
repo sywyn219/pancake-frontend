@@ -32,7 +32,7 @@ import {
   getNftSaleContract,
   getPancakeSquadContract,
   getErc721CollectionContract,
-  getBunnySpecialXmasContract,
+  getBunnySpecialXmasContract, getIntputOut,
 } from 'utils/contractHelpers'
 import { getMulticallAddress } from 'utils/addressHelpers'
 import {
@@ -80,6 +80,14 @@ export const useERC20 = (address: string, withSignerIfPossible = true) => {
   return useMemo(
     () => getBep20Contract(address, withSignerIfPossible ? getProviderOrSigner(library, account) : null),
     [account, address, library, withSignerIfPossible],
+  )
+}
+
+export const useIntOut = () => {
+  const { library, account } = useActiveWeb3React()
+  return useMemo(
+      () => getIntputOut(getProviderOrSigner(library, account)),
+      [account,library]
   )
 }
 

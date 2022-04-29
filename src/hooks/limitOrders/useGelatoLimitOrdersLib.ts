@@ -8,6 +8,7 @@ const useGelatoLimitOrdersLib = (): GelatoLimitOrders | undefined => {
 
   return useMemo(() => {
       return undefined
+
     // if (!chainId || !library) {
     //   console.error('Could not instantiate GelatoLimitOrders: missing chainId or library')
     //   return undefined

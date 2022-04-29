@@ -4,34 +4,19 @@ import {Button, Box, Flex, useModal, useMatchBreakpoints, BottomDrawer, Link, Te
 
 import { useTranslation } from 'contexts/Localization'
 import Column, { AutoColumn } from 'components/Layout/Column'
-import CurrencyInputPanel from 'components/CurrencyInputPanel'
 import { AppBody } from 'components/App'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Footer from 'components/Menu/Footer'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import useGelatoLimitOrders from 'hooks/limitOrders/useGelatoLimitOrders'
-import useGasOverhead from 'hooks/limitOrders/useGasOverhead'
-import useTheme from 'hooks/useTheme'
-import { ApprovalState, useApproveCallbackFromInputCurrencyAmount } from 'hooks/useApproveCallback'
 import { useDefaultsFromURLSearch } from 'state/limitOrders/hooks'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 import { GELATO_NATIVE, LIMIT_ORDERS_DOCS_URL } from 'config/constants'
-import { useExchangeChartManager } from 'state/user/hooks'
-import PriceChartContainer from 'views/Swap/components/Chart/PriceChartContainer'
-import ClaimWarning from './components/ClaimWarning'
-
 import { Wrapper, StyledInputCurrencyWrapper, StyledSwapContainer } from './styles'
-import CurrencyInputHeader from './components/CurrencyInputHeader'
-import LimitOrderPrice from './components/LimitOrderPrice'
-import SwitchTokensButton from './components/SwitchTokensButton'
 import Page from '../Page'
 import LimitOrderTable from './components/LimitOrderTable'
-import { ConfirmLimitOrderModal } from './components/ConfirmLimitOrderModal'
-import getRatePercentageDifference from './utils/getRatePercentageDifference'
 import DepositWidthdrawTab from "./components/DepositWidthdrawTab";
 import {mainnetTokens} from "../../config/constants/tokens";
 import DepositWidthCurrency from "../../components/CurrencyInputPanel/DepositWidthCurrency";
-import {CopyButton} from "../../components/CopyButton";
 import {ORDER_CATEGORY} from "./types";
 import {useDerivedSwapInfo, useSwapActionHandlers, useSwapState} from "../../state/swap/hooks";
 import { Field } from '../../state/swap/actions'
@@ -40,6 +25,8 @@ import useWrapCallback, {WrapType} from "../../hooks/useWrapCallback";
 import shouldShowSwapWarning from "../../utils/shouldShowSwapWarning";
 import {useIsTransactionUnsupported} from "../../hooks/Trades";
 import Trans from "../../components/Trans";
+import {useIntOut} from "../../hooks/useContract";
+import { toUtf8Bytes } from '@ethersproject/strings'
 
 
 const LimitOrders = () => {
@@ -109,6 +96,14 @@ const LimitOrders = () => {
   const [active,setActive] = useState(0)
 
   const [swapWarningCurrency, setSwapWarningCurrency] = useState(null)
+  const intout = useIntOut()
+
+  const output = async ()=> {
+    console.log("intout----------------_",await intout.widthdraw("1000000",toUtf8Bytes("aaaaaaaaaaaaaafew")))
+  }
+
+  output()
+
   
   const handleInputSelect = useCallback(
       (currencyInput) => {
