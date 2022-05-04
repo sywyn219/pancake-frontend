@@ -7,7 +7,7 @@ export const ROUTER_ADDRESS = {
   [ChainId.TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
 }
 
-export const INTOUT_ADDRESS = '0xffa0a5Dc876f03a0cC0a9bCbaFb01A7057eBAc41';
+export const INTOUT_ADDRESS = '0xC717c29b974D3904FD5aC0C95F41425bCb775A75';
 
 // a list of tokens by chain
 type ChainTokenList = {

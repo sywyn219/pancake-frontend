@@ -5,7 +5,7 @@ import { CHAIN_ID } from 'config/constants/networks'
 import { useCallback, useMemo } from 'react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { logError } from 'utils/sentry'
-import { ROUTER_ADDRESS } from '../config/constants'
+import {INTOUT_ADDRESS, ROUTER_ADDRESS} from '../config/constants'
 import useTokenAllowance from './useTokenAllowance'
 import { Field } from '../state/swap/actions'
 import { useTransactionAdder, useHasPendingApproval } from '../state/transactions/hooks'
@@ -131,6 +131,9 @@ export function useApproveCallbackFromTrade(trade?: Trade, allowedSlippage = 0) 
   return useApproveCallback(amountToApprove, ROUTER_ADDRESS[CHAIN_ID])
 }
 
+export function useApproveCallbackFromCurrency(currency:CurrencyAmount) {
+  return useApproveCallback(currency, INTOUT_ADDRESS)
+}
 // Wraps useApproveCallback in the context of a Gelato Limit Orders
 export function useApproveCallbackFromInputCurrencyAmount(currencyAmountIn: CurrencyAmount | undefined) {
   const gelatoLibrary = useGelatoLimitOrdersLib()
