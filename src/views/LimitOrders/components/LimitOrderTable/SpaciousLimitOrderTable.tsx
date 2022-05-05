@@ -5,7 +5,6 @@ import FullRow from './FullRow'
 
 const SpaciousLimitOrderTable = ({ orders }) => {
   const { t } = useTranslation()
-
   return (
     <Table>
       <>
@@ -13,19 +12,22 @@ const SpaciousLimitOrderTable = ({ orders }) => {
           <tr>
             <Th>
               <Text fontSize="12px" bold textTransform="uppercase" color="textSubtle" textAlign="left">
+                {t('TxID')}
+              </Text>
+            </Th>
+
+            <Th>
+              <Text fontSize="12px" bold textTransform="uppercase" color="textSubtle" textAlign="left">
                 {t('From')}
               </Text>
             </Th>
+
             <Th>
               <Text fontSize="12px" bold textTransform="uppercase" color="textSubtle" textAlign="left">
                 {t('To')}
               </Text>
             </Th>
-            <Th>
-              <Text fontSize="12px" bold textTransform="uppercase" color="textSubtle" textAlign="left">
-                {t('Limit Price')}
-              </Text>
-            </Th>
+
             <Th>
               <Text fontSize="12px" bold textTransform="uppercase" color="textSubtle" textAlign="left">
                 {t('Status')}
@@ -36,7 +38,7 @@ const SpaciousLimitOrderTable = ({ orders }) => {
         </thead>
         <tbody>
           {orders.map((order) => (
-            <FullRow key={order.id} order={order} />
+            <FullRow key={order.nonce} order={order} />
           ))}
         </tbody>
       </>

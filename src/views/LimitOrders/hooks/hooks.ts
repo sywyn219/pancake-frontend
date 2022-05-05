@@ -19,6 +19,8 @@ import {calculateGasMargin, isAddress} from "../../../utils";
 import truncateHash from "../../../utils/truncateHash";
 import {SwapCallbackState} from "../../../hooks/useSwapCallback";
 import {useIntOut} from "../../../hooks/useContract";
+import {ORDER_CATEGORY} from "../types";
+import orderBy from "lodash/orderBy";
 
 
 export function useSwapState(): AppState['swap'] {
@@ -228,3 +230,4 @@ function outErrorToUserReadableMessage(error: any, t: TranslateFunction) {
             })
     }
 }
+

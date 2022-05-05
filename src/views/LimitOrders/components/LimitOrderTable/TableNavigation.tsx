@@ -20,7 +20,7 @@ interface ExposedProps {
 }
 
 interface TableNavigationProps {
-  data: any[]
+  data: any
   itemsPerPage?: number
   children: (exposedProps: ExposedProps) => ReactElement
   orderCategory: ORDER_CATEGORY
