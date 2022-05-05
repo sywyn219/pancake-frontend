@@ -63,7 +63,7 @@ const ProfilePicture: React.FC = () => {
           )
         }
       } catch (e) {
-        console.error(e)
+        console.error("ProfilePicture---->",e)
       }
     }
     if (!isUserNftLoading) {

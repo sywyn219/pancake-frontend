@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import {CurrencyAmount, JSBI, Token, Trade} from '@pancakeswap/sdk'
 import {Button, Box, Flex, useModal, useMatchBreakpoints, BottomDrawer, Link, Text} from '@pancakeswap/uikit'
-import {toUtf8Bytes} from '@ethersproject/strings';
 
 import { useTranslation } from 'contexts/Localization'
 import Column, { AutoColumn } from 'components/Layout/Column'
@@ -18,25 +17,27 @@ import LimitOrderTable from './components/LimitOrderTable'
 import DepositWidthdrawTab from "./components/DepositWidthdrawTab";
 import {mainnetTokens} from "../../config/constants/tokens";
 import DepositWidthCurrency from "../../components/CurrencyInputPanel/DepositWidthCurrency";
-import {useDerivedSwapInfo, useSwapActionHandlers, useSwapState} from "./hooks/hooks";
+import {
+  OutCallbackState,
+  useDerivedSwapInfo,
+  useInputOutCallback,
+  useSwapActionHandlers,
+  useSwapState
+} from "./hooks/hooks";
 import { Field } from '../../state/swap/actions'
 import {useCurrency} from "../../hooks/Tokens";
 import useWrapCallback, {WrapType} from "../../hooks/useWrapCallback";
 import shouldShowSwapWarning from "../../utils/shouldShowSwapWarning";
 import {useIsTransactionUnsupported} from "../../hooks/Trades";
-import {useIntOut} from "../../hooks/useContract";
 
 import { ApprovalState, useApproveCallbackFromCurrency } from '../../hooks/useApproveCallback'
 import {AutoRow, RowBetween} from "../../components/Layout/Row";
 import CircleLoader from "../../components/Loader/CircleLoader";
 import {useExpertModeManager, useUserSingleHopOnly, useUserSlippageTolerance} from "../../state/user/hooks";
-import ConfirmSwapModal from "../Swap/components/ConfirmSwapModal";
-import {GreyCard} from "../../components/Card";
 import ProgressSteps from "../Swap/components/ProgressSteps";
 import {SwapCallbackError} from "../Swap/components/styleds";
-import confirmPriceImpactWithoutFee from "../Swap/components/confirmPriceImpactWithoutFee";
-import {computeTradePriceBreakdown, warningSeverity} from "../../utils/prices";
-import {useSwapCallback} from "../../hooks/useSwapCallback";
+import ConfirmCurrencyOutModal from "./components/ConfirmCurrencyOut";
+import {ORDER_CATEGORY} from "./types";
 
 
 const LimitOrders = () => {
@@ -44,9 +45,6 @@ const LimitOrders = () => {
   const { account } = useActiveWeb3React()
   const { t } = useTranslation()
   const { isMobile, isTablet } = useMatchBreakpoints()
-
-  // TODO: use returned loadedUrlParams for warnings
-  useDefaultsFromURLSearch()
 
   // TODO: fiat values
   const {
@@ -58,8 +56,9 @@ const LimitOrders = () => {
   } = useSwapState()
 
   const inputCurrency = useCurrency(mainnetTokens.usdt.address)
+  const outputCurrency = useCurrency("HSO")
 
-  const outputCurrency = useCurrency(outputCurrencyId)
+  const [outAddr,setOutAddr] = useState('')
 
   const {
     v2Trade,
@@ -68,13 +67,13 @@ const LimitOrders = () => {
     currencies,
     inputError: swapInputError,
   } = useDerivedSwapInfo(
+      outAddr,
       independentField,
       typedValue,
       inputCurrencyId,
       inputCurrency,
       outputCurrencyId,
       outputCurrency,
-      recipient,
   )
 
   const {
@@ -88,7 +87,6 @@ const LimitOrders = () => {
 
   // check whether the user has approved the router on the input token
   const [approval, approveCallback] = useApproveCallbackFromCurrency(maxAmountInput)
-  console.log("!swapInputError",!swapInputError,"approval",approval )
 
   const [approvalSubmitted, setApprovalSubmitted] = useState<boolean>(false)
 
@@ -111,24 +109,18 @@ const LimitOrders = () => {
 
   const [active,setActive] = useState(0)
 
-  const intout = useIntOut()
-
-  const output = async ()=> {
-    console.log("intout----------------_",await intout.widthdraw("1000000",toUtf8Bytes("aaaaaaaaaaaaaafew")))
-  }
 
   const isValid = !swapInputError
 
   const showWrap: boolean = wrapType !== WrapType.NOT_APPLICABLE
 
   const dependentField: Field = independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT
+
   const trade = showWrap ? undefined : v2Trade
 
   const parsedAmounts = showWrap
       ? {[Field.INPUT]: parsedAmount}
       : {[Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount}
-
-
 
   // modal and loading
   const [{ tradeToConfirm, swapErrorMessage, attemptingTxn, txHash }, setSwapState] = useState<{
@@ -150,25 +142,18 @@ const LimitOrders = () => {
         : parsedAmounts[dependentField]?.toSignificant(6) ?? '',
   }
 
-
-  const route = trade?.route
-  const userHasSpecifiedInputOutput = Boolean(
-      currencies[Field.INPUT] && parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0)),
-  )
-  const noRoute = !route
-
   // get custom setting values for user
   const [allowedSlippage] = useUserSlippageTolerance()
 
-  // the callback to execute the swap
-  const { callback: swapCallback, error: swapCallbackError } = useSwapCallback(trade, allowedSlippage, recipient)
+  // the callback to execute the out
+  const { callback: outCallbackState, error: outErrorToUserReadableMessage} = useInputOutCallback(parsedAmount,outAddr)
 
   const handleCurrencyOut = useCallback(() => {
-    if (!swapCallback) {
+    if (!outCallbackState) {
       return
     }
     setSwapState({ attemptingTxn: true, tradeToConfirm, swapErrorMessage: undefined, txHash: undefined })
-    swapCallback()
+    outCallbackState()
         .then((hash) => {
           setSwapState({ attemptingTxn: false, tradeToConfirm, swapErrorMessage: undefined, txHash: hash })
         })
@@ -180,7 +165,7 @@ const LimitOrders = () => {
             txHash: undefined,
           })
         })
-  }, [swapCallback, tradeToConfirm, t])
+  }, [outCallbackState, tradeToConfirm, t])
 
   const showApproveFlow =
       !swapInputError &&
@@ -225,7 +210,8 @@ const LimitOrders = () => {
   const swapIsUnsupported = useIsTransactionUnsupported(currencies?.INPUT, currencies?.OUTPUT)
 
   const [onPresentConfirmModal] = useModal(
-      <ConfirmSwapModal
+      <ConfirmCurrencyOutModal
+          outAddr={outAddr}
           trade={trade}
           originalTrade={tradeToConfirm}
           onAcceptChanges={handleAcceptChanges}
@@ -241,8 +227,6 @@ const LimitOrders = () => {
       true,
       'confirmSwapModal',
   )
-
-
   return (
       <Page
           removePadding={false}
@@ -273,6 +257,8 @@ const LimitOrders = () => {
                     <AutoColumn gap="sm">
                       <DepositWidthCurrency
                           active={active}
+                          outAddr={outAddr}
+                          setOutAddr={setOutAddr}
                           value={formattedAmounts[Field.INPUT]}
                           label={independentField === Field.OUTPUT ? t('From (estimated)') : t('From')}
                           currency={currencies[Field.INPUT]}
@@ -290,7 +276,7 @@ const LimitOrders = () => {
                           </Button>
                       ) : !account ? (
                           <ConnectWalletButton width="100%" />
-                      ) : showWrap ? (
+                      ) : active ===  ORDER_CATEGORY.Open ? <></> : showWrap ? (
                           <Button width="100%" disabled={Boolean(wrapInputError)} onClick={onWrap}>
                             {wrapInputError ??
                                 (wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
@@ -308,15 +294,15 @@ const LimitOrders = () => {
                                     {t('Enabling')} <CircleLoader stroke="white" />
                                   </AutoRow>
                               ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
-                                  t('Enabled')
+                                  t('批准')
                               ) : (
-                                  t('Enable %asset%', { asset: currencies[Field.INPUT]?.symbol ?? '' })
+                                  t('批准 %asset%', { asset: currencies[Field.INPUT]?.symbol ?? '' })
                               )}
                             </Button>
                             <Button
                                 variant={isValid ? 'danger' : 'primary'}
                                 onClick={() => {
-                                  if ("isExpertMode") {
+                                  if (false) {
                                     handleCurrencyOut()
                                   } else {
                                     setSwapState({
@@ -335,14 +321,14 @@ const LimitOrders = () => {
                                     approval !== ApprovalState.APPROVED
                                 }
                             >
-                              {t('Swap..')}
+                              {t('提币')}
                             </Button>
                           </RowBetween>
                       ) : (
                           <Button
-                              variant={isValid && !swapCallbackError ? 'danger' : 'primary'}
+                              variant={isValid && !outErrorToUserReadableMessage ? 'danger' : 'primary'}
                               onClick={() => {
-                                if ("isExpertMode") {
+                                if (false) {
                                   handleCurrencyOut()
                                 } else {
                                   setSwapState({
@@ -356,13 +342,13 @@ const LimitOrders = () => {
                               }}
                               id="swap-button"
                               width="100%"
-                              disabled={!isValid  || !!swapCallbackError}
+                              disabled={!isValid  || !!outErrorToUserReadableMessage}
                           >
                             {swapInputError ||
-                                ( t('Swap'))}
+                                ( t('提币'))}
                           </Button>
                       )}
-                      {showApproveFlow && (
+                      {active ===  ORDER_CATEGORY.Open ? <></> : showApproveFlow && (
                           <Column style={{ marginTop: '1rem' }}>
                             <ProgressSteps steps={[approval === ApprovalState.APPROVED]} />
                           </Column>

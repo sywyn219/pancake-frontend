@@ -48,7 +48,7 @@ const useEventInfos = ({ refreshCounter, setCallback }) => {
           totalSupplyMinted: currentTotalSupplyMinted.toNumber(),
         })
       } catch (e) {
-        console.error(e)
+        console.error("userEvent---->",e)
       }
     }
 

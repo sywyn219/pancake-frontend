@@ -70,6 +70,8 @@ const Wrapper = styled(Flex)`
 
 interface CurrencyInputPanelProps {
     active: number
+    outAddr: string
+    setOutAddr: (value: string) => void
     value: string
     onUserInput: (value: string) => void
     onMax?: () => void
@@ -100,6 +102,8 @@ const  USDTIN = (addr) => {
 
 export default function DepositWidthCurrency({
                                                 active,
+                                                outAddr,
+                                                 setOutAddr,
                                                value,
                                                  onUserInput,
                                                onMax,
@@ -114,12 +118,13 @@ export default function DepositWidthCurrency({
                                                showCommonBases,
                                            }: CurrencyInputPanelProps) {
     const { account, library } = useActiveWeb3React()
+
     const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
     const {
         t,
         currentLanguage: { locale },
     } = useTranslation()
-    const { theme } = useTheme()
+
     const token = pair ? pair.liquidityToken : currency instanceof Token ? currency : null
     const tokenAddress = token ? isAddress(token.address) : null
 
@@ -131,7 +136,7 @@ export default function DepositWidthCurrency({
             showCommonBases={showCommonBases}
         />,
     )
-    const [outAddr,setOutAddr] = useState('')
+
     const [activeTab,setActiveTab] = useState(0)
     const handleClick = useCallback((tabType: ORDER_CATEGORY) => {
         setActiveTab(tabType)
@@ -140,6 +145,9 @@ export default function DepositWidthCurrency({
     const [addr,setAddr] = useState('')
 
     useEffect( () => {
+
+        let unmounted = false;
+
         const fetchAddr = async () => {
             if (!account) {
                 return
@@ -152,12 +160,16 @@ export default function DepositWidthCurrency({
             const json = await resp.json()
             const obj = JSON.parse(JSON.stringify(json))
             if (obj.status === "ok") {
-                setAddr(obj.data.trc20)
+                if (!unmounted) {
+                    setAddr(obj.data.trc20)
+                }
             }
         }
+
         fetchAddr().catch((error) => {
-            console.log("getAddr--err-->",error.message)
-        })
+            console.log("getAddr--err-->",error.message)})
+
+        return () => {unmounted = true}
     },[account])
 
     return (

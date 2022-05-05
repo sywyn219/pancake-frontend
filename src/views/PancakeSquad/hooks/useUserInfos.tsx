@@ -44,7 +44,7 @@ const useUserInfos = ({ account, refreshCounter, setCallback }) => {
           })
         }
       } catch (e) {
-        console.error(e)
+        console.error("userinfo---->",e)
       }
     }
     if (nftSaleAbi.length > 0) {

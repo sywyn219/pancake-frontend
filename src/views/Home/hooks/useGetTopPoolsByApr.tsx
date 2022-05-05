@@ -26,7 +26,7 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
         await dispatch(fetchPoolsPublicDataAsync(initialBlock))
         setFetchStatus(FetchStatus.Fetched)
       } catch (e) {
-        console.error(e)
+        console.error("userGetTopPoolsByApr--->",e)
         setFetchStatus(FetchStatus.Failed)
       }
     }

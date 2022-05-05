@@ -117,7 +117,7 @@ const UserName: React.FC = () => {
         setIsValid(false)
         if (e instanceof Error && e.name !== 'AbortError') {
           setMessage(t('Error fetching data'))
-          console.error(e)
+          console.error("username---->",e)
         }
       } finally {
         setIsLoading(false)
