@@ -1,4 +1,5 @@
 import { Order } from '@gelatonetwork/limit-orders-lib'
+import {BigNumberish, BytesLike} from "ethers";
 
 export enum ORDER_CATEGORY {
   Open = 0,
@@ -16,3 +17,4 @@ export interface LimitOrderTableProps {
   orderCategory: ORDER_CATEGORY
   isCompact: boolean
 }
+

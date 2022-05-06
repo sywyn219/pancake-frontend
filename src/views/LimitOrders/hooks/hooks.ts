@@ -1,26 +1,19 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useCallback, useMemo} from "react";
 import {Currency, CurrencyAmount, ETHER, Token, Trade} from "@pancakeswap/sdk";
+import {Base58} from "@ethersproject/basex";
 import {toUtf8Bytes} from "@ethersproject/strings";
 import {Field, selectCurrency, setRecipient, switchCurrencies, typeInput} from "../../../state/swap/actions";
 import useActiveWeb3React from "../../../hooks/useActiveWeb3React";
 import {TranslateFunction, useTranslation} from "../../../contexts/Localization";
-import useENS from "../../../hooks/ENS/useENS";
 import {useCurrencyBalances} from "../../../state/wallet/hooks";
 import tryParseAmount from "../../../utils/tryParseAmount";
 import {useTradeExactIn, useTradeExactOut} from "../../../hooks/Trades";
 import {useGasPrice, useUserSlippageTolerance} from "../../../state/user/hooks";
-import {computeSlippageAdjustedAmounts} from "../../../utils/prices";
 
 import {AppDispatch, AppState} from "../../../state";
 import {useTransactionAdder} from "../../../state/transactions/hooks";
-import isZero from "../../../utils/isZero";
-import {calculateGasMargin, isAddress} from "../../../utils";
-import truncateHash from "../../../utils/truncateHash";
-import {SwapCallbackState} from "../../../hooks/useSwapCallback";
 import {useIntOut} from "../../../hooks/useContract";
-import {ORDER_CATEGORY} from "../types";
-import orderBy from "lodash/orderBy";
 
 
 export function useSwapState(): AppState['swap'] {
@@ -151,6 +144,18 @@ export enum OutCallbackState {
     VALID,
 }
 
+export interface InputOutHis {
+    id: number,
+    from: string;
+    txid: string;
+    toaddr: string;
+    value: string;
+    times: string;
+    nonce: string;
+    status: string;
+    changeStatus: any;
+}
+
 export function useInputOutCallback(amount:CurrencyAmount,outAddr:string) : { state: OutCallbackState; callback: null | (() => Promise<string>); error: string | null }  {
 
     const { account, chainId, library } = useActiveWeb3React()
@@ -169,7 +174,7 @@ export function useInputOutCallback(amount:CurrencyAmount,outAddr:string) : { st
             state: OutCallbackState.VALID,
             callback: async function onOut(): Promise<string> {
 
-                return  inputOut.widthdraw(amount.raw.toString(),toUtf8Bytes(outAddr))
+                return  inputOut.widthdraw(amount.raw.toString(),Base58.decode(outAddr))
                     .then((response: any) => {
                         return response.hash
                     })

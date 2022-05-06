@@ -2,10 +2,10 @@ import { useState, useMemo, useCallback, ReactElement, memo, useEffect } from 'r
 import { Text, Flex, Box, Grid, ArrowBackIcon, ArrowForwardIcon } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
-import { SubgraphHealthIndicator } from 'components/SubgraphHealthIndicator'
 import NoOrdersMessage from './NoOrdersMessage'
 import { ORDER_CATEGORY } from '../../types'
 import LoadingTable from './LoadingTable'
+import {InputOutHis} from "../../hooks/hooks";
 
 const Arrow = styled.div`
   color: ${({ theme }) => theme.colors.primary};
@@ -16,7 +16,7 @@ const Arrow = styled.div`
 `
 
 interface ExposedProps {
-  paginatedData: any[]
+  paginatedData: InputOutHis[]
 }
 
 interface TableNavigationProps {
@@ -84,9 +84,6 @@ const TableNavigation: React.FC<TableNavigationProps> = ({
           <Arrow onClick={onPageNext}>
             <ArrowForwardIcon color={currentPage === maxPage ? 'textDisabled' : 'primary'} />
           </Arrow>
-        </Flex>
-        <Flex width="100%" justifyContent={['center', null, null, null, 'flex-end']}>
-          <SubgraphHealthIndicator subgraphName="gelatodigital/limit-orders-bsc" inline />
         </Flex>
       </Grid>
     </>

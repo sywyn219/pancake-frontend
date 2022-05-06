@@ -26,7 +26,6 @@ import { Input as NumericalInput } from './NumericalInput'
 import { CopyButton } from '../CopyButton'
 import {ORDER_CATEGORY} from "../../views/LimitOrders/types";
 
-import useTheme from "../../hooks/useTheme";
 
 const InputRow = styled.div<{ selected: boolean }>`
   display: flex;
