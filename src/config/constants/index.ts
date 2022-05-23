@@ -8,6 +8,7 @@ export const ROUTER_ADDRESS = {
 }
 
 export const INTOUT_ADDRESS = '0xC717c29b974D3904FD5aC0C95F41425bCb775A75';
+export const FARM_ADDRESS = '0xec5eB06385d8C236b2d183c5D082cf15D3674235';
 
 // a list of tokens by chain
 type ChainTokenList = {

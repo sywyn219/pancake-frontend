@@ -45,19 +45,20 @@ const config: (t: ContextApi['t'], languageCode?: string) => ConfigMenuItemsType
     ],
   },
   {
-    label: t('Earn'),
+    label: t('农场'),
     href: '/farms',
     icon: EarnIcon,
     fillIcon: EarnFillIcon,
+    showItemsOnMobile: false,
     items: [
       {
         label: t('Farms'),
         href: '/farms',
       },
-      {
-        label: t('Pools'),
-        href: '/pools',
-      },
+      // {
+      //   label: t('Pools'),
+      //   href: '/pools',
+      // },
     ],
   },
   {

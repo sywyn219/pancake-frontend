@@ -75,6 +75,7 @@ import nftSaleAbi from 'config/abi/nftSale.json'
 import pancakeSquadAbi from 'config/abi/pancakeSquad.json'
 import erc721CollectionAbi from 'config/abi/erc721collection.json'
 import intoutabi from 'config/abi/inputout.json'
+import farmabi from 'config/abi/farm.json'
 
 // Types
 import type {
@@ -112,10 +113,10 @@ import type {
   PointCenterIfo,
   CakeVaultV2,
   TradingCompetitionMobox,
-  Inputout,
+  Inputout, Farm,
 } from 'config/abi/types'
 
-import {INTOUT_ADDRESS} from "../config/constants";
+import {FARM_ADDRESS, INTOUT_ADDRESS} from "../config/constants";
 
 export const getContract = (abi: any, address: string, signer?: Signer | Provider) => {
   const signerOrProvider = signer ?? simpleRpcProvider
@@ -124,6 +125,10 @@ export const getContract = (abi: any, address: string, signer?: Signer | Provide
 
 export const getIntputOut = (signer?: Signer | Provider) => {
   return getContract(intoutabi, INTOUT_ADDRESS, signer) as Inputout
+}
+
+export const getFarm =  (signer?: Signer | Provider) => {
+  return getContract(farmabi, FARM_ADDRESS, signer) as Farm
 }
 
 export const getBep20Contract = (address: string, signer?: Signer | Provider) => {
