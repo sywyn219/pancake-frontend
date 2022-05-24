@@ -29,16 +29,23 @@ const StyledHotCollectionCard = styled(Card)<{ disabled?: boolean }>`
           `}
   }
 `
-
-const SaleCard: React.FC<string> = (imgSrc) => {
+interface HotCollectionCardProps {
+    imgSrc: string
+}
+const SaleCard: React.FC<HotCollectionCardProps> = (
+    {imgSrc,
+        children
+    }) => {
     const renderBody = () => (
         <CardBody p="8px">
             <StyledImage src={imgSrc} height={125} width={375} />
+            {children}
         </CardBody>)
+
     return (
-        <StyledHotCollectionCard disabled data-test="hot-collection-card">
-            <div style={{ cursor: 'default' }}>{renderBody()}</div>
-        </StyledHotCollectionCard>
+        <Card>
+            {renderBody()}
+        </Card>
     )
 }
 

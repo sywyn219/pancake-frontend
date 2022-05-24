@@ -1,4 +1,5 @@
 import React, {createContext, useEffect, useMemo, useRef, useState} from 'react'
+import { useRouter } from 'next/router'
 import Page from 'components/Layout/Page'
 import {Button, Flex, Grid, Heading, Text, useMatchBreakpoints} from "@pancakeswap/uikit";
 import styled from "styled-components";
@@ -8,6 +9,7 @@ import {
     TOP_BANNER_HEIGHT,
     TOP_BANNER_HEIGHT_MOBILE
 } from "@pancakeswap/uikit/src/widgets/Menu/config";
+import {Currency, Trade} from "@pancakeswap/sdk";
 import PageHeader from "../../components/PageHeader";
 import {useTranslation} from "../../contexts/Localization";
 import {useFarm} from "../../hooks/useContract";
@@ -15,6 +17,12 @@ import useActiveWeb3React from "../../hooks/useActiveWeb3React";
 import {formatBigNumber} from "../../utils/formatBalance";
 import {ViewMode} from "../../state/user/actions";
 import {CollectionCard} from "../Nft/market/components/CollectibleCard";
+import SaleCard from "./SaleCard";
+import {useCurrencyBalance} from "../../state/wallet/hooks";
+
+import {ApprovalState} from "../../hooks/useApproveCallback";
+import {ethersToBigNumber} from "../../utils/bigNumber";
+import {RowBetween} from "../../components/Layout/Row";
 
 
 
@@ -73,7 +81,11 @@ const Container = styled.div`
 
 // {/*<Button minWidth={isMobile ? '131px' : '178px'}>{t('购买')}</Button>*/}
 
+
+
+
 const Farm: React.FC = ({ children }) => {
+
     const { t } = useTranslation()
     const { isMobile } = useMatchBreakpoints()
     const [stickPosition, setStickyPosition] = useState<number>(0)
@@ -82,12 +94,24 @@ const Farm: React.FC = ({ children }) => {
     }, [
     ])
     const refPrevOffset = useRef(typeof window === 'undefined' ? 0 : window.pageYOffset)
-
-
+    const router = useRouter()
     const {account } = useActiveWeb3React()
     const farmCon = useFarm()
 
     const [sale,setSale] = useState([])
+
+    // modal and loading
+    const [{ tradeToConfirm, swapErrorMessage, attemptingTxn, txHash }, setSwapState] = useState<{
+        tradeToConfirm: Trade | undefined
+        attemptingTxn: boolean
+        swapErrorMessage: string | undefined
+        txHash: string | undefined
+    }>({
+        tradeToConfirm: undefined,
+        attemptingTxn: false,
+        swapErrorMessage: undefined,
+        txHash: undefined,
+    })
 
     useEffect(() => {
         const scrollEffect = () => {
@@ -118,7 +142,6 @@ const Farm: React.FC = ({ children }) => {
         }
         const fetchData  = async () => {
             const sales = await farmCon.getSale()
-            console.log("sales--->",JSON.stringify(sales));
             const salesArr = sales.map(item => formatBigNumber(item))
 
             setSale(salesArr);
@@ -131,6 +154,8 @@ const Farm: React.FC = ({ children }) => {
 
     const [viewMode, setViewMode] = useState(ViewMode.CARD)
 
+    const balance = useCurrencyBalance(account ?? undefined, Currency.ETHER)
+
     return (
         <FarmContext.Provider value={{ chosenFarmsMemoized }}>
             <PageHeader>
@@ -141,6 +166,7 @@ const Farm: React.FC = ({ children }) => {
                     {t('农场游戏资产销售')}
                 </Heading>
             </PageHeader>
+
             <Container style={{ top: `${stickPosition}px` }}>
                 <TextGroup>
                     <TextTitle bold>{t('购买农场资产可产HSO收益.')}</TextTitle>
@@ -149,7 +175,7 @@ const Farm: React.FC = ({ children }) => {
             </Container>
 
             <Page>
-                {sale &&          <Grid
+                {sale && <Grid
                     gridGap="16px"
                     gridTemplateColumns={['1fr', '1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
                     mb="32px"
@@ -157,20 +183,37 @@ const Farm: React.FC = ({ children }) => {
                 >
                     {sale.map(item => {
                         return (
-                            <CollectionCard
-                                key={item}
-                                bgSrc={item}
-                                avatarSrc={item}
-                                collectionName={item}
-                                url="/nfts/collections/0xDf7952B35f24aCF7fC0487D01c8d5690a60DBa07"
-                            >
-                                <Flex alignItems="center">
-                                    <Text fontSize="12px" color="textSubtle">
-                                        {t('Volume')}
+                            <SaleCard key={item} imgSrc="/images/farm/gift.png">
+                                <Flex alignItems="center"  justifyContent="space-between">
+                                    <Text fontSize="14px">
+                                        {t('价格:')}
                                     </Text>
-                                    {item}
+                                    {`${item} HSO`}
                                 </Flex>
-                            </CollectionCard>
+                                <Flex alignItems="center"  justifyContent="space-between">
+                                    <Text fontSize="14px">
+                                        {t('余额:')}
+                                    </Text>
+                                    { balance ? `${balance.toSignificant(6).toString()} HSO`:`钱包未连接`}
+                                </Flex>
+                                <Flex alignItems="center"  justifyContent="space-between">
+                                    <Text fontSize="14px">
+                                        {t('邀请码:')}
+                                    </Text>
+                                    { router.query.name ? router.query.name :'1000'}
+                                </Flex>
+                                <Button
+                                    variant='primary'
+                                    onClick={() => {
+                                        farmCon.buy("0","1","10020")
+                                    }}
+                                    width="100%"
+                                    id="swap-button"
+                                    disabled ={!balance || balance.toSignificant(6) < item}
+                                >
+                                    {t('购买')}
+                                </Button>
+                            </SaleCard>
                         )
                     })}
                 </Grid>}
