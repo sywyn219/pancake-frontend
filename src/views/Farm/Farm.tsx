@@ -1,8 +1,9 @@
-import React, {createContext, useEffect, useMemo, useRef, useState} from 'react'
+import React, {createContext, useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import { useRouter } from 'next/router'
 import Page from 'components/Layout/Page'
-import {Button, Flex, Grid, Heading, Text, useMatchBreakpoints} from "@pancakeswap/uikit";
+import {Button, Flex, Grid, Heading, Text, useMatchBreakpoints, useModal} from "@pancakeswap/uikit";
 import styled from "styled-components";
+import {AddressZero} from "@ethersproject/constants";
 import {
     MENU_HEIGHT,
     MOBILE_MENU_HEIGHT,
@@ -10,20 +11,15 @@ import {
     TOP_BANNER_HEIGHT_MOBILE
 } from "@pancakeswap/uikit/src/widgets/Menu/config";
 import {Currency, Trade} from "@pancakeswap/sdk";
+import {BigNumber} from "@ethersproject/bignumber";
+import {parseEther} from "@ethersproject/units";
 import PageHeader from "../../components/PageHeader";
 import {useTranslation} from "../../contexts/Localization";
 import {useFarm} from "../../hooks/useContract";
 import useActiveWeb3React from "../../hooks/useActiveWeb3React";
 import {formatBigNumber} from "../../utils/formatBalance";
-import {ViewMode} from "../../state/user/actions";
-import {CollectionCard} from "../Nft/market/components/CollectibleCard";
 import SaleCard from "./SaleCard";
 import {useCurrencyBalance} from "../../state/wallet/hooks";
-
-import {ApprovalState} from "../../hooks/useApproveCallback";
-import {ethersToBigNumber} from "../../utils/bigNumber";
-import {RowBetween} from "../../components/Layout/Row";
-
 
 
 
@@ -100,19 +96,6 @@ const Farm: React.FC = ({ children }) => {
 
     const [sale,setSale] = useState([])
 
-    // modal and loading
-    const [{ tradeToConfirm, swapErrorMessage, attemptingTxn, txHash }, setSwapState] = useState<{
-        tradeToConfirm: Trade | undefined
-        attemptingTxn: boolean
-        swapErrorMessage: string | undefined
-        txHash: string | undefined
-    }>({
-        tradeToConfirm: undefined,
-        attemptingTxn: false,
-        swapErrorMessage: undefined,
-        txHash: undefined,
-    })
-
     useEffect(() => {
         const scrollEffect = () => {
             const currentScroll = window.pageYOffset
@@ -136,6 +119,8 @@ const Farm: React.FC = ({ children }) => {
         return () => window.removeEventListener('scroll', scrollEffect)
     }, [isMobile])
 
+    const [acc,setAcc] = useState<string>('')
+
     useEffect( () => {
         if (!account) {
             return
@@ -143,16 +128,37 @@ const Farm: React.FC = ({ children }) => {
         const fetchData  = async () => {
             const sales = await farmCon.getSale()
             const salesArr = sales.map(item => formatBigNumber(item))
-
             setSale(salesArr);
         }
         fetchData().catch((e) => {
             console.log("err---->",e)
         })
+
+        const fetchAcc = async () => {
+            const refAcc = await farmCon.users(account);
+            if (refAcc.refAccount.isZero()) {
+                if (!router.query.acc) {
+                    return
+                }
+                const ac = router.query.acc as string
+                if (ac === '') {
+                    return
+                }
+                const addr  = await farmCon.accToAddr(BigNumber.from(ac))
+                if (addr !== AddressZero) {
+                    setAcc(ac)
+                }
+            }else {
+                const acs = refAcc.refAccount.toString()
+                setAcc(acs)
+            }
+        }
+        fetchAcc().catch(e => {
+            console.log("acc err-->",e)
+        })
+
     },[account])
 
-
-    const [viewMode, setViewMode] = useState(ViewMode.CARD)
 
     const balance = useCurrencyBalance(account ?? undefined, Currency.ETHER)
 
@@ -181,9 +187,9 @@ const Farm: React.FC = ({ children }) => {
                     mb="32px"
                     data-test="nft-collection-row"
                 >
-                    {sale.map(item => {
+                    {sale.map((item,k) => {
                         return (
-                            <SaleCard key={item} imgSrc="/images/farm/gift.png">
+                            <SaleCard key={item} imgSrc="/images/farm/3.png">
                                 <Flex alignItems="center"  justifyContent="space-between">
                                     <Text fontSize="14px">
                                         {t('价格:')}
@@ -200,16 +206,20 @@ const Farm: React.FC = ({ children }) => {
                                     <Text fontSize="14px">
                                         {t('邀请码:')}
                                     </Text>
-                                    { router.query.name ? router.query.name :'1000'}
+                                    { acc !== '' ? acc : '无'}
                                 </Flex>
                                 <Button
                                     variant='primary'
                                     onClick={() => {
-                                        farmCon.buy("0","1","10020")
+                                        if (acc === '') {
+                                            console.log("acc is nil")
+                                            return
+                                        }
+                                        farmCon.buy(BigNumber.from(k),BigNumber.from("1"),BigNumber.from(acc),{value:parseEther(item)})
                                     }}
                                     width="100%"
                                     id="swap-button"
-                                    disabled ={!balance || balance.toSignificant(6) < item}
+                                    disabled ={!balance || balance.toSignificant(6) < item || acc === ''}
                                 >
                                     {t('购买')}
                                 </Button>

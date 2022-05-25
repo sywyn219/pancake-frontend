@@ -49,11 +49,14 @@ const config: (t: ContextApi['t'], languageCode?: string) => ConfigMenuItemsType
     href: '/farm',
     icon: EarnIcon,
     fillIcon: EarnFillIcon,
-    showItemsOnMobile: false,
     items: [
       {
         label: t('农场'),
         href: '/farm',
+      },
+      {
+        label: t('挖矿'),
+        href: '/mining',
       },
     ],
   },
