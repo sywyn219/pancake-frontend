@@ -135,6 +135,7 @@ const Farm: React.FC = ({ children }) => {
         })
 
         const fetchAcc = async () => {
+            setAcc('')
             const refAcc = await farmCon.users(account);
             if (refAcc.refAccount.isZero()) {
                 if (!router.query.acc) {

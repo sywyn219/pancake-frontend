@@ -1,6 +1,5 @@
 import React, {FC, useEffect, useState} from 'react'
-import {Button, Flex, Heading, Text} from "@pancakeswap/uikit";
-import {BigNumber} from "@ethersproject/bignumber";
+import {Button,Box, Flex, Heading, Text} from "@pancakeswap/uikit";
 import {formatEther, parseEther} from "@ethersproject/units";
 import Page from 'components/Layout/Page'
 import PageHeader from "../../components/PageHeader";
@@ -10,8 +9,7 @@ import SaleCard from "../Farm/SaleCard";
 import {useFarm} from "../../hooks/useContract";
 import {useCurrentBlock} from "../../state/block/hooks";
 import {CopyButton} from "../../components/CopyButton";
-
-
+import {AppBody} from "../../components/App";
 
 export const MiningPageLayout: FC = ({ children }) => {
     const { t } = useTranslation()
@@ -33,6 +31,7 @@ export const MiningPageLayout: FC = ({ children }) => {
         fetchAmount().catch(e => console.log("get amt err-->",e))
 
         const fetchAcc = async () => {
+            setAccLink('')
             const pUser = await farmCon.pUser(account);
             if (!pUser.account.isZero()) {
                 setAccLink(`https://goswap.top/farm?acc=${pUser.account.toString()}`)
@@ -45,13 +44,20 @@ export const MiningPageLayout: FC = ({ children }) => {
 
     return (
         <>
-            <PageHeader>
-                <Heading scale="lg" color="text">
-                    {t('农场资产 挖矿产币中')}
-                </Heading>
-            </PageHeader>
+
             <Page>
-                <SaleCard imgSrc="/images/farm/3.png">
+
+                <PageHeader>
+                    <Flex width="100%" justifyContent="center"  position="relative">
+                    <Heading scale="lg" color="text">
+                        {t('农场资产 挖矿产币中')}
+                    </Heading>
+                    </Flex>
+                </PageHeader>
+
+                <Flex width="100%" justifyContent="center" position="relative">
+                    <AppBody>
+                        <SaleCard imgSrc="/images/farm/3.png">
                     <Flex alignItems="center"  justifyContent="space-between" marginTop="14px">
                         <Text fontSize="14px">
                             {t('产币可提:')}
@@ -66,7 +72,7 @@ export const MiningPageLayout: FC = ({ children }) => {
                         }}
                         width="100%"
                         id="swap-button"
-                        disabled ={!account || amount === '0.00'}
+                        disabled ={!account || amount === '0.0'}
                     >
                         {t('提币')}
                     </Button>
@@ -76,7 +82,28 @@ export const MiningPageLayout: FC = ({ children }) => {
                     {accLink}
                     <CopyButton width="24px" text={accLink} tooltipMessage='Copied' tooltipTop={120} />
 
+                    <Flex alignItems="center"  justifyContent="space-between" marginTop="60px">
+                        <Text fontSize="14px">
+                            {t('推荐奖励:')}
+                        </Text>
+                        {`${balance} USDT`}
+                    </Flex>
+
+                    <Button
+                        marginTop="26px"
+                        variant='primary'
+                        onClick={() => {
+                            farmCon.withUserBalance()
+                        }}
+                        width="100%"
+                        id="swap-button"
+                        disabled ={!account || balance === '0.0'}
+                    >
+                        {t('提币')}
+                    </Button>
                 </SaleCard>
+                    </AppBody>
+               </Flex>
             </Page>
         </>
     )
