@@ -21,6 +21,7 @@ export const MiningPageLayout: FC = ({ children }) => {
     const [balance,setBalance]  = useState('')
 
     useEffect( () => {
+        setAccLink('')
         if (!account) {
             return
         }
@@ -31,7 +32,6 @@ export const MiningPageLayout: FC = ({ children }) => {
         fetchAmount().catch(e => console.log("get amt err-->",e))
 
         const fetchAcc = async () => {
-            setAccLink('')
             const pUser = await farmCon.pUser(account);
             if (!pUser.account.isZero()) {
                 setAccLink(`https://goswap.top/farm?acc=${pUser.account.toString()}`)
