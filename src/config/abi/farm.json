@@ -275,6 +275,52 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr",
+        "type": "address"
+      }
+    ],
+    "name": "getAccountsAccStart",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "account",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "refAddr",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "addr",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalCoin",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "invites",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Farm.ProxyAccount[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "getBalance",
     "outputs": [
