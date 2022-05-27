@@ -172,7 +172,6 @@ export const ProxyFarm: FC = () => {
         }
         fetchIsProxyAcc()
     },[account,acc,currentBlock.valueOf()])
-
     useEffect( () => {
         const fetachAccAddr = async () => {
             if (!isAddress(accAddr)) {
