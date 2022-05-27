@@ -11,7 +11,7 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.NFT.top/',
+    to: '',
     text: t('Learn'),
     external: true,
   },
@@ -50,18 +50,18 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
 })
 
 export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('HSO makes our world go round.'),
+  headingText: t('NFT makes our world go round.'),
   bodyText: t(
     'CAKE token is at the heart of the PancakeSwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
   ),
   reverse: false,
   primaryButton: {
-    to: '/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
-    text: t('Buy HSO'),
+    to: '/mint-nft',
+    text: t('min NFT'),
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.NFT.top/tokenomics/cake',
+    to: '/mint-nft',
     text: t('Learn'),
     external: true,
   },

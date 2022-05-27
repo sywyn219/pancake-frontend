@@ -116,7 +116,7 @@ const Hero = () => {
           </Heading>
           <Flex>
             {!account && <ConnectWalletButton mr="8px" />}
-            <NextLinkFromReactRouter to="/swap">
+            <NextLinkFromReactRouter to="/mint-nft">
               <Button variant={!account ? 'secondary' : 'primary'}>{t('开始铸造')}</Button>
             </NextLinkFromReactRouter>
           </Flex>

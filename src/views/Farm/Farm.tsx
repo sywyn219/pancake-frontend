@@ -1,7 +1,7 @@
 import React, {createContext, useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import { useRouter } from 'next/router'
 import Page from 'components/Layout/Page'
-import {Button,  Flex, Grid, Heading, Text, useMatchBreakpoints, useModal} from "@pancakeswap/uikit";
+import {Button, Flex, Grid, Heading, Link, Text, useMatchBreakpoints, useModal} from "@pancakeswap/uikit";
 import styled from "styled-components";
 import {AddressZero} from "@ethersproject/constants";
 import {
@@ -20,6 +20,7 @@ import useActiveWeb3React from "../../hooks/useActiveWeb3React";
 import {formatBigNumber} from "../../utils/formatBalance";
 import SaleCard from "./SaleCard";
 import {useCurrencyBalance} from "../../state/wallet/hooks";
+import NextLink from "next/link";
 
 
 
@@ -187,6 +188,13 @@ const Farm: React.FC = ({ children }) => {
                                         {t('XXX:')}
                                     </Text>
                                   #100
+                                </Flex>
+
+                                <Flex alignItems="center"  justifyContent="space-between">
+                                    <Text fontSize="14px">
+                                        {t('OpenSea:')}
+                                    </Text>
+                                    <Link rel="preconnect" href='https://opensea.io/'> {t('https://opensea.io/xxxx')} </Link>
                                 </Flex>
 
                             </SaleCard>
