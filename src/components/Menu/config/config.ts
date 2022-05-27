@@ -22,14 +22,14 @@ const config: (t: ContextApi['t'], languageCode?: string) => ConfigMenuItemsType
     label: t('铸造NFT'),
     icon: SwapIcon,
     fillIcon: SwapFillIcon,
-    href: '/swap',
+    href: '/mint-nft',
     showItemsOnMobile: false,
     items: [
     ],
   },
   {
     label: t('我的NFT'),
-    href: '/farm',
+    href: '/my',
     icon: EarnIcon,
     fillIcon: EarnFillIcon,
     showItemsOnMobile: false,

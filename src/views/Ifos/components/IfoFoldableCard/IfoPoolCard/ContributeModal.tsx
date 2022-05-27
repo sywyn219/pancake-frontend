@@ -237,7 +237,7 @@ const ContributeModal: React.FC<Props> = ({
             <Link
               fontSize="12px"
               display="inline"
-              href="https://docs.goswap.top/products/ifo-initial-farm-offering"
+              href="https://docs.NFT.top/products/ifo-initial-farm-offering"
               external
             >
               {t('Read more')}

@@ -8,7 +8,7 @@ export const footerLinks: FooterLinkType[] = [
     items: [
       {
         label: "Contact",
-        href: "https://docs.goswap.top/contact-us",
+        href: "https://docs.NFT.top/contact-us",
       },
       {
         label: "Blog",
@@ -16,11 +16,11 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Community",
-        href: "https://docs.goswap.top/contact-us/telegram",
+        href: "https://docs.NFT.top/contact-us/telegram",
       },
       {
         label: "CAKE",
-        href: "https://docs.goswap.top/tokenomics/cake",
+        href: "https://docs.NFT.top/tokenomics/cake",
       },
       {
         label: "—",
@@ -37,15 +37,15 @@ export const footerLinks: FooterLinkType[] = [
     items: [
       {
         label: "Customer",
-        href: "Support https://docs.goswap.top/contact-us/customer-support",
+        href: "Support https://docs.NFT.top/contact-us/customer-support",
       },
       {
         label: "Troubleshooting",
-        href: "https://docs.goswap.top/help/troubleshooting",
+        href: "https://docs.NFT.top/help/troubleshooting",
       },
       {
         label: "Guides",
-        href: "https://docs.goswap.top/get-started",
+        href: "https://docs.NFT.top/get-started",
       },
     ],
   },
@@ -58,7 +58,7 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Documentation",
-        href: "https://docs.goswap.top",
+        href: "https://docs.NFT.top",
       },
       {
         label: "Bug Bounty",
@@ -66,11 +66,11 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Audits",
-        href: "https://docs.goswap.top/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited",
+        href: "https://docs.NFT.top/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited",
       },
       {
         label: "Careers",
-        href: "https://docs.goswap.top/hiring/become-a-chef",
+        href: "https://docs.NFT.top/hiring/become-a-chef",
       },
     ],
   },

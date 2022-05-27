@@ -12,7 +12,7 @@ const ItemsMock: DropdownMenuItems[] = [
   },
   {
     label: "LP Migration",
-    href: "https://v1exchange.goswap.top/#/migrate",
+    href: "https://v1exchange.NFT.top/#/migrate",
     type: DropdownMenuItemType.EXTERNAL_LINK,
   },
   {

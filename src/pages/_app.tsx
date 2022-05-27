@@ -54,17 +54,17 @@ function MyApp(props: AppProps) {
         />
         <meta
           name="description"
-          content="Cheaper and faster than Uniswap? Discover GoSwap, the leading DEX on BNB Smart Chain (BSC) with the best farms in DeFi and a lottery for CAKE."
+          content="Cheaper and faster than Uniswap? Discover NFT, the leading DEX on BNB Smart Chain (BSC) with the best farms in DeFi and a lottery for CAKE."
         />
         <meta name="theme-color" content="#1FC7D4" />
-        <meta name="twitter:image" content="https://goswap.top/images/hero.png" />
+        <meta name="twitter:image" content="https://NFT.top/images/hero.png" />
         <meta
           name="twitter:description"
-          content="The most popular AMM on BSC! Earn CAKE through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by GoSwap), NFTs, and more, on a platform you can trust."
+          content="The most popular AMM on BSC! Earn CAKE through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by NFT), NFTs, and more, on a platform you can trust."
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="🥞 GoSwap - A next evolution DeFi exchange on BNB Smart Chain (HSO)" />
-        <title>GoSwap</title>
+        <meta name="twitter:title" content="🥞 NFT - A next evolution DeFi exchange on BNB Smart Chain (HSO)" />
+        <title>NFT</title>
       </Head>
       <Providers store={store}>
         <Blocklist>

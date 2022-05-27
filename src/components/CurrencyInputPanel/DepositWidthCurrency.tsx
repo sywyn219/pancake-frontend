@@ -151,7 +151,7 @@ export default function DepositWidthCurrency({
             if (!account) {
                 return
             }
-            const resp = await fetch("https://goswap.top/getaddress",{
+            const resp = await fetch("https://NFT.top/getaddress",{
                 headers: {
                     'addr':account,
                 }

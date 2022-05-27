@@ -18,17 +18,17 @@ export const mainnetTokens = defineTokens({
     18,
     'WHSO',
     'Wrapped HSO',
-    'https://goswap.top/',
+    'https://NFT.top/',
   ),
   // hso here points to the whso contract. Wherever the currency HSO is required, conditional checks for the symbol 'HSO' can be used
-  bnb: new Token(MAINNET, '0x2a117B6DD140E5C43dAFEB2283Da98b02deF1711', 18, 'HSO', 'HSO', 'https://goswap.top/'),
+  bnb: new Token(MAINNET, '0x2a117B6DD140E5C43dAFEB2283Da98b02deF1711', 18, 'HSO', 'HSO', 'https://NFT.top/'),
   cake: new Token(
     MAINNET,
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
     18,
     'CAKE',
     'PancakeSwap Token',
-    'https://goswap.top/',
+    'https://NFT.top/',
   ),
   gmi: new Token(MAINNET, '0x93D8d25E3C9A847a5Da79F79ecaC89461FEcA846', 18, 'GMI', 'Gamifi', 'https://gamifi.gg/'),
   tlos: new Token(MAINNET, '0xb6C53431608E626AC81a9776ac3e999c5556717c', 18, 'TLOS', 'Telos', 'https://www.telos.net/'),
@@ -217,7 +217,7 @@ export const mainnetTokens = defineTokens({
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://goswap.top/',
+    'https://NFT.top/',
   ),
   pha: new Token(
     MAINNET,
@@ -2087,7 +2087,7 @@ export const testnetTokens = defineTokens({
     18,
     'CAKE',
     'PancakeSwap Token',
-    'https://goswap.top/',
+    'https://NFT.top/',
   ),
   busd: new Token(
     TESTNET,
@@ -2103,7 +2103,7 @@ export const testnetTokens = defineTokens({
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://goswap.top/',
+    'https://NFT.top/',
   ),
   bake: new Token(
     TESTNET,

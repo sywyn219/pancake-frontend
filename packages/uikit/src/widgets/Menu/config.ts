@@ -161,7 +161,7 @@ export const userMenulinks: DropdownMenuItems[] = [
   },
   {
     type: DropdownMenuItemType.EXTERNAL_LINK,
-    href: "https://goswap.top",
+    href: "https://NFT.top",
     label: "Link",
   },
   {

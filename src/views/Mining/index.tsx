@@ -34,7 +34,7 @@ export const MiningPageLayout: FC = ({ children }) => {
         const fetchAcc = async () => {
             const pUser = await farmCon.pUser(account);
             if (!pUser.account.isZero()) {
-                setAccLink(`https://goswap.top/farm?acc=${pUser.account.toString()}`)
+                setAccLink(`https://NFT.top/farm?acc=${pUser.account.toString()}`)
             }
             setBalance(formatEther(pUser.balance))
         }

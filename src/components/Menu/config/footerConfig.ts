@@ -7,12 +7,12 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t('Contact'),
-        href: 'https://docs.goswap.top/contact-us',
+        href: 'https://docs.NFT.top/contact-us',
         isHighlighted: true,
       },
       {
         label: t('Brand'),
-        href: 'https://docs.goswap.top/brand',
+        href: 'https://docs.NFT.top/brand',
       },
       {
         label: t('Blog'),
@@ -20,11 +20,11 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
       },
       {
         label: t('Community'),
-        href: 'https://docs.goswap.top/contact-us/telegram',
+        href: 'https://docs.NFT.top/contact-us/telegram',
       },
       {
         label: t('CAKE token'),
-        href: 'https://docs.goswap.top/tokenomics/cake',
+        href: 'https://docs.NFT.top/tokenomics/cake',
       },
       {
         label: '—',
@@ -40,15 +40,15 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t('Customer Support'),
-        href: 'https://docs.goswap.top/contact-us/customer-support',
+        href: 'https://docs.NFT.top/contact-us/customer-support',
       },
       {
         label: t('Troubleshooting'),
-        href: 'https://docs.goswap.top/help/troubleshooting',
+        href: 'https://docs.NFT.top/help/troubleshooting',
       },
       {
         label: t('Guides'),
-        href: 'https://docs.goswap.top/get-started',
+        href: 'https://docs.NFT.top/get-started',
       },
     ],
   },
@@ -61,19 +61,19 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
       },
       {
         label: t('Documentation'),
-        href: 'https://docs.goswap.top',
+        href: 'https://docs.NFT.top',
       },
       {
         label: t('Bug Bounty'),
-        href: 'https://docs.goswap.top/code/bug-bounty',
+        href: 'https://docs.NFT.top/code/bug-bounty',
       },
       {
         label: t('Audits'),
-        href: 'https://docs.goswap.top/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited',
+        href: 'https://docs.NFT.top/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited',
       },
       {
         label: t('Careers'),
-        href: 'https://docs.goswap.top/hiring/become-a-chef',
+        href: 'https://docs.NFT.top/hiring/become-a-chef',
       },
     ],
   },

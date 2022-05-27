@@ -38,7 +38,7 @@ const SaleCard: React.FC<HotCollectionCardProps> = (
     }) => {
     const renderBody = () => (
         <CardBody p="8px">
-            <StyledImage src={imgSrc} height={125} width={375} />
+            <StyledImage src={imgSrc} height={250} width={375} />
             {children}
         </CardBody>)
 

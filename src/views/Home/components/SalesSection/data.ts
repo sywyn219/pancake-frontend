@@ -11,7 +11,7 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.goswap.top/',
+    to: 'https://docs.NFT.top/',
     text: t('Learn'),
     external: true,
   },
@@ -35,7 +35,7 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.goswap.top/products/yield-farming',
+    to: 'https://docs.NFT.top/products/yield-farming',
     text: t('Learn'),
     external: true,
   },
@@ -61,7 +61,7 @@ export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.goswap.top/tokenomics/cake',
+    to: 'https://docs.NFT.top/tokenomics/cake',
     text: t('Learn'),
     external: true,
   },

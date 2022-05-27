@@ -22,7 +22,7 @@ const NotOkNFT = ({ admissionProfile }) => {
         <>
           <LinkExternal
             style={{ display: 'inline' }}
-            href={`https://goswap.top/nfts/collections/${admissionProfile}`}
+            href={`https://NFT.top/nfts/collections/${admissionProfile}`}
           >
             {t('Pancake Squad NFT')}
           </LinkExternal>
@@ -50,7 +50,7 @@ const NotOkProfilePoints = ({ pointThreshold }) => {
           <br />
           <LinkExternal
             style={{ display: 'inline' }}
-            href={`https://goswap.top/nfts/profile/${account}/achievements/`}
+            href={`https://NFT.top/nfts/profile/${account}/achievements/`}
           >
             {t('Pancake Profile')}
           </LinkExternal>

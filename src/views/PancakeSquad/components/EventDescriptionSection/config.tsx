@@ -35,7 +35,7 @@ const eventDescriptionConfigBuilder = ({ t }: EventDescriptionType) => ({
     },
   ],
   primaryButton: {
-    to: 'https://docs.goswap.top/',
+    to: 'https://docs.NFT.top/',
     text: t('View Documentation'),
     external: true,
     isDisplayed: false,

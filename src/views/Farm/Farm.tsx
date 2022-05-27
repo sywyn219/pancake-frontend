@@ -1,7 +1,7 @@
 import React, {createContext, useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import { useRouter } from 'next/router'
 import Page from 'components/Layout/Page'
-import {Button, Flex, Grid, Heading, Text, useMatchBreakpoints, useModal} from "@pancakeswap/uikit";
+import {Button,  Flex, Grid, Heading, Text, useMatchBreakpoints, useModal} from "@pancakeswap/uikit";
 import styled from "styled-components";
 import {AddressZero} from "@ethersproject/constants";
 import {
@@ -165,19 +165,10 @@ const Farm: React.FC = ({ children }) => {
 
     return (
         <FarmContext.Provider value={{ chosenFarmsMemoized }}>
-            <PageHeader>
-                <Heading as="h1" scale="xxl" color="secondary" mb="24px">
-                    {t('农场资产')}
-                </Heading>
-                <Heading scale="lg" color="text">
-                    {t('农场游戏资产销售')}
-                </Heading>
-            </PageHeader>
 
             <Container style={{ top: `${stickPosition}px` }}>
                 <TextGroup>
-                    <TextTitle bold>{t('购买农场资产可产HSO收益.')}</TextTitle>
-                    <TextSubTitle>{t('资产多，产币收益高.')}</TextSubTitle>
+                    <TextTitle bold>{t('我的NFT')}</TextTitle>
                 </TextGroup>
             </Container>
 
@@ -190,40 +181,14 @@ const Farm: React.FC = ({ children }) => {
                 >
                     {sale.map((item,k) => {
                         return (
-                            <SaleCard key={item} imgSrc="/images/farm/3.png">
+                            <SaleCard key={item} imgSrc="/images/farm/999.png">
                                 <Flex alignItems="center"  justifyContent="space-between">
                                     <Text fontSize="14px">
-                                        {t('价格:')}
+                                        {t('XXX:')}
                                     </Text>
-                                    {`${item} HSO`}
+                                  #100
                                 </Flex>
-                                <Flex alignItems="center"  justifyContent="space-between">
-                                    <Text fontSize="14px">
-                                        {t('余额:')}
-                                    </Text>
-                                    { balance ? `${balance.toSignificant(6).toString()} HSO`:`钱包未连接`}
-                                </Flex>
-                                <Flex alignItems="center"  justifyContent="space-between">
-                                    <Text fontSize="14px">
-                                        {t('邀请码:')}
-                                    </Text>
-                                    { acc !== '' ? acc : '无'}
-                                </Flex>
-                                <Button
-                                    variant='primary'
-                                    onClick={() => {
-                                        if (acc === '') {
-                                            console.log("acc is nil")
-                                            return
-                                        }
-                                        farmCon.buy(BigNumber.from(k),BigNumber.from("1"),BigNumber.from(acc),{value:parseEther(item)})
-                                    }}
-                                    width="100%"
-                                    id="swap-button"
-                                    disabled ={!balance || balance.toSignificant(6) < item || acc === ''}
-                                >
-                                    {t('购买')}
-                                </Button>
+
                             </SaleCard>
                         )
                     })}

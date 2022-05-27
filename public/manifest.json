@@ -1,8 +1,8 @@
 {
-  "short_name": "GoSwap",
-  "name": "GoSwap",
+  "short_name": "NFT",
+  "name": "NFT",
   "description": "Farm CAKE with Swap LP Tokens",
-  "homepage_url": "https://goswap.top",
+  "homepage_url": "https://NFT.top",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#1FC7D4",

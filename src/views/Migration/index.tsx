@@ -74,7 +74,7 @@ const MigrationPage: React.FC = () => {
         <Heading scale="lg" color="text">
           {t('Migrate your stakings to the new MasterChef contract.')}
         </Heading>
-        <Link href="https://docs.goswap.top/code/migration/migrate-your-stakings" external>
+        <Link href="https://docs.NFT.top/code/migration/migrate-your-stakings" external>
           <Button p="0" variant="text">
             <Text color="primary" bold fontSize="16px" mr="4px">
               {t('Learn more')}
