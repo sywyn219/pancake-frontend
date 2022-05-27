@@ -61,23 +61,24 @@ const config: (t: ContextApi['t'], languageCode?: string) => ConfigMenuItemsType
     ],
   },
   {
-    label: t('Win'),
-    href: '/prediction',
+    label: t('代理'),
+    href: '/proxy',
     icon: TrophyIcon,
     fillIcon: TrophyFillIcon,
+    showItemsOnMobile: false,
     items: [
-      {
-        label: t('Trading Competition'),
-        href: '/competition',
-      },
-      {
-        label: t('Prediction (BETA)'),
-        href: '/prediction',
-      },
-      {
-        label: t('Lottery'),
-        href: '/lottery',
-      },
+      // {
+      //   label: t('Trading Competition'),
+      //   href: '/competition',
+      // },
+      // {
+      //   label: t('Prediction (BETA)'),
+      //   href: '/prediction',
+      // },
+      // {
+      //   label: t('Lottery'),
+      //   href: '/lottery',
+      // },
     ],
   },
   {
