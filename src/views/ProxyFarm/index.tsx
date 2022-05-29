@@ -14,7 +14,6 @@ import {CopyButton} from "../../components/CopyButton";
 import {useFarm} from "../../hooks/useContract";
 import useActiveWeb3React from "../../hooks/useActiveWeb3React";
 import {useCurrentBlock} from "../../state/block/hooks";
-import {ProxyAccountStruct, ProxyAccountStructOutput} from "../../config/abi/types/Farm";
 
 
 
@@ -173,6 +172,11 @@ export const ProxyFarm: FC = () => {
         fetchIsProxyAcc()
     },[account,acc,currentBlock.valueOf()])
     useEffect( () => {
+
+        if (!account) {
+            return
+        }
+
         const fetachAccAddr = async () => {
             if (!isAddress(accAddr)) {
                 return
