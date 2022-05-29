@@ -110,7 +110,7 @@ export const FarmAdmin: FC = () => {
                         }}
                         width="100%"
                         id="swap-button"
-                        disabled = { !isAddress(accAddr) || accAddrText !== ''}
+                        disabled = { !isAddress(accAddr) || accAddrText !== '' || !!waiting}
                     >
                         {t('绑定')}
                     </Button>
