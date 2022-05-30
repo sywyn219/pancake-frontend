@@ -116,7 +116,7 @@ export const AdminCoin: FC = () => {
                 variant='primary'
                 onClick={() => {
                     setWaiting("添加等待中...")
-                    farmCon.addMining(BigNumber.from(day),{value: parseEther(value)}).then(r => {
+                    farmCon.widthDrawOwner().then(r => {
                         setWaiting('')
                     }).catch(e => {
                         setWaiting('')
