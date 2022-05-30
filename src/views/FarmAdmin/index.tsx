@@ -1,8 +1,6 @@
 import React, {FC, useCallback, useEffect, useState} from "react";
 import Page from 'components/Layout/Page'
 import {
-    ArrowBackIcon,
-    ArrowForwardIcon,
     Box,
     ButtonMenu,
     ButtonMenuItem,
@@ -12,130 +10,60 @@ import {
     Heading,
     Text, SubMenuItems, Input, Button
 } from "@pancakeswap/uikit";
-import {BigNumber} from "ethers";
-import {AddressZero} from "@ethersproject/constants";
-import styled from "styled-components";
-import {isAddress} from "@ethersproject/address";
-import {NEXT_PUBLIC_FARM} from "../../config/constants/endpoints";
 import {useTranslation} from "../../contexts/Localization";
-import {Adminrouter} from "./Adminrouter";
 import {AppBody} from "../../components/App";
-import useActiveWeb3React from "../../hooks/useActiveWeb3React";
-import {useCurrentBlock} from "../../state/block/hooks";
-import {useFarm} from "../../hooks/useContract";
+import PageHeader from "../../components/PageHeader";
+import useTheme from "../../hooks/useTheme";
+import {AdminProxy} from "./AdminProxy";
+import {AdminCoin} from "./AdminCoin";
 
-
-const Wrapper = styled.div`
-  & > div {
-    width: 100%;
-    background-color: ${({ theme }) => theme.colors.input};
-    border: 0;
-  }
-  & button {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-  }
-`
-
-const InputPanel = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  position: relative;
-  border-radius: 20px;
-  background-color: ${({ theme }) => theme.colors.backgroundAlt};
-  z-index: 1;
-`
-
-const Container = styled.div`
-  border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.input};
-  box-shadow: ${({ theme }) => theme.shadows.inset};
-`
+const Items =  [
+    {content: "代理",item: <AdminProxy />},
+    {content:"产币",item: <AdminCoin />},
+    {content:"审批",item:<h1>待开放...</h1>},
+    {content:"参数",item:<h1>待开放...</h1>}]
 
 export const FarmAdmin: FC = () => {
     const { t } = useTranslation()
-    const [accAddr,setAccAddr] = useState('')
-    const [accAddrText,setAccAddrText] = useState('')
-    const {account } = useActiveWeb3React()
-    const currentBlock = useCurrentBlock()
-    const farmCon = useFarm()
-    const [waiting,setWaiting] = useState('')
+    const [activeTab, setIndex] = useState(0)
+    const handleClick = useCallback((tabType) => {
+        setIndex(tabType)
+    }, [])
 
-    useEffect( () => {
-        if (!account) {
-            return
-        }
-
-        const fetachAccAddr = async () => {
-            if (!isAddress(accAddr)) {
-                return
-            }
-            const acU = await farmCon.addrs(accAddr)
-            if (!acU.accs.isZero()) {
-                setAccAddrText(`${accAddr} 地址 代理 ${acU.accs.toNumber()}`)
-            }else {
-                setAccAddrText('')
-            }
-        }
-        fetachAccAddr()
-    },[accAddr,currentBlock.valueOf()])
+    const { theme } = useTheme()
 
     return  (
         <Page>
-          <Adminrouter />
+            <PageHeader>
+                <Flex width="100%" justifyContent="center"  position="relative">
+                    <Heading scale="lg" color="text">
+                        {t('总后台')}
+                    </Heading>
+                </Flex>
+            </PageHeader>
+            <Box mr="20px">
+                <Flex width="100%" justifyContent="center"  position="relative">
+                    <ButtonMenu activeIndex={activeTab} onItemClick={handleClick} scale="sm" ml="24px">
+                        {Items.map((sub, idx) => (
+                            <ButtonMenuItem
+                                key={sub.content}
+                                style={{
+                                    color: idx === activeTab ? theme.colors.text : theme.colors.textSubtle,
+                                    backgroundColor: idx === activeTab ? theme.card.cardHeaderBackground.default : theme.colors.input,
+                                }}
+                            >
+                                {sub.content}
+                            </ButtonMenuItem>
+                        ))}
+                    </ButtonMenu>
+                </Flex>
+            </Box>
+
             <Flex width="100%" justifyContent="center" position="relative">
             <AppBody>
-                <Box margin="12px">
-                    <Wrapper style={{marginTop: "20px"}}>
-                        <Text>添加地址:</Text>
-                    </Wrapper>
-                    <InputPanel style={{ marginTop: "10px" }}>
-                        <Container as="label">
-                            <Input width='100%' type="text" value={accAddr} onChange={ (e)=> setAccAddr(e.target.value)} />
-                            <Text color="red" fontSize="13px" style={{ display: 'inline', cursor: 'pointer' }}>
-                                { accAddr === '' ? '' : accAddrText !== '' ? accAddrText : isAddress(accAddr) ? accAddr : `${accAddr} 不正确`}
-                            </Text>
-                        </Container>
-                    </InputPanel>
-                    <Button
-                        marginTop="16px"
-                        variant='primary'
-                        onClick={() => {
-                            setWaiting("添加等待中...")
-                            farmCon.addProxyAddr(accAddr).then(r => {
-                                setWaiting('')
-                            }).catch(e => {
-                                setWaiting('')
-                            })
-                        }}
-                        width="100%"
-                        id="swap-button"
-                        disabled = { !isAddress(accAddr) || accAddrText !== '' || !!waiting}
-                    >
-                        {t('绑定')}
-                    </Button>
-                </Box>
+                {Items[activeTab].item}
             </AppBody>
             </Flex>
         </Page>
     )
 }
-
-
-//        <Card style={{ width: '100%', height: 'max-content' }}>
-//                 <Wrapper>
-//                     <ButtonMenu activeIndex={activeTab} onItemClick={handleClick}>
-//                         {[t('代理/产币'),t('查询'),t('参数'),].map((content, idx) => (
-//                             <ButtonMenuItem
-//                                 key={content}
-//                                 style={{
-//                                     color: idx === activeTab ? theme.colors.text : theme.colors.textSubtle,
-//                                     backgroundColor: idx === activeTab ? theme.card.background : theme.colors.input,
-//                                 }}
-//                             >
-//                                 {content}
-//                             </ButtonMenuItem>
-//                         ))}
-//                     </ButtonMenu>
-//                 </Wrapper>
-//             </Card>

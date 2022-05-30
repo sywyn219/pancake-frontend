@@ -1,44 +1,12 @@
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {Box, Button, Flex, Heading, Input, Text} from "@pancakeswap/uikit";
 import {isAddress} from "@ethersproject/address";
-import styled from "styled-components";
-import PageHeader from "../../../components/PageHeader";
-import {Adminrouter} from "../Adminrouter";
-import Page from "../../../components/Layout/Page";
-import {AppBody} from "../../../components/App";
+import {BigNumber} from "ethers";
+import {formatEther, parseEther} from "@ethersproject/units";
 import {useTranslation} from "../../../contexts/Localization";
 import {useFarm} from "../../../hooks/useContract";
-import {BigNumber} from "ethers";
-import {parseEther} from "@ethersproject/units";
-
-
-
-const Wrapper = styled.div`
-  & > div {
-    width: 100%;
-    background-color: ${({ theme }) => theme.colors.input};
-    border: 0;
-  }
-  & button {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-  }
-`
-
-const InputPanel = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  position: relative;
-  border-radius: 20px;
-  background-color: ${({ theme }) => theme.colors.backgroundAlt};
-  z-index: 1;
-`
-
-const Container = styled.div`
-  border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.input};
-  box-shadow: ${({ theme }) => theme.shadows.inset};
-`
+import {InputPanel,Wrapper,Container} from "../styleAdmin";
+import {useCurrentBlock} from "../../../state/block/hooks";
 
 
 export const AdminCoin: FC = () => {
@@ -47,14 +15,23 @@ export const AdminCoin: FC = () => {
     const [dayText,setDayText] = useState('');
     const [waiting,setWaiting] = useState('')
     const [value,setValue] = useState('')
+    const [outValue,setOutValue] = useState('')
+    const [outValueText,setOutValueText] = useState('')
     const [valueText,setValueText] = useState('');
     const farmCon = useFarm()
+
+    const [balance,setBalance] = useState('');
+    const currentBlock = useCurrentBlock()
+    useEffect(() => {
+        const fetchBa = async () => {
+            const ba = await farmCon.getBalance();
+            setBalance(formatEther(ba))
+        }
+        fetchBa()
+    },[currentBlock.valueOf()])
+
     return  (
-        <Page>
-            <Adminrouter />
-            <Flex width="100%" justifyContent="center" position="relative">
-                <AppBody>
-                    <Box margin="12px">
+        <Box margin="12px">
                         <Wrapper style={{marginTop: "20px"}}>
                             <Text>释放天数:</Text>
                         </Wrapper>
@@ -106,13 +83,57 @@ export const AdminCoin: FC = () => {
                             }}
                             width="100%"
                             id="swap-button"
-                            disabled = { !!waiting || dayText !== '' || valueText !== ''}
+                            disabled = { !!waiting || dayText !== '' || valueText !== '' || value === '' || day === ''}
                         >
-                            {t('绑定')}
+                            {t('存币')}
                         </Button>
-                    </Box>
-                </AppBody>
+                    <Flex alignItems="center"  justifyContent="space-between" marginTop="24px">
+                        <Text>合约余额:</Text>
+                        <Text>{`${balance} HSO`}</Text>
+                    </Flex>
+
+                    <Wrapper style={{marginTop: "20px"}}>
+                        <Text>提币:</Text>
+                    </Wrapper>
+                    <InputPanel style={{ marginTop: "10px" }}>
+                         <Container as="label">
+                        <Input width='100%' type="text" value={outValue} onChange={ (e)=> {
+                            setOutValue(e.target.value)
+                         if (Number.isNaN( Number(e.target.value) ) || Number(e.target.value) < 1) {
+                            setOutValueText(`${e.target.value} 金额需大于等于1`)
+                            }else {
+                             setOutValueText('')
+                            }
+                        }} />
+                    <Text color="red" fontSize="13px" style={{ display: 'inline', cursor: 'pointer' }}>
+                        { value === '' ? '' : outValueText !== '' ? outValueText : '' }
+                    </Text>
+                    </Container>
+                </InputPanel>
+
+            <Button
+                marginTop="16px"
+                variant='primary'
+                onClick={() => {
+                    setWaiting("添加等待中...")
+                    farmCon.addMining(BigNumber.from(day),{value: parseEther(value)}).then(r => {
+                        setWaiting('')
+                    }).catch(e => {
+                        setWaiting('')
+                    })
+                }}
+                width="100%"
+                id="swap-button"
+                disabled = { !!waiting || outValueText !== '' || outValue === ''}
+            >
+                {t('提币')}
+            </Button>
+            <Flex width="100%" justifyContent="center"  position="relative" marginTop="24px">
+                <Text fontSize="16px">
+                    {t('存币记录')}
+                </Text>
             </Flex>
-        </Page>
+            <Text>....待开放</Text>
+                    </Box>
       )
 }
