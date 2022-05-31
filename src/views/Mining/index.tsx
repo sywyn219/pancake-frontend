@@ -50,7 +50,7 @@ export const MiningPageLayout: FC = ({ children }) => {
                 <PageHeader>
                     <Flex width="100%" justifyContent="center"  position="relative">
                     <Heading scale="lg" color="text">
-                        {t('农场资产 挖矿产币中')}
+                        {t('农场资产 pending')}
                     </Heading>
                     </Flex>
                 </PageHeader>

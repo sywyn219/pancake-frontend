@@ -55,7 +55,7 @@ const config: (t: ContextApi['t'], languageCode?: string) => ConfigMenuItemsType
         href: '/farm',
       },
       {
-        label: t('挖矿'),
+        label: t('生产'),
         href: '/mining',
       },
     ],
