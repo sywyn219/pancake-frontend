@@ -26,6 +26,25 @@
       {
         "indexed": true,
         "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "Buy",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
         "name": "previousOwner",
         "type": "address"
       },
@@ -38,6 +57,57 @@
     ],
     "name": "OwnershipTransferred",
     "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "Received",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "WithdrawHSO",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "MING_BONUS_MULTIPLIER",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
     "inputs": [
@@ -230,25 +300,6 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "addr",
-        "type": "address"
-      }
-    ],
-    "name": "calcMiningAmount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "dayNums",
     "outputs": [
@@ -334,30 +385,24 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "getMining",
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_from",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_to",
+        "type": "uint256"
+      }
+    ],
+    "name": "getMultiplier",
     "outputs": [
       {
-        "components": [
-          {
-            "internalType": "uint256",
-            "name": "blockAmount",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "blockStart",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "blockEnd",
-            "type": "uint256"
-          }
-        ],
-        "internalType": "struct Farm.Mining[]",
+        "internalType": "uint256",
         "name": "",
-        "type": "tuple[]"
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -423,6 +468,121 @@
         "internalType": "uint256[]",
         "name": "",
         "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getStatus",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "miningLastRewardBlock",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "miningAccHSOPerShare",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "miningTotalAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "miningRemainingAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "miningRewardPerBlock",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "miningBlockEnd",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "widthAddr",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "pairHSO",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "balance",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "usersLen",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "userAddrsLen",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ratePNC",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "level0",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "levelRate0",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "level1",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "levelRate1",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "level2",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "levelRate2",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "level3",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "levelRate3",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Farm.Status",
+        "name": "",
+        "type": "tuple"
       }
     ],
     "stateMutability": "view",
@@ -592,28 +752,77 @@
     "type": "function"
   },
   {
-    "inputs": [
+    "inputs": [],
+    "name": "miningAccHSOPerShare",
+    "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
       }
     ],
-    "name": "minings",
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "miningBlockEnd",
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "blockAmount",
+        "name": "",
         "type": "uint256"
-      },
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "miningLastRewardBlock",
+    "outputs": [
       {
         "internalType": "uint256",
-        "name": "blockStart",
+        "name": "",
         "type": "uint256"
-      },
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "miningRemainingAmount",
+    "outputs": [
       {
         "internalType": "uint256",
-        "name": "blockEnd",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "miningRewardPerBlock",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "miningTotalAmount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
         "type": "uint256"
       }
     ],
@@ -756,6 +965,25 @@
         "internalType": "contract IPancakePair",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr",
+        "type": "address"
+      }
+    ],
+    "name": "pendingReward",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -933,19 +1161,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "totalAmount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "address",
@@ -954,6 +1169,44 @@
       }
     ],
     "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "multiplierNumber",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateMultiplier",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "updatePool",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "inAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateUserAmount",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -998,7 +1251,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "startBlock",
+        "name": "rewardDebt",
         "type": "uint256"
       }
     ],
@@ -1021,7 +1274,13 @@
   {
     "inputs": [],
     "name": "widthDrawHSO",
-    "outputs": [],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
@@ -1079,5 +1338,9 @@
     ],
     "stateMutability": "view",
     "type": "function"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "receive"
   }
 ]

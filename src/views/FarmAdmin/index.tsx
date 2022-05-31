@@ -18,8 +18,8 @@ import {AdminProxy} from "./AdminProxy";
 import {AdminCoin} from "./AdminCoin";
 
 const Items =  [
-    {content: "代理",item: <AdminProxy />},
     {content:"产币",item: <AdminCoin />},
+    {content: "代理",item: <AdminProxy />},
     {content:"审批",item:<h1>待开放...</h1>},
     {content:"参数",item:<h1>待开放...</h1>}]
 

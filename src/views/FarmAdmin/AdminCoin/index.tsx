@@ -15,24 +15,101 @@ export const AdminCoin: FC = () => {
     const [dayText,setDayText] = useState('');
     const [waiting,setWaiting] = useState('')
     const [value,setValue] = useState('')
-    const [outValue,setOutValue] = useState('')
-    const [outValueText,setOutValueText] = useState('')
     const [valueText,setValueText] = useState('');
     const farmCon = useFarm()
 
-    const [balance,setBalance] = useState('');
-    const currentBlock = useCurrentBlock()
+    const currentBlock = useCurrentBlock();
+
+    const [status,setStauts] = useState<{
+        miningLastRewardBlock: BigNumber;
+        miningAccHSOPerShare: BigNumber;
+        miningTotalAmount: BigNumber;
+        miningRemainingAmount: BigNumber;
+        miningRewardPerBlock: BigNumber;
+        miningBlockEnd: BigNumber;
+        widthAddr: string;
+        pairHSO: string;
+        balance: BigNumber;
+        usersLen: BigNumber;
+        userAddrsLen: BigNumber;
+        ratePNC: BigNumber;
+        level0: BigNumber;
+        levelRate0: BigNumber;
+        level1: BigNumber;
+        levelRate1: BigNumber;
+        level2: BigNumber;
+        levelRate2: BigNumber;
+        level3: BigNumber;
+        levelRate3: BigNumber;
+    }>({
+        miningLastRewardBlock: BigNumber.from(0),
+        miningAccHSOPerShare: BigNumber.from(0),
+        miningTotalAmount: BigNumber.from(0),
+        miningRemainingAmount: BigNumber.from(0),
+        miningRewardPerBlock: BigNumber.from(0),
+        miningBlockEnd: BigNumber.from(0),
+        widthAddr: '',
+        pairHSO: '',
+        balance: BigNumber.from(0),
+        usersLen: BigNumber.from(0),
+        userAddrsLen: BigNumber.from(0),
+        ratePNC: BigNumber.from(0),
+        level0: BigNumber.from(0),
+        levelRate0: BigNumber.from(0),
+        level1: BigNumber.from(0),
+        levelRate1: BigNumber.from(0),
+        level2: BigNumber.from(0),
+        levelRate2: BigNumber.from(0),
+        level3: BigNumber.from(0),
+        levelRate3: BigNumber.from(0)
+    });
     useEffect(() => {
-        const fetchBa = async () => {
-            const ba = await farmCon.getBalance();
-            setBalance(formatEther(ba))
+        const fetchStatus = async () => {
+            const sa = await farmCon.getStatus();
+            setStauts(sa);
         }
-        fetchBa()
+        fetchStatus();
     },[currentBlock.valueOf()])
 
     return  (
         <Box margin="12px">
-                        <Wrapper style={{marginTop: "20px"}}>
+            <Flex alignItems="center"  justifyContent="space-between" marginTop="24px">
+                <Text fontSize="14px">
+                    {t('最后结算块:')}
+                </Text>
+                {`${status.miningLastRewardBlock.toNumber()}`}
+            </Flex>
+            <Flex alignItems="center"  justifyContent="space-between" marginTop="24px">
+                <Text fontSize="14px">
+                    {t('奖励系数:')}
+                </Text>
+                {`${formatEther(status.miningAccHSOPerShare)} HSO`}
+            </Flex>
+            <Flex alignItems="center"  justifyContent="space-between" marginTop="24px">
+                <Text fontSize="14px">
+                    {t('总购买:')}
+                </Text>
+                {`${formatEther(status.miningTotalAmount)} HSO`}
+            </Flex>
+            <Flex alignItems="center"  justifyContent="space-between" marginTop="24px">
+                <Text fontSize="14px">
+                    {t('剩余总量:')}
+                </Text>
+                {`${formatEther(status.miningRemainingAmount)} HSO`}
+            </Flex>
+            <Flex alignItems="center"  justifyContent="space-between" marginTop="24px">
+                <Text fontSize="14px">
+                    {t('每个块奖励:')}
+                </Text>
+                {`${formatEther(status.miningRewardPerBlock)} HSO`}
+            </Flex>
+            <Flex alignItems="center"  justifyContent="space-between" marginTop="24px">
+                <Text fontSize="14px">
+                    {t('挖矿截至:')}
+                </Text>
+                {`${status.miningBlockEnd}`}
+            </Flex>
+                        <Wrapper style={{marginTop: "30px"}}>
                             <Text>释放天数:</Text>
                         </Wrapper>
                         <InputPanel style={{ marginTop: "10px" }}>
@@ -89,28 +166,8 @@ export const AdminCoin: FC = () => {
                         </Button>
                     <Flex alignItems="center"  justifyContent="space-between" marginTop="24px">
                         <Text>合约余额:</Text>
-                        <Text>{`${balance} HSO`}</Text>
+                        <Text>{`${formatEther(status.balance)} HSO`}</Text>
                     </Flex>
-
-                    <Wrapper style={{marginTop: "20px"}}>
-                        <Text>提币:</Text>
-                    </Wrapper>
-                    <InputPanel style={{ marginTop: "10px" }}>
-                         <Container as="label">
-                        <Input width='100%' type="text" value={outValue} onChange={ (e)=> {
-                            setOutValue(e.target.value)
-                         if (Number.isNaN( Number(e.target.value) ) || Number(e.target.value) < 1) {
-                            setOutValueText(`${e.target.value} 金额需大于等于1`)
-                            }else {
-                             setOutValueText('')
-                            }
-                        }} />
-                    <Text color="red" fontSize="13px" style={{ display: 'inline', cursor: 'pointer' }}>
-                        { value === '' ? '' : outValueText !== '' ? outValueText : '' }
-                    </Text>
-                    </Container>
-                </InputPanel>
-
             <Button
                 marginTop="16px"
                 variant='primary'
@@ -124,9 +181,9 @@ export const AdminCoin: FC = () => {
                 }}
                 width="100%"
                 id="swap-button"
-                disabled = { !!waiting || outValueText !== '' || outValue === ''}
+                disabled = { !!waiting}
             >
-                {t('提币')}
+                {t('紧急提币')}
             </Button>
             <Flex width="100%" justifyContent="center"  position="relative" marginTop="24px">
                 <Text fontSize="16px">

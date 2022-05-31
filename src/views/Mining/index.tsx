@@ -26,7 +26,7 @@ export const MiningPageLayout: FC = ({ children }) => {
             return
         }
         const fetchAmount = async () => {
-            const amt = await farmCon.calcMiningAmount(account);
+            const amt = await farmCon.pendingReward(account);
             setAmount(formatEther(amt));
         }
         fetchAmount().catch(e => console.log("get amt err-->",e))
@@ -40,7 +40,7 @@ export const MiningPageLayout: FC = ({ children }) => {
         }
         fetchAcc().catch(e => console.log("get acc is err-->",e))
 
-    },[account,currentBlock])
+    },[account,currentBlock.valueOf()])
 
     return (
         <>
