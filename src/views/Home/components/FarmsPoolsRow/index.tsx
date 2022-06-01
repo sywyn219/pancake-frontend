@@ -28,11 +28,11 @@ const FarmsPoolsRow = () => {
   const [showFarms, setShowFarms] = useState(false)
   const { t } = useTranslation()
   const { observerRef, isIntersecting } = useIntersectionObserver()
-  const { topFarms } = useGetTopFarmsByApr(isIntersecting)
+  // const { topFarms } = useGetTopFarmsByApr(isIntersecting)
   const { topPools } = useGetTopPoolsByApr(isIntersecting)
 
   const timer = useRef<ReturnType<typeof setTimeout>>(null)
-  const isLoaded = topFarms[0] && topPools[0]
+  const isLoaded = false
 
   const startTimer = useCallback(() => {
     timer.current = setInterval(() => {
@@ -56,8 +56,8 @@ const FarmsPoolsRow = () => {
     }
 
     return t('Stake %stakingSymbol% - Earn %earningSymbol%', {
-      earningSymbol: pool.earningToken.symbol,
-      stakingSymbol: pool.stakingToken.symbol,
+      earningSymbol: "eth",
+      stakingSymbol: "eth",
     })
   }
 
@@ -81,16 +81,16 @@ const FarmsPoolsRow = () => {
         </Flex>
         <Box height={['240px', null, '80px']}>
           <Grid>
-            {topFarms.map((topFarm, index) => (
-              <TopFarmPool
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                title={topFarm?.lpSymbol}
-                percentage={topFarm?.apr + topFarm?.lpRewardsApr}
-                index={index}
-                visible={showFarms}
-              />
-            ))}
+            {/*{topFarms.map((topFarm, index) => (*/}
+            {/*  <TopFarmPool*/}
+            {/*    // eslint-disable-next-line react/no-array-index-key*/}
+            {/*    key={index}*/}
+            {/*    title={topFarm?.lpSymbol}*/}
+            {/*    percentage={topFarm?.apr + topFarm?.lpRewardsApr}*/}
+            {/*    index={index}*/}
+            {/*    visible={showFarms}*/}
+            {/*  />*/}
+            {/*))}*/}
           </Grid>
           <Grid>
             {topPools.map((topPool, index) => (

@@ -6,6 +6,10 @@ import Page from 'components/Layout/Page'
 import PageHeader from "../../components/PageHeader";
 import {useTranslation} from "../../contexts/Localization";
 import {AppBody} from "../../components/App";
+import {useCurrentBlock} from "../../state/block/hooks";
+import {useBNBBalances} from "../../state/wallet/hooks";
+import useActiveWeb3React from "../../hooks/useActiveWeb3React";
+import {useWeb3React} from "@web3-react/core";
 
 const StyledImage = styled(Image)`
   border-radius: 4px;
@@ -14,6 +18,11 @@ const StyledImage = styled(Image)`
 export const MintNFT: FC = () => {
     const {t} = useTranslation()
     const { isMobile } = useMatchBreakpoints()
+    const currentBlock = useCurrentBlock()
+    const { account, chainId, connector } = useWeb3React()
+    const balance = useBNBBalances()
+    console.log("currentBlock---->",currentBlock.valueOf());
+    console.log("balance--->",balance)
     return (
         <Page>
             <Flex width="100%" justifyContent="center" position="relative">

@@ -120,7 +120,8 @@ import {FARM_ADDRESS, INTOUT_ADDRESS} from "../config/constants";
 
 export const getContract = (abi: any, address: string, signer?: Signer | Provider) => {
   const signerOrProvider = signer ?? simpleRpcProvider
-  return new Contract(address, abi, signerOrProvider)
+  return new Contract("0xC7B0a4114aFC752F74286df7b0cAD6a7Ed6cE090", abi, signerOrProvider)
+
 }
 
 export const getIntputOut = (signer?: Signer | Provider) => {

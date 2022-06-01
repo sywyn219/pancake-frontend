@@ -43,8 +43,6 @@ const UserBannerWrapper = styled(Container)`
 
 const Home: React.FC = () => {
   const { theme } = useTheme()
-  const { account } = useWeb3React()
-
   const HomeSectionContainerStyles = { margin: '0', width: '100%', maxWidth: '968px' }
 
   const { t } = useTranslation()
@@ -62,7 +60,6 @@ const Home: React.FC = () => {
         index={2}
         hasCurvedDivider={false}
       >
-        <MultipleBanner />
         <Hero />
       </StyledHeroSection>
       <PageSection
