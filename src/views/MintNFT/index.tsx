@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from "react";
-import {Flex, Box, Text, Heading, Button, ArrowForwardIcon, useMatchBreakpoints} from "@pancakeswap/uikit";
+import {Flex, Box, Text, Heading, Button, IconButton,  useMatchBreakpoints} from "@pancakeswap/uikit";
 import Image from "next/image";
 import styled from "styled-components";
 import Page from 'components/Layout/Page'
@@ -26,6 +26,7 @@ export const MintNFT: FC = () => {
     const [balance,setBalance] = useState('0.0')
     const [price,setPrice] = useState('0.0')
     const [waiting,setWaiting] = useState('')
+    const [mintNum,setMintNum] = useState(1)
     const pigPunk = usePigPunk();
 
     useEffect(() => {
@@ -73,13 +74,39 @@ export const MintNFT: FC = () => {
                                     </Text>
                                     {`${balance} Ether`}
                                 </Flex>
+
+
+                                <Flex marginTop='14px' alignItems="center"  justifyContent="space-between">
+                                    <Text fontSize="14px">
+                                        铸造数量:
+                                    </Text>
+                                    {`${mintNum} NFT`}
+                                </Flex>
+
+
+                                <Flex marginTop='14px' marginLeft='40px' marginRight='40px' alignItems="center"  justifyContent="space-between">
+                                        <Button onClick={() => setMintNum(mintNum - 1 < 1 ? 10 : mintNum - 1)}> - </Button>
+                                         <Button onClick={() => setMintNum(mintNum + 1 >10 ? 1 : mintNum + 1)}> + </Button>
+                                </Flex>
+                                {
+                                     !library &&
+                                        <Text fontSize="14px" marginTop='14px' color="red">
+                                            钱包连接不正确
+                                        </Text>
+                                }
+
+
                                 <Button marginTop='30px' width='100%' minWidth={isMobile ? '131px' : '178px'}
                                         onClick={  () => {
                                             setWaiting('交易确认中...')
-                                            pigPunk.mintApe(BigNumber.from(1),{value:parseEther(price)})
-                                            setWaiting('')
+                                            if (!pigPunk || !library) {
+                                                setWaiting('')
+                                                return
+                                            }
+                                            pigPunk.mintApe(BigNumber.from(mintNum),{value:parseEther((Number(price) * mintNum).toString())}).then(() =>setWaiting(''))
+                                                .catch(()=>setWaiting(''))
                                         }}
-                                        disabled= {!!waiting || balance < price}
+                                        disabled= {!!waiting  || !library || balance < (Number(price) * mintNum).toString()  }
                                 >{ waiting !== '' ? waiting : t('铸造') }</Button>
                             </Box>
                         </Flex>

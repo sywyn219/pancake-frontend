@@ -101,7 +101,6 @@ export const useFarm = () => {
 
 export const usePigPunk = () => {
   const { library, account } = useActiveWeb3React()
-  console.log("library-------->",library)
   return useMemo(
       () => library ? getPigPunk(getProviderOrSigner(library,account)) : null,
       [account,library]
