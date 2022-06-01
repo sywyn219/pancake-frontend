@@ -1,15 +1,19 @@
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {Flex, Box, Text, Heading, Button, ArrowForwardIcon, useMatchBreakpoints} from "@pancakeswap/uikit";
 import Image from "next/image";
 import styled from "styled-components";
 import Page from 'components/Layout/Page'
+import {BigNumber} from "@ethersproject/bignumber";
+import {formatEther, parseEther} from "@ethersproject/units";
 import PageHeader from "../../components/PageHeader";
 import {useTranslation} from "../../contexts/Localization";
 import {AppBody} from "../../components/App";
-import {useCurrentBlock} from "../../state/block/hooks";
-import {useBNBBalances} from "../../state/wallet/hooks";
 import useActiveWeb3React from "../../hooks/useActiveWeb3React";
-import {useWeb3React} from "@web3-react/core";
+import {usePigPunk} from "../../hooks/useContract";
+
+
+
+
 
 const StyledImage = styled(Image)`
   border-radius: 4px;
@@ -18,11 +22,28 @@ const StyledImage = styled(Image)`
 export const MintNFT: FC = () => {
     const {t} = useTranslation()
     const { isMobile } = useMatchBreakpoints()
-    const currentBlock = useCurrentBlock()
-    const { account, chainId, connector } = useWeb3React()
-    const balance = useBNBBalances()
-    console.log("currentBlock---->",currentBlock.valueOf());
-    console.log("balance--->",balance)
+    const {account,library } = useActiveWeb3React()
+    const [balance,setBalance] = useState('0.0')
+    const [price,setPrice] = useState('0.0')
+    const [waiting,setWaiting] = useState('')
+    const pigPunk = usePigPunk();
+
+    useEffect(() => {
+        if (!library) {
+            return
+        }
+        const fetachBalance = async  () => {
+           const ba = formatEther(await library.getBalance(account))
+            setBalance(ba)
+        }
+        fetachBalance().catch(e => console.log("fetachBalance--->>>",e))
+        const fetachPrice = async  () => {
+            const pe = formatEther(await  pigPunk.apePrice())
+            setPrice(pe)
+        }
+        fetachPrice().catch(e => console.log("fetachPrice--->>>",e))
+
+    },[account,library])
     return (
         <Page>
             <Flex width="100%" justifyContent="center" position="relative">
@@ -39,13 +60,27 @@ export const MintNFT: FC = () => {
                         <Flex flexDirection="column">
                             <Box margin="12px">
                                 <StyledImage src="/images/farm/999.png" height={250} width={375} />
-                                <Flex alignItems="center"  justifyContent="space-between">
+                                <Flex marginTop='14px' alignItems="center"  justifyContent="space-between">
                                     <Text fontSize="14px">
-                                        {t('XXX:')}
+                                        {t('价格:')}
                                     </Text>
-                                    #100
+                                    {`${price} Ether`}
                                 </Flex>
-                                <Button width='100%' minWidth={isMobile ? '131px' : '178px'}>{t('铸造')}</Button>
+
+                                <Flex marginTop='14px' alignItems="center"  justifyContent="space-between">
+                                    <Text fontSize="14px">
+                                        {t('余额:')}
+                                    </Text>
+                                    {`${balance} Ether`}
+                                </Flex>
+                                <Button marginTop='30px' width='100%' minWidth={isMobile ? '131px' : '178px'}
+                                        onClick={  () => {
+                                            setWaiting('交易确认中...')
+                                            pigPunk.mintApe(BigNumber.from(1),{value:parseEther(price)})
+                                            setWaiting('')
+                                        }}
+                                        disabled= {!!waiting || balance < price}
+                                >{ waiting !== '' ? waiting : t('铸造') }</Button>
                             </Box>
                         </Flex>
 

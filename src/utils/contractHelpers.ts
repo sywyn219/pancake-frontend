@@ -76,6 +76,7 @@ import pancakeSquadAbi from 'config/abi/pancakeSquad.json'
 import erc721CollectionAbi from 'config/abi/erc721collection.json'
 import intoutabi from 'config/abi/inputout.json'
 import farmabi from 'config/abi/farm.json'
+import pigPunkAbi from 'config/abi/PigPunk.json'
 
 // Types
 import type {
@@ -113,14 +114,14 @@ import type {
   PointCenterIfo,
   CakeVaultV2,
   TradingCompetitionMobox,
-  Inputout, Farm,
+  Inputout, Farm,PigPunk,
 } from 'config/abi/types'
 
-import {FARM_ADDRESS, INTOUT_ADDRESS} from "../config/constants";
+import {FARM_ADDRESS, INTOUT_ADDRESS, PIGPUNK_ADDRESS} from "../config/constants";
 
 export const getContract = (abi: any, address: string, signer?: Signer | Provider) => {
   const signerOrProvider = signer ?? simpleRpcProvider
-  return new Contract("0xC7B0a4114aFC752F74286df7b0cAD6a7Ed6cE090", abi, signerOrProvider)
+  return new Contract(address, abi, signerOrProvider)
 
 }
 
@@ -131,6 +132,11 @@ export const getIntputOut = (signer?: Signer | Provider) => {
 export const getFarm =  (signer?: Signer | Provider) => {
   return getContract(farmabi, FARM_ADDRESS, signer) as Farm
 }
+
+export const getPigPunk =  (signer?: Signer | Provider) => {
+  return getContract(pigPunkAbi, PIGPUNK_ADDRESS, signer) as PigPunk
+}
+
 
 export const getBep20Contract = (address: string, signer?: Signer | Provider) => {
   return getContract(bep20Abi, address, signer) as Erc20

@@ -32,7 +32,7 @@ import {
   getNftSaleContract,
   getPancakeSquadContract,
   getErc721CollectionContract,
-  getBunnySpecialXmasContract, getIntputOut, getFarm,
+  getBunnySpecialXmasContract, getIntputOut, getFarm, getPigPunk,
 } from 'utils/contractHelpers'
 import { getMulticallAddress } from 'utils/addressHelpers'
 import {
@@ -95,6 +95,15 @@ export const useFarm = () => {
   const { library, account } = useActiveWeb3React()
   return useMemo(
       () => getFarm(getProviderOrSigner(library,account)),
+      [account,library]
+  )
+}
+
+export const usePigPunk = () => {
+  const { library, account } = useActiveWeb3React()
+  console.log("library-------->",library)
+  return useMemo(
+      () => library ? getPigPunk(getProviderOrSigner(library,account)) : null,
       [account,library]
   )
 }
