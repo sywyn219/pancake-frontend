@@ -144,11 +144,11 @@ const Farm: React.FC = ({ children }) => {
             const data = await pigPunk.getNFTListByOwner(account)
 
             const nftURL: {id:string,url:string}[] = await Promise.all(data.map( async (item) => {
-                const resp = await fetch(`http://ipfs.io/ipfs/${baseURL}${item.toNumber()}`)
+                const resp = await fetch(`https://ipfs.io/ipfs/${baseURL}${item.toNumber()}`)
                 const r = await resp.json()
-                console.log("r-----.",r)
                 const result = JSON.parse(JSON.stringify(r))
-                return {id:item.toString(),url:`http://14.116.138.103:8080/ipfs/${result.image}`}
+                console.log("result--->",result.image)
+                return {id:item.toString(),url:`https://ipfs.io/ipfs/${result.image}`}
             }))
 
             setSale(nftURL)
