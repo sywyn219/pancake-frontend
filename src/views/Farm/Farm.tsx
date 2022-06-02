@@ -98,8 +98,9 @@ const Farm: React.FC = ({ children }) => {
     const {account,library } = useActiveWeb3React()
     const pigPunk = usePigPunk();
 
-    const [sale,setSale] = useState([])
+    const [sale,setSale] = useState<{id:string,url:string}[]>([])
     const [baseURL,setBaseURL] = useState('')
+    const [openSea,setOpenSea] = useState('')
 
     useEffect(() => {
         const scrollEffect = () => {
@@ -142,16 +143,17 @@ const Farm: React.FC = ({ children }) => {
         const fetchNFT = async () => {
             const data = await pigPunk.getNFTListByOwner(account)
 
-            const nftURL: string[] = await Promise.all(data.map( async (item) => {
+            const nftURL: {id:string,url:string}[] = await Promise.all(data.map( async (item) => {
                 const resp = await fetch(`http://ipfs.io/ipfs/${baseURL}${item.toNumber()}`)
                 const r = await resp.json()
-                const result = new Map<string,unknown>(JSON.parse(r))
-                return `http://14.116.138.103:8080/ipfs/${result.get('image')}`
+                console.log("r-----.",r)
+                const result = JSON.parse(JSON.stringify(r))
+                return {id:item.toString(),url:`http://14.116.138.103:8080/ipfs/${result.image}`}
             }))
 
             setSale(nftURL)
         }
-        // fetchNFT()
+        fetchNFT()
     },[account,library,baseURL])
 
     return (
@@ -172,19 +174,20 @@ const Farm: React.FC = ({ children }) => {
                 >
                     {sale.map((item,k) => {
                         return (
-                            <SaleCard key={item} imgSrc={item}>
+                            <SaleCard key={item.url} imgSrc={item.url}>
                                 <Flex alignItems="center"  justifyContent="space-between">
                                     <Text fontSize="14px">
-                                        {t('XXX:')}
+                                        {t('NFT:')}
                                     </Text>
-                                  #100
+                                    {`PigPunk #${item.id}`}
                                 </Flex>
 
                                 <Flex alignItems="center"  justifyContent="space-between">
                                     <Text fontSize="14px">
                                         {t('OpenSea:')}
                                     </Text>
-                                    <Link rel="preconnect" href='https://opensea.io/'> {t('https://opensea.io/xxxx')} </Link>
+                                    <Link rel="preconnect" href={`https://testnets.opensea.io/assets/rinkeby/${pigPunk.address}/${item.id}`}>
+                                        {t(`https://opensea.io/.../${item.id}`)} </Link>
                                 </Flex>
 
                             </SaleCard>
