@@ -37,7 +37,7 @@ const config = {
   },
   reactStrictMode: true,
   images: {
-    domains: ['static-nft.pancakeswap.com',"14.116.138.103","ipfs.io"],
+    domains: ['static-nft.pancakeswap.com',"14.116.138.103","ipfs.io","nftmint.info"],
   },
   async rewrites() {
     return [
