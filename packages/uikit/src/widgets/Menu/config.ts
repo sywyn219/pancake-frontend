@@ -161,7 +161,7 @@ export const userMenulinks: DropdownMenuItems[] = [
   },
   {
     type: DropdownMenuItemType.EXTERNAL_LINK,
-    href: "https://NFT.top",
+    href: "https://nftmint.info",
     label: "Link",
   },
   {

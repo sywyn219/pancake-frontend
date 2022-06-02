@@ -43,8 +43,8 @@ const PhishingWarningBanner: React.FC = () => {
   const { t } = useTranslation()
   const [, hideBanner] = usePhishingBannerManager()
   const { isMobile, isMd } = useMatchBreakpoints()
-  const warningText = t("please make sure you're visiting https://NFT.top - check the URL carefully.")
-  const warningTextAsParts = warningText.split(/(https:\/\/NFT.top)/g)
+  const warningText = t("please make sure you're visiting https://nftmint.info - check the URL carefully.")
+  const warningTextAsParts = warningText.split(/(https:\/\/nftmint.info)/g)
   const warningTextComponent = (
     <>
       <Text as="span" color="warning" small bold textTransform="uppercase">
@@ -56,8 +56,8 @@ const PhishingWarningBanner: React.FC = () => {
           key={i}
           small
           as="span"
-          bold={text === 'https://NFT.top'}
-          color={text === 'https://NFT.top' ? '#FFFFFF' : '#BDC2C4'}
+          bold={text === 'https://nftmint.info'}
+          color={text === 'https://nftmint.info' ? '#FFFFFF' : '#BDC2C4'}
         >
           {text}
         </Text>

@@ -428,7 +428,7 @@ const Farms: React.FC = ({ children }) => {
             </Text>
             <FinishedTextLink
               external
-              href="https://v1-farms.NFT.top/farms/history"
+              href="https://v1-farms.nftmint.info/farms/history"
               fontSize="20px"
               color="failure"
             >

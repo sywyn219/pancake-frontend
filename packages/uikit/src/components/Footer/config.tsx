@@ -8,7 +8,7 @@ export const footerLinks: FooterLinkType[] = [
     items: [
       {
         label: "Contact",
-        href: "https://docs.NFT.top/contact-us",
+        href: "https://docs.nftmint.info/contact-us",
       },
       {
         label: "Blog",
@@ -16,11 +16,11 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Community",
-        href: "https://docs.NFT.top/contact-us/telegram",
+        href: "https://docs.nftmint.info/contact-us/telegram",
       },
       {
         label: "CAKE",
-        href: "https://docs.NFT.top/tokenomics/cake",
+        href: "https://docs.nftmint.info/tokenomics/cake",
       },
       {
         label: "—",
@@ -37,15 +37,15 @@ export const footerLinks: FooterLinkType[] = [
     items: [
       {
         label: "Customer",
-        href: "Support https://docs.NFT.top/contact-us/customer-support",
+        href: "Support https://docs.nftmint.info/contact-us/customer-support",
       },
       {
         label: "Troubleshooting",
-        href: "https://docs.NFT.top/help/troubleshooting",
+        href: "https://docs.nftmint.info/help/troubleshooting",
       },
       {
         label: "Guides",
-        href: "https://docs.NFT.top/get-started",
+        href: "https://docs.nftmint.info/get-started",
       },
     ],
   },
@@ -58,7 +58,7 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Documentation",
-        href: "https://docs.NFT.top",
+        href: "https://docs.nftmint.info",
       },
       {
         label: "Bug Bounty",
@@ -66,11 +66,11 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Audits",
-        href: "https://docs.NFT.top/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited",
+        href: "https://docs.nftmint.info/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited",
       },
       {
         label: "Careers",
-        href: "https://docs.NFT.top/hiring/become-a-chef",
+        href: "https://docs.nftmint.info/hiring/become-a-chef",
       },
     ],
   },

@@ -332,7 +332,7 @@ const HowToPlay: React.FC = () => {
                 {t(
                   'An average total of 35,000 CAKE from the treasury is added to lottery rounds over the course of a week. This CAKE is of course also included in rollovers! Read more in our guide to ',
                 )}
-                <InlineLink href="https://docs.NFT.top/tokenomics/cake/cake-tokenomics">
+                <InlineLink href="https://docs.nftmint.info/tokenomics/cake/cake-tokenomics">
                   {t('CAKE Tokenomics')}
                 </InlineLink>
               </Text>
@@ -352,7 +352,7 @@ const HowToPlay: React.FC = () => {
           </Heading>
           <Text>
             {t('Check our in-depth guide on')}{' '}
-            <InlineLink href="https://docs.NFT.top/products/lottery/lottery-guide">
+            <InlineLink href="https://docs.nftmint.info/products/lottery/lottery-guide">
               {t('how to play the PancakeSwap lottery!')}
             </InlineLink>
           </Text>

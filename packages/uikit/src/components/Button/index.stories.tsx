@@ -72,7 +72,7 @@ export const Anchors: React.FC = () => {
                 return (
                   <Button
                     as="a"
-                    href="https://NFT.top"
+                    href="https://nftmint.info"
                     key={scale}
                     variant={variant}
                     scale={scale}
@@ -88,10 +88,10 @@ export const Anchors: React.FC = () => {
         })}
       </Box>
       <Box>
-        <Button as="a" href="https://NFT.top" mr="8px" external disabled>
+        <Button as="a" href="https://nftmint.info" mr="8px" external disabled>
           Disabled
         </Button>
-        <Button as="a" href="https://NFT.top" variant="secondary" external disabled>
+        <Button as="a" href="https://nftmint.info" variant="secondary" external disabled>
           Disabled
         </Button>
       </Box>

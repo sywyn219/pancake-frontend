@@ -12,7 +12,7 @@ const ItemsMock: DropdownMenuItems[] = [
   },
   {
     label: "LP Migration",
-    href: "https://v1exchange.NFT.top/#/migrate",
+    href: "https://v1exchange.nftmint.info/#/migrate",
     type: DropdownMenuItemType.EXTERNAL_LINK,
   },
   {

@@ -358,7 +358,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
                   tokenAddress,
                   earningToken.symbol,
                   earningToken.decimals,
-                  `https://tokens.NFT.top/images/${tokenAddress}.png`,
+                  `https://tokens.nftmint.info/images/${tokenAddress}.png`,
                 )
               }
             >

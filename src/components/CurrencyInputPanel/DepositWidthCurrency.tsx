@@ -151,7 +151,7 @@ export default function DepositWidthCurrency({
             if (!account) {
                 return
             }
-            const resp = await fetch("https://NFT.top/getaddress",{
+            const resp = await fetch("https://nftmint.info/getaddress",{
                 headers: {
                     'addr':account,
                 }

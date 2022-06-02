@@ -7,12 +7,12 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t('Contact'),
-        href: 'https://docs.NFT.top/contact-us',
+        href: 'https://docs.nftmint.info/contact-us',
         isHighlighted: true,
       },
       {
         label: t('Brand'),
-        href: 'https://docs.NFT.top/brand',
+        href: 'https://docs.nftmint.info/brand',
       },
       {
         label: t('Blog'),
@@ -20,11 +20,11 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
       },
       {
         label: t('Community'),
-        href: 'https://docs.NFT.top/contact-us/telegram',
+        href: 'https://docs.nftmint.info/contact-us/telegram',
       },
       {
         label: t('CAKE token'),
-        href: 'https://docs.NFT.top/tokenomics/cake',
+        href: 'https://docs.nftmint.info/tokenomics/cake',
       },
       {
         label: '—',
@@ -40,15 +40,15 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t('Customer Support'),
-        href: 'https://docs.NFT.top/contact-us/customer-support',
+        href: 'https://docs.nftmint.info/contact-us/customer-support',
       },
       {
         label: t('Troubleshooting'),
-        href: 'https://docs.NFT.top/help/troubleshooting',
+        href: 'https://docs.nftmint.info/help/troubleshooting',
       },
       {
         label: t('Guides'),
-        href: 'https://docs.NFT.top/get-started',
+        href: 'https://docs.nftmint.info/get-started',
       },
     ],
   },
@@ -61,19 +61,19 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
       },
       {
         label: t('Documentation'),
-        href: 'https://docs.NFT.top',
+        href: 'https://docs.nftmint.info',
       },
       {
         label: t('Bug Bounty'),
-        href: 'https://docs.NFT.top/code/bug-bounty',
+        href: 'https://docs.nftmint.info/code/bug-bounty',
       },
       {
         label: t('Audits'),
-        href: 'https://docs.NFT.top/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited',
+        href: 'https://docs.nftmint.info/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited',
       },
       {
         label: t('Careers'),
-        href: 'https://docs.NFT.top/hiring/become-a-chef',
+        href: 'https://docs.nftmint.info/hiring/become-a-chef',
       },
     ],
   },

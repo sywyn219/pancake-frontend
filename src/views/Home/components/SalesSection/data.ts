@@ -35,7 +35,7 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.NFT.top/products/yield-farming',
+    to: 'https://docs.nftmint.info/products/yield-farming',
     text: t('Learn'),
     external: true,
   },

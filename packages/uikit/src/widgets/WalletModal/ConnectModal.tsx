@@ -90,7 +90,7 @@ const ConnectModal: React.FC<Props> = ({ login, onDismiss = () => null, displayC
           </Text>
           <Button
             as="a"
-            href="https://docs.NFT.top/get-started/connection-guide"
+            href="https://docs.nftmint.info/get-started/connection-guide"
             variant="subtle"
             width="100%"
             {...getExternalLinkProps()}

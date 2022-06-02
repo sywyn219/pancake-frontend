@@ -17,7 +17,7 @@ const connectors: Config[] = [
     icon: Metamask,
     connectorId: ConnectorNames.Injected,
     priority: 1,
-    href: "https://metamask.app.link/dapp/NFT.top/",
+    href: "https://metamask.app.link/dapp/nftmint.info/",
   },
   {
     title: "Binance Wallet",

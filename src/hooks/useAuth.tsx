@@ -45,7 +45,7 @@ const useAuth = () => {
                 t('Provider Error'),
                 <Box>
                   <Text>{t('No provider was found')}</Text>
-                  <LinkExternal href="https://docs.NFT.top/get-started/connection-guide">
+                  <LinkExternal href="https://docs.nftmint.info/get-started/connection-guide">
                     {t('Need help ?')}
                   </LinkExternal>
                 </Box>,

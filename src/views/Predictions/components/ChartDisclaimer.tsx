@@ -57,7 +57,7 @@ const ChartDisclaimer: React.FC<InjectedModalProps> = ({ onDismiss }) => {
           {t("Only the price from Chainlink (shown on the cards) determines the round's result.")}
         </Text>
         <LinkExternal
-          href="https://docs.NFT.top/products/prediction/prediction-faq#what-are-you-using-for-your-price-feed"
+          href="https://docs.nftmint.info/products/prediction/prediction-faq#what-are-you-using-for-your-price-feed"
           external
           mb="24px"
         >

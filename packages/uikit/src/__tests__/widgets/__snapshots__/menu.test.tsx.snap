@@ -1814,7 +1814,7 @@ exports[`renders correctly 1`] = `
           >
             <a
               class="c27"
-              href="https://NFT.top/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+              href="https://nftmint.info/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
               target="_blank"
             >
               <svg
@@ -2169,7 +2169,7 @@ exports[`renders correctly 1`] = `
                   <a
                     class="c60 c61"
                     color="#F4EEFF"
-                    href="https://docs.NFT.top/contact-us"
+                    href="https://docs.nftmint.info/contact-us"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2195,7 +2195,7 @@ exports[`renders correctly 1`] = `
                   <a
                     class="c60 c61"
                     color="#F4EEFF"
-                    href="https://docs.NFT.top/contact-us/telegram"
+                    href="https://docs.nftmint.info/contact-us/telegram"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2208,7 +2208,7 @@ exports[`renders correctly 1`] = `
                   <a
                     class="c60 c61"
                     color="#F4EEFF"
-                    href="https://docs.NFT.top/tokenomics/cake"
+                    href="https://docs.nftmint.info/tokenomics/cake"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2252,7 +2252,7 @@ exports[`renders correctly 1`] = `
                   <a
                     class="c60 c61"
                     color="#F4EEFF"
-                    href="Support https://docs.NFT.top/contact-us/customer-support"
+                    href="Support https://docs.nftmint.info/contact-us/customer-support"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2265,7 +2265,7 @@ exports[`renders correctly 1`] = `
                   <a
                     class="c60 c61"
                     color="#F4EEFF"
-                    href="https://docs.NFT.top/help/troubleshooting"
+                    href="https://docs.nftmint.info/help/troubleshooting"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2278,7 +2278,7 @@ exports[`renders correctly 1`] = `
                   <a
                     class="c60 c61"
                     color="#F4EEFF"
-                    href="https://docs.NFT.top/get-started"
+                    href="https://docs.nftmint.info/get-started"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2313,7 +2313,7 @@ exports[`renders correctly 1`] = `
                   <a
                     class="c60 c61"
                     color="#F4EEFF"
-                    href="https://docs.NFT.top"
+                    href="https://docs.nftmint.info"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2339,7 +2339,7 @@ exports[`renders correctly 1`] = `
                   <a
                     class="c60 c61"
                     color="#F4EEFF"
-                    href="https://docs.NFT.top/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited"
+                    href="https://docs.nftmint.info/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2352,7 +2352,7 @@ exports[`renders correctly 1`] = `
                   <a
                     class="c60 c61"
                     color="#F4EEFF"
-                    href="https://docs.NFT.top/hiring/become-a-chef"
+                    href="https://docs.nftmint.info/hiring/become-a-chef"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2989,7 +2989,7 @@ exports[`renders correctly 1`] = `
                 >
                   <a
                     class="c27"
-                    href="https://NFT.top/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+                    href="https://nftmint.info/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
                     target="_blank"
                   >
                     <svg
@@ -3052,7 +3052,7 @@ exports[`renders correctly 1`] = `
                 </div>
                 <a
                   class="c92"
-                  href="https://NFT.top/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+                  href="https://nftmint.info/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
                   scale="sm"
                   target="_blank"
                 >

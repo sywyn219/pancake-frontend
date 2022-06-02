@@ -35,7 +35,7 @@ const eventDescriptionConfigBuilder = ({ t }: EventDescriptionType) => ({
     },
   ],
   primaryButton: {
-    to: 'https://docs.NFT.top/',
+    to: 'https://docs.nftmint.info/',
     text: t('View Documentation'),
     external: true,
     isDisplayed: false,

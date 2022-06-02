@@ -33,7 +33,7 @@ const IfoContainer: React.FC<TypeProps> = ({ ifoSection, ifoSteps }) => {
       <Container>
         <IfoQuestions />
         <LinkExternal
-          href="https://docs.NFT.top/contact-us/business-partnerships#ifos-token-sales"
+          href="https://docs.nftmint.info/contact-us/business-partnerships#ifos-token-sales"
           mx="auto"
           mt="16px"
         >
