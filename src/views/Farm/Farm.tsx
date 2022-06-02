@@ -15,12 +15,13 @@ import {BigNumber} from "@ethersproject/bignumber";
 import {parseEther} from "@ethersproject/units";
 import PageHeader from "../../components/PageHeader";
 import {useTranslation} from "../../contexts/Localization";
-import {useFarm} from "../../hooks/useContract";
+import {useFarm, usePigPunk} from "../../hooks/useContract";
 import useActiveWeb3React from "../../hooks/useActiveWeb3React";
 import {formatBigNumber} from "../../utils/formatBalance";
 import SaleCard from "./SaleCard";
 import {useCurrencyBalance} from "../../state/wallet/hooks";
 import NextLink from "next/link";
+import {assignWith} from "lodash";
 
 
 
@@ -77,6 +78,7 @@ const Container = styled.div`
 `
 
 // {/*<Button minWidth={isMobile ? '131px' : '178px'}>{t('购买')}</Button>*/}
+//                //http://14.116.138.103:8080/ipfs/QmbBJbWeQdRsEtgoNCYYvRnQ4eDMbdWyHRhyKsPUyuBFbJ
 
 
 
@@ -91,11 +93,13 @@ const Farm: React.FC = ({ children }) => {
     }, [
     ])
     const refPrevOffset = useRef(typeof window === 'undefined' ? 0 : window.pageYOffset)
-    const router = useRouter()
-    const {account } = useActiveWeb3React()
-    const farmCon = useFarm()
+
+
+    const {account,library } = useActiveWeb3React()
+    const pigPunk = usePigPunk();
 
     const [sale,setSale] = useState([])
+    const [baseURL,setBaseURL] = useState('')
 
     useEffect(() => {
         const scrollEffect = () => {
@@ -120,49 +124,35 @@ const Farm: React.FC = ({ children }) => {
         return () => window.removeEventListener('scroll', scrollEffect)
     }, [isMobile])
 
-    const [acc,setAcc] = useState<string>('')
-
     useEffect( () => {
-        if (!account) {
+        if (!library || !pigPunk) {
             return
         }
-        const fetchData  = async () => {
-            const sales = await farmCon.getSale()
-            const salesArr = sales.map(item => formatBigNumber(item))
-            setSale(salesArr);
+        const fetchBaseURI = async () => {
+            const ipfsurl = await pigPunk.baseURI()
+            setBaseURL(ipfsurl.substring(7))
         }
-        fetchData().catch((e) => {
-            console.log("err---->",e)
-        })
+       fetchBaseURI()
+    },[account,library])
 
-        const fetchAcc = async () => {
-            setAcc('')
-            const refAcc = await farmCon.users(account);
-            if (refAcc.refAccount.isZero()) {
-                if (!router.query.acc) {
-                    return
-                }
-                const ac = router.query.acc as string
-                if (ac === '') {
-                    return
-                }
-                const addr  = await farmCon.accToAddr(BigNumber.from(ac))
-                if (addr !== AddressZero) {
-                    setAcc(ac)
-                }
-            }else {
-                const acs = refAcc.refAccount.toString()
-                setAcc(acs)
-            }
+    useEffect( () => {
+        if (!library || baseURL === '') {
+            return
         }
-        fetchAcc().catch(e => {
-            console.log("acc err-->",e)
-        })
+        const fetchNFT = async () => {
+            const data = await pigPunk.getNFTListByOwner(account)
 
-    },[account])
+            const nftURL: string[] = await Promise.all(data.map( async (item) => {
+                const resp = await fetch(`http://ipfs.io/ipfs/${baseURL}${item.toNumber()}`)
+                const r = await resp.json()
+                const result = new Map<string,unknown>(JSON.parse(r))
+                return `http://14.116.138.103:8080/ipfs/${result.get('image')}`
+            }))
 
-
-    const balance = useCurrencyBalance(account ?? undefined, Currency.ETHER)
+            setSale(nftURL)
+        }
+        // fetchNFT()
+    },[account,library,baseURL])
 
     return (
         <FarmContext.Provider value={{ chosenFarmsMemoized }}>
@@ -182,7 +172,7 @@ const Farm: React.FC = ({ children }) => {
                 >
                     {sale.map((item,k) => {
                         return (
-                            <SaleCard key={item} imgSrc="/images/farm/999.png">
+                            <SaleCard key={item} imgSrc={item}>
                                 <Flex alignItems="center"  justifyContent="space-between">
                                     <Text fontSize="14px">
                                         {t('XXX:')}
