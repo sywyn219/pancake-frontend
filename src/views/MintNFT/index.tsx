@@ -99,7 +99,7 @@ export const MintNFT: FC = () => {
                                 }
 
 
-                                <Button marginTop='30px' width='100%' minWidth={isMobile ? '131px' : '178px'}
+                                <Button marginBottom='60px' marginTop='30px' width='100%' minWidth={isMobile ? '131px' : '178px'}
                                         onClick={  () => {
                                             setWaiting('交易确认中...')
                                             if (!pigPunk || !library) {
