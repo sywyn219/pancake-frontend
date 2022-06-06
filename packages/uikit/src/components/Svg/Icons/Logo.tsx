@@ -4,7 +4,7 @@ import { SvgProps } from "../types";
 
 const Icon: React.FC<SvgProps> = (props) => {
   return (
-      <Svg  viewBox="0 0 1011 187" {...props}>
+      <Svg  width="90px" height="70px"  viewBox="0 0 1011 187" {...props}>
           <path d="M99.9,161.9H0V25.2h99.9v37.4H37.1v62.4h62.8V161.9z M199.2,50.1V25h-61.9v37.7H187v12.3L137.1,75v11.9h-25v75H224V50.1
 	H199.2z M186.6,124.7h-37.3v-12.5h37.3V124.7z M237,161.9V50.1h87.4v12h24.7v99.8h-37.5V87.7h-36.8v74.2H237z M436.7,0v50.1h-75.1
 	v112.1H474V0H436.7z M436.4,125.1h-37.2V87.7h37.2V125.1z M523.9,100.1v-50h-37.3v87.1h74.8v12.6h-62.8V187h74.9v-24.8h25v-112
