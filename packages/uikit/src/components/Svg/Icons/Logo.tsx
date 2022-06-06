@@ -12,6 +12,7 @@ const Icon: React.FC<SvgProps> = (props) => {
 	 M898.3,62.2V25.4h-86.7v24.1h-25.1v112.6h111.8V87.7h-37.2v37.2h-37.2V62.2H898.3z M1011,62V25.4h-74.7v24.5H911v61.9h62.1v13.4
 	H911v36.9h74.8v-12.4h25.2V74.9h-63V62H1011z" />
       </Svg>
+
     // <Svg viewBox="0 0 198 199" {...props}>
     //   <path
     //     fillRule="evenodd"

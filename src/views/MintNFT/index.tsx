@@ -60,7 +60,7 @@ export const MintNFT: FC = () => {
                     <AppBody>
                         <Flex flexDirection="column">
                             <Box margin="12px">
-                                <StyledImage src="/images/farm/999.png" height={250} width={375} />
+                                <StyledImage src="/images/farm/candypig2.jpg" height={250} width={375} />
                                 <Flex marginTop='14px' alignItems="center"  justifyContent="space-between">
                                     <Text fontSize="14px">
                                         {t('价格:')}
