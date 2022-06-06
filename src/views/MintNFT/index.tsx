@@ -86,6 +86,9 @@ export const MintNFT: FC = () => {
 
                                 <Flex marginTop='14px' marginLeft='40px' marginRight='40px' alignItems="center"  justifyContent="space-between">
                                         <Button onClick={() => setMintNum(mintNum - 1 < 1 ? 10 : mintNum - 1)}> - </Button>
+                                            <Text>
+                                                {`${mintNum} NFT`}
+                                            </Text>
                                          <Button onClick={() => setMintNum(mintNum + 1 >10 ? 1 : mintNum + 1)}> + </Button>
                                 </Flex>
                                 {
