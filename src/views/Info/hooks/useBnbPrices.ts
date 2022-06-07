@@ -44,7 +44,7 @@ interface PricesResponse {
 }
 
 const fetchBnbPrices = async (
-  block21: number,
+  block24: number,
   block48: number,
   blockWeek: number,
 ): Promise<{ bnbPrices: BnbPrices | undefined; error: boolean }> => {
