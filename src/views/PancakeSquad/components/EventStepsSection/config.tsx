@@ -75,7 +75,7 @@ const stepsConfigBuilder = ({ t, userInfos, eventInfos, userStatus, account, the
       title: t('Buy Squad Tickets'),
       bodyText: [
         t('Buy Squad Tickets, while stocks last. You’ll use them in step 4.'),
-        `04:00 UTC, Oct. 7 ${t(
+        `01:00 UTC, Oct. 7 ${t(
           'Pre-sale: Wallets which held “Gen 0” Pancake Bunnies NFTs (bunnyID 0,1,2,3,4) at a snapshot taken some time between 12 and 2 hours before the presale begins can purchase one Squad Ticket per Gen 0 NFT.',
         )}`,
         `08:00 UTC, Oct. 7 ${t(

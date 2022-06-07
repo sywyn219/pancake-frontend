@@ -724,7 +724,7 @@
   "Step 3: During the auction": "الخطوة 3: أثناء المزاد",
   "During the auction period, if you connect your project’s whitelisted wallet to the Auction page, you’ll see a “Place Bid” button during when the auction is live.": "خلال فترة المزاد، إذا قمت بربط محفظة مشروعك المدرجة بالقائمة البيضاء بصفحة المزاد، فسترى زر \"مكان العطاء\" عندما يكون المزاد جاريًا.",
   "You can then commit CAKE to bid during the auction, competing against other project for one of the available farms.": "يمكنك بعد ذلك إلزام CAKE بتقديم عطاءات أثناء المزاد، والتنافس ضد مشروع آخر لإحدى المزارع المتاحة.",
-  "Step 4: After the auction": "الخطوة 4: بعد المزاد",
+  "Step 1: After the auction": "الخطوة 1: بعد المزاد",
   "If your bid was not successful, you can reclaim your CAKE on this page.": "إذا لم يكن العطاء الخاص بك ناجحًا، يمكنك استرداد CAKE الخاص بك في هذه الصفحة.",
   "If your bid was successful, your farm will begin at the specified time. The CAKE you bid will not be returned to you and will be added to our weekly CAKE burn.": "في حال نجاح عطاءك، ستبدأ مزرعتك في الوقت المحدد. ولن يتم إرجاع CAKE الذي قدمت عليه عطاء إليك وسيتم إضافته إلى احتراق CAKE الأسبوعي الخاص بك.",
   "So long as you are whitelisted, you’ll be able to participate in each new auction.": "وما دمت مدرجًا في القائمة البيضاء، ستتمكن من المشاركة في كل مزاد جديد.",

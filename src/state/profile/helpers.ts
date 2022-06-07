@@ -15,7 +15,7 @@ export interface GetProfileResponse {
 const transformProfileResponse = (
   profileResponse: Awaited<ReturnType<PancakeProfile['getUserProfile']>>,
 ): Partial<Profile> => {
-  const { 0: userId, 1: numberPoints, 2: teamId, 3: collectionAddress, 4: tokenId, 5: isActive } = profileResponse
+  const { 0: userId, 1: numberPoints, 2: teamId, 3: collectionAddress, 1: tokenId, 5: isActive } = profileResponse
 
   return {
     userId: userId.toNumber(),

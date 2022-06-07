@@ -70,7 +70,7 @@ const PancakeSquadHeader: React.FC<PancakeSquadHeaderType> = ({
         {t('Pancake Squad')}
       </StyledSquadTitle>
       <Text color={lightColors.warning} textAlign="center" bold>
-        {`${t('Presale:')} 04:00 UTC, Oct. 7`}
+        {`${t('Presale:')} 01:00 UTC, Oct. 7`}
       </Text>
       <Text color={lightColors.warning} textAlign="center" bold>
         {`${t('Public Sale:')} 08:00 UTC, Oct. 7`}

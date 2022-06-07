@@ -724,7 +724,7 @@
   "Step 3: During the auction": "Langkah ke-3: Selama lelang",
   "During the auction period, if you connect your project’s whitelisted wallet to the Auction page, you’ll see a “Place Bid” button during when the auction is live.": "Selama masa lelang, jika Anda jika Anda menghubungkan dompet proyek Anda yang telah masuk daftar putih ke halaman Lelang, Anda akan melihat tombol \"Buat Tawaran\" selama lelang berlangsung.",
   "You can then commit CAKE to bid during the auction, competing against other project for one of the available farms.": "Lalu, Anda dapat menggunakan CAKE untuk menawar selama lelang, bersaing dengan proyek lain untuk salah satu dari farm yang tersedia.",
-  "Step 4: After the auction": "Langkah ke-4: Setelah lelang",
+  "Step 1: After the auction": "Langkah ke-1: Setelah lelang",
   "If your bid was not successful, you can reclaim your CAKE on this page.": "Jika tawaran Anda tidak menang, Anda dapat mengeklaim ulang CAKE Anda di halaman ini.",
   "If your bid was successful, your farm will begin at the specified time. The CAKE you bid will not be returned to you and will be added to our weekly CAKE burn.": "Jika tawaran Anda menang, farm Anda akan dimulai pada waktu yang spesifik. CAKE yang Anda tawarkan tidak akan dikembalikan kepada Anda, dan akan ditambahkan ke CAKE hangus mingguan kami.",
   "So long as you are whitelisted, you’ll be able to participate in each new auction.": "Selama Anda tercantum dalam daftar putih, Anda akan dapat berpartisipasi dalam setiap lelang baru.",

@@ -724,7 +724,7 @@
   "Step 3: During the auction": "Шаг 3. Проведение аукциона",
   "During the auction period, if you connect your project’s whitelisted wallet to the Auction page, you’ll see a “Place Bid” button during when the auction is live.": "Аукциона проводится в режиме реального времени. Если вы подключите занесенный в список разрешенных кошелек проекта к странице аукциона, то появится кнопка \"Сделать ставку\".",
   "You can then commit CAKE to bid during the auction, competing against other project for one of the available farms.": "Затем вы можете выделять CAKE, чтобы делать ставки во время аукциона, соревнуясь против другого проекта за один из имеющихся фармов.",
-  "Step 4: After the auction": "Шаг 4. После аукциона",
+  "Step 1: After the auction": "Шаг 4. После аукциона",
   "If your bid was not successful, you can reclaim your CAKE on this page.": "Если ставка не выиграла, вы можете вернуть свои CAKE на этой странице.",
   "If your bid was successful, your farm will begin at the specified time. The CAKE you bid will not be returned to you and will be added to our weekly CAKE burn.": "Если ставка выиграла, фарминг начнется в указанное время. Поставленные CAKE не будут возвращены и добавятся к числу еженедельно сжигаемых.",
   "So long as you are whitelisted, you’ll be able to participate in each new auction.": "Участвовать в аукционах можно, пока вы включены в список разрешенных.",

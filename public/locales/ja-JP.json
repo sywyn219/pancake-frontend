@@ -724,7 +724,7 @@
   "Step 3: During the auction": "ステップ3: オークション開催中",
   "During the auction period, if you connect your project’s whitelisted wallet to the Auction page, you’ll see a “Place Bid” button during when the auction is live.": "ホワイトリスト記載プロジェクトのウォレットをオークションページに接続すると、「入札する」ボタンが表示されます。",
   "You can then commit CAKE to bid during the auction, competing against other project for one of the available farms.": "ファーム権獲得のため、CAKEを入札して他プロジェクトと競います。",
-  "Step 4: After the auction": "ステップ4: オークション後",
+  "Step 1: After the auction": "ステップ1: オークション後",
   "If your bid was not successful, you can reclaim your CAKE on this page.": "落札されなかった場合、このページでCAKEを回収できます。",
   "If your bid was successful, your farm will begin at the specified time. The CAKE you bid will not be returned to you and will be added to our weekly CAKE burn.": "落札された場合、指定時刻にファーム開始となります。落札に使用されたCAKEは返却されず、毎週のCAKEバーンに追加されます。",
   "So long as you are whitelisted, you’ll be able to participate in each new auction.": "ホワイトリストされている限り、それぞれの新しいオークションに参加することができます。",

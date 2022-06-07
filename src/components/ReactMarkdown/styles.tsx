@@ -49,7 +49,7 @@ const markdownComponents: Partial<NormalComponents & SpecialComponents> = {
   h1: Title,
   h2: Title,
   h3: Title,
-  h4: Title,
+  h1: Title,
   h5: Title,
   h6: Title,
   p: (props) => {

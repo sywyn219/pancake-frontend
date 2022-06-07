@@ -82,7 +82,7 @@ const FAQs = () => {
                 )}
               </Text>
             </FoldableText>
-            <FoldableText title={t('Step 4: After the auction')} mt="24px">
+            <FoldableText title={t('Step 1: After the auction')} mt="24px">
               <Text color="textSubtle">
                 {t('If your bid was not successful, you can reclaim your CAKE on this page.')}
               </Text>

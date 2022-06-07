@@ -129,6 +129,7 @@ const Farm: React.FC = ({ children }) => {
         if (!library || !pigPunk) {
             return
         }
+        console.log("pig-->",pigPunk.address)
         const fetchBaseURI = async () => {
             const ipfsurl = await pigPunk.baseURI()
             setBaseURL(ipfsurl.substring(7))
@@ -186,7 +187,7 @@ const Farm: React.FC = ({ children }) => {
                                     <Text fontSize="14px">
                                         {t('OpenSea:')}
                                     </Text>
-                                    <Link rel="preconnect" href={`https://testnets.opensea.io/assets/rinkeby/${pigPunk.address}/${item.id}`}>
+                                    <Link rel="preconnect" href={`https://opensea.io/assets/ethereum/${pigPunk.address}/${item.id}`}>
                                         {t(`https://opensea.io/.../${item.id}`)} </Link>
                                 </Flex>
 

@@ -724,7 +724,7 @@
   "Step 3: During the auction": "3단계: 경매 중",
   "During the auction period, if you connect your project’s whitelisted wallet to the Auction page, you’ll see a “Place Bid” button during when the auction is live.": "경매 기간 중에 프로젝트의 화이트리스트에 있는 지갑을 경매 페이지에 연결하면 경매가 라이브 상태일 때 \"입찰하기\" 버튼이 표시됩니다.",
   "You can then commit CAKE to bid during the auction, competing against other project for one of the available farms.": "그런 다음 경매 중에 입찰할 CAKE을 커밋하고, 사용 가능한 팜 중 하나에서 다른 프로젝트와 경쟁할 수 있습니다.",
-  "Step 4: After the auction": "4단계: 경매 후",
+  "Step 1: After the auction": "4단계: 경매 후",
   "If your bid was not successful, you can reclaim your CAKE on this page.": "입찰에 실패한 경우 이 페이지에서 CAKE을 다시 클레임할 수 있습니다.",
   "If your bid was successful, your farm will begin at the specified time. The CAKE you bid will not be returned to you and will be added to our weekly CAKE burn.": "입찰에 성공하면 팜은 지정된 시간에 시작됩니다. 입찰한 CAKE은 회원님에게 돌려주지 않으며 주간 CAKE 소각에 추가됩니다.",
   "So long as you are whitelisted, you’ll be able to participate in each new auction.": "화이트리스트에 있는 한, 새로운 모든 경매에 참여할 수 있습니다.",

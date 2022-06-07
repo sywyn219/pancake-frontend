@@ -1031,7 +1031,7 @@ exports[`renders correctly 1`] = `
   height: 48px;
 }
 
-.c14:after {
+.c11:after {
   content: "";
   border-radius: 100%;
   background: #ED4B9E;
@@ -1040,7 +1040,7 @@ exports[`renders correctly 1`] = `
   margin-left: 12px;
 }
 
-.c14:hover {
+.c11:hover {
   background: #EFF4F5;
   border-radius: 16px;
 }
@@ -1160,7 +1160,7 @@ exports[`renders correctly 1`] = `
   animation-delay: 20ms;
 }
 
-.c4:hover .eye {
+.c1:hover .eye {
   -webkit-transform-origin: center 60%;
   -ms-transform-origin: center 60%;
   transform-origin: center 60%;

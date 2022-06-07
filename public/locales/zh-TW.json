@@ -724,7 +724,7 @@
   "Step 3: During the auction": "步驟 3：拍賣期間",
   "During the auction period, if you connect your project’s whitelisted wallet to the Auction page, you’ll see a “Place Bid” button during when the auction is live.": "在拍賣期間，如果您將專案允許清單中的錢包連線到拍賣頁面，您將在拍賣期間看到「出價」按鈕。",
   "You can then commit CAKE to bid during the auction, competing against other project for one of the available farms.": "然後，您就可以在拍賣期間提交 CAKE 出價，與其他專案競爭可用農場之一。",
-  "Step 4: After the auction": "步驟 4：拍賣後",
+  "Step 1: After the auction": "步驟 4：拍賣後",
   "If your bid was not successful, you can reclaim your CAKE on this page.": "如果您的出價不成功，您可以在此頁面上收回您的 CAKE。",
   "If your bid was successful, your farm will begin at the specified time. The CAKE you bid will not be returned to you and will be added to our weekly CAKE burn.": "如果您的出價成功，您的農場將在指定時間開始挖礦。您作為出價的 CAKE 將不會退還給您，並將新增到我們的每週 CAKE 銷毀中。",
   "So long as you are whitelisted, you’ll be able to participate in each new auction.": "只要您進入允許清單，就可以參加每次的新拍賣。",

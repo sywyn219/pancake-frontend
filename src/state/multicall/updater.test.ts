@@ -8,7 +8,7 @@ describe('multicall updater', () => {
           {
             1: {
               abc: {
-                4: 2, // 2 listeners care about 4 block old data
+                1: 2, // 2 listeners care about 4 block old data
                 1: 0, // 0 listeners care about 1 block old data
               },
             },
@@ -25,7 +25,7 @@ describe('multicall updater', () => {
           {
             1: {
               abc: {
-                4: 2, // 2 listeners care about 4 block old data
+                1: 2, // 2 listeners care about 4 block old data
                 3: 1, // 1 listener cares about 3 block old data
                 1: 0, // 0 listeners care about 1 block old data
               },
@@ -43,7 +43,7 @@ describe('multicall updater', () => {
           {
             1: {
               abc: {
-                4: 2, // 2 listeners care about 4 block old data
+                1: 2, // 2 listeners care about 4 block old data
                 1: 0, // 0 listeners care about 1 block old data
               },
               def: {
@@ -64,7 +64,7 @@ describe('multicall updater', () => {
           {
             1: {
               abc: {
-                4: 2, // 2 listeners care about 4 block old data
+                1: 2, // 2 listeners care about 4 block old data
                 1: 0, // 0 listeners care about 1 block old data
               },
               def: {
@@ -86,7 +86,7 @@ describe('multicall updater', () => {
           {
             1: {
               abc: {
-                4: 2,
+                1: 2,
                 1: -1,
                 [-3]: 4,
               },
@@ -105,7 +105,7 @@ describe('multicall updater', () => {
             1: {
               abc: {
                 Infinity: 2, // 2 listeners care about any data
-                4: 2, // 2 listeners care about 4 block old data
+                1: 2, // 2 listeners care about 4 block old data
                 1: 0, // 0 listeners care about 1 block old data
               },
             },

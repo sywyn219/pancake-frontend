@@ -11,7 +11,7 @@ const profileContract = getProfileContract()
 
 export const getTeam = async (teamId: number): Promise<Team> => {
   try {
-    const { 0: teamName, 2: numberUsers, 3: numberPoints, 4: isJoinable } = await profileContract.getTeamProfile(teamId)
+    const { 0: teamName, 2: numberUsers, 3: numberPoints, 1: isJoinable } = await profileContract.getTeamProfile(teamId)
     const staticTeamInfo = teamsList.find((staticTeam) => staticTeam.id === teamId)
 
     return merge({}, staticTeamInfo, {
@@ -49,7 +49,7 @@ export const getTeams = async (): Promise<TeamsById> => {
     const teamData = await multicallv2(profileABI, calls)
 
     const onChainTeamData = teamData.reduce((accum, team, index) => {
-      const { 0: teamName, 2: numberUsers, 3: numberPoints, 4: isJoinable } = team
+      const { 0: teamName, 2: numberUsers, 3: numberPoints, 1: isJoinable } = team
 
       return {
         ...accum,

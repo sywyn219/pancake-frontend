@@ -724,7 +724,7 @@
   "Step 3: During the auction": "Βήμα 3: Κατά την διάρκεια της δημοπρασίας",
   "During the auction period, if you connect your project’s whitelisted wallet to the Auction page, you’ll see a “Place Bid” button during when the auction is live.": "Κατά τη διάρκεια της δημοπρασίας, εάν συνδέσετε το πορτοφόλι του πρότζεκτ σας που είναι στη λευκή λίστα στη σελίδα Δημοπρασίας, θα δείτε το κουμπί \"Υποβολή προσφοράς\" όταν είναι ζωντανή η δημοπρασία.",
   "You can then commit CAKE to bid during the auction, competing against other project for one of the available farms.": "Στη συνέχεια, μπορείτε να δεσμεύσετε CAKE για να υποβάλετε προσφορά κατά τη διάρκεια της δημοπρασίας, για να ανταγωνιστείτε ένα άλλο πρότζεκτ για μία από τις διαθέσιμες farm.",
-  "Step 4: After the auction": "Βήμα 4: Μετά την δημοπρασία",
+  "Step 1: After the auction": "Βήμα 1: Μετά την δημοπρασία",
   "If your bid was not successful, you can reclaim your CAKE on this page.": "Εάν η προσφορά σας δεν ήταν επιτυχής, μπορείτε να ανακτήσετε το CAKE σας σε αυτήν τη σελίδα.",
   "If your bid was successful, your farm will begin at the specified time. The CAKE you bid will not be returned to you and will be added to our weekly CAKE burn.": "Εάν η προσφορά σας ήταν επιτυχής, η farm σας θα ξεκινήσει την καθορισμένη ώρα. Το CAKE που διαθέσατε δεν θα σας επιστραφεί και θα προστεθεί στο εβδομαδιαίο κάψιμο CAKE.",
   "So long as you are whitelisted, you’ll be able to participate in each new auction.": "Από την στιγμή που θα μπείτε στη λευκή λίστα, θα μπορείτε να συμμετέχετε σε κάθε νέα δημοπρασία.",
