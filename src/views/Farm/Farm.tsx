@@ -180,7 +180,7 @@ const Farm: React.FC = ({ children }) => {
                                     <Text fontSize="14px">
                                         {t('NFT:')}
                                     </Text>
-                                    {`PigPunk #${item.id}`}
+                                    {`candypigs #${item.id}`}
                                 </Flex>
 
                                 <Flex alignItems="center"  justifyContent="space-between">
