@@ -127,8 +127,9 @@ const Farm: React.FC = ({ children }) => {
         }
         const fetchData  = async () => {
             const sales = await farmCon.getSale()
-            const salesArr = sales.map(item => formatBigNumber(item))
-            setSale(salesArr);
+            let salesArr = sales.map(item => formatBigNumber(item))
+            const saleArrSol = salesArr.sort((a, b) => (Number(a) > Number(b) ? 1 : -1));
+            setSale(saleArrSol);
         }
         fetchData().catch((e) => {
             console.log("err---->",e)
