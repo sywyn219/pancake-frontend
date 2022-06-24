@@ -176,7 +176,7 @@ const Farm: React.FC = ({ children }) => {
 
             <Container style={{ top: `${stickPosition}px` }}>
                 <TextGroup>
-                    <TextTitle bold>{t('购买农场资产可产HSO收益.')}</TextTitle>
+                    <TextTitle bold>{t('购买农场NFT资产可产HSO收益.')}</TextTitle>
                     <TextSubTitle>{t('资产多，产币收益高.')}</TextSubTitle>
                 </TextGroup>
             </Container>

@@ -16,12 +16,13 @@ import PageHeader from "../../components/PageHeader";
 import useTheme from "../../hooks/useTheme";
 import {AdminProxy} from "./AdminProxy";
 import {AdminCoin} from "./AdminCoin";
+import {AdminParameter} from "./AdminParameter";
 
 const Items =  [
     {content:"产币",item: <AdminCoin />},
     {content: "代理",item: <AdminProxy />},
-    {content:"审批",item:<h1>待开放...</h1>},
-    {content:"参数",item:<h1>待开放...</h1>}]
+    {content:"审批",item: <h1>待开放...</h1>},
+    {content:"参数",item: <AdminParameter/>}]
 
 export const FarmAdmin: FC = () => {
     const { t } = useTranslation()
