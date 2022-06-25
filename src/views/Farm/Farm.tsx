@@ -131,6 +131,7 @@ const Farm: React.FC = ({ children }) => {
                 return {inx:k,value:formatBigNumber(item)}
             })
             const saleArrSol = salesArr.sort((a, b) => (Number(a.value) > Number(b.value) ? 1 : -1));
+            console.log("salearrsol---->",saleArrSol)
             setSale(saleArrSol);
         }
         fetchData().catch((e) => {
@@ -223,7 +224,7 @@ const Farm: React.FC = ({ children }) => {
                                     }}
                                     width="100%"
                                     id="swap-button"
-                                    disabled ={!balance || balance.toSignificant(6) < item.value || acc === ''}
+                                    disabled ={!balance || Number(balance.toSignificant(6)) < Number(item.value) || acc === ''}
                                 >
                                     {t('购买')}
                                 </Button>
