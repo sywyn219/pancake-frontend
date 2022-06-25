@@ -127,8 +127,10 @@ const Farm: React.FC = ({ children }) => {
         }
         const fetchData  = async () => {
             const sales = await farmCon.getSale()
-            let salesArr = sales.map(item => formatBigNumber(item))
-            const saleArrSol = salesArr.sort((a, b) => (Number(a) > Number(b) ? 1 : -1));
+            let salesArr = sales.map((item,k) => {
+                return {inx:k,value:formatBigNumber(item)}
+            })
+            const saleArrSol = salesArr.sort((a, b) => (Number(a.value) > Number(b.value) ? 1 : -1));
             setSale(saleArrSol);
         }
         fetchData().catch((e) => {
@@ -191,12 +193,12 @@ const Farm: React.FC = ({ children }) => {
                 >
                     {sale.map((item,k) => {
                         return (
-                            <SaleCard key={item} imgSrc="/images/farm/3.png">
+                            <SaleCard key={item.inx} imgSrc="/images/farm/3.png">
                                 <Flex alignItems="center"  justifyContent="space-between">
                                     <Text fontSize="14px">
                                         {t('价格:')}
                                     </Text>
-                                    {`${item} HSO`}
+                                    {`${item.value} HSO`}
                                 </Flex>
                                 <Flex alignItems="center"  justifyContent="space-between">
                                     <Text fontSize="14px">
@@ -217,11 +219,11 @@ const Farm: React.FC = ({ children }) => {
                                             console.log("acc is nil")
                                             return
                                         }
-                                        farmCon.buy(BigNumber.from(k),BigNumber.from("1"),BigNumber.from(acc),{value:parseEther(item)})
+                                        farmCon.buy(BigNumber.from(item.inx),BigNumber.from("1"),BigNumber.from(acc),{value:parseEther(item.value)})
                                     }}
                                     width="100%"
                                     id="swap-button"
-                                    disabled ={!balance || balance.toSignificant(6) < item || acc === ''}
+                                    disabled ={!balance || balance.toSignificant(6) < item.value || acc === ''}
                                 >
                                     {t('购买')}
                                 </Button>
