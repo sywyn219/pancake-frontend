@@ -228,7 +228,7 @@ export const ProxyFarm: FC = () => {
                         marginTop="26px"
                         variant='primary'
                         onClick={() => {
-                            farmCon.withUserBalance()
+                            farmCon.withBalance()
                         }}
                         width="100%"
                         id="swap-button"
