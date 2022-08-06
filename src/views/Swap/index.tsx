@@ -552,18 +552,17 @@ export default function Swap() {
                         <Button
                           variant={isValid && priceImpactSeverity > 2 ? 'danger' : 'primary'}
                           onClick={() => {
-                            console.log("***************")
-                            // if (isExpertMode) {
-                            //   handleSwap()
-                            // } else {
-                            //   setSwapState({
-                            //     tradeToConfirm: trade,
-                            //     attemptingTxn: false,
-                            //     swapErrorMessage: undefined,
-                            //     txHash: undefined,
-                            //   })
-                            //   onPresentConfirmModal()
-                            // }
+                            if (isExpertMode) {
+                              handleSwap()
+                            } else {
+                              setSwapState({
+                                tradeToConfirm: trade,
+                                attemptingTxn: false,
+                                swapErrorMessage: undefined,
+                                txHash: undefined,
+                              })
+                              onPresentConfirmModal()
+                            }
                           }}
                           width="48%"
                           id="swap-button"
@@ -584,18 +583,17 @@ export default function Swap() {
                       <Button
                         variant={isValid && priceImpactSeverity > 2 && !swapCallbackError ? 'danger' : 'primary'}
                         onClick={() => {
-                          console.log("***************")
-                          // if (isExpertMode) {
-                          //   handleSwap()
-                          // } else {
-                          //   setSwapState({
-                          //     tradeToConfirm: trade,
-                          //     attemptingTxn: false,
-                          //     swapErrorMessage: undefined,
-                          //     txHash: undefined,
-                          //   })
-                          //   onPresentConfirmModal()
-                          // }
+                          if (isExpertMode) {
+                            handleSwap()
+                          } else {
+                            setSwapState({
+                              tradeToConfirm: trade,
+                              attemptingTxn: false,
+                              swapErrorMessage: undefined,
+                              txHash: undefined,
+                            })
+                            onPresentConfirmModal()
+                          }
                         }}
                         id="swap-button"
                         width="100%"
