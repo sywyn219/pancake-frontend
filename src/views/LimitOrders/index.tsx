@@ -327,17 +327,18 @@ const LimitOrders = () => {
                           <Button
                               variant={isValid && !outErrorToUserReadableMessage ? 'danger' : 'primary'}
                               onClick={() => {
-                                if (false) {
-                                  handleCurrencyOut()
-                                } else {
-                                  setSwapState({
-                                    tradeToConfirm: trade,
-                                    attemptingTxn: false,
-                                    swapErrorMessage: undefined,
-                                    txHash: undefined,
-                                  })
-                                  onPresentConfirmModal()
-                                }
+                                console.log("*--------------")
+                                // if (false) {
+                                //   handleCurrencyOut()
+                                // } else {
+                                //   setSwapState({
+                                //     tradeToConfirm: trade,
+                                //     attemptingTxn: false,
+                                //     swapErrorMessage: undefined,
+                                //     txHash: undefined,
+                                //   })
+                                //   onPresentConfirmModal()
+                                // }
                               }}
                               id="swap-button"
                               width="100%"
